@@ -1,0 +1,150 @@
+[2025-03-09 17:12:13] Method: POST
+Input: {"name":"test","description":"","permissions":[{"category":"Abbonamenti","can_read":1,"can_write":0,"can_create":0}]}
+
+Dati decodificati: Array
+(
+    [name] => test
+    [description] => 
+    [permissions] => Array
+        (
+            [0] => Array
+                (
+                    [category] => Abbonamenti
+                    [can_read] => 1
+                    [can_write] => 0
+                    [can_create] => 0
+                )
+
+        )
+
+)
+
+Ruolo creato con ID: 6
+Elaborazione permesso per categoria: Abbonamenti
+Aggiunto permesso ID 39 per Abbonamenti
+Permessi aggiunti: 1
+[2025-03-09 17:13:10] Method: POST
+Input: {"name":"test2","description":"","permissions":[{"category":"Abbonamenti","can_read":1,"can_write":0,"can_create":0},{"category":"Analytics","can_read":1,"can_write":1,"can_create":0},{"category":"Assegnazione ordini","can_read":0,"can_write":1,"can_create":0}]}
+
+Dati decodificati: Array
+(
+    [name] => test2
+    [description] => 
+    [permissions] => Array
+        (
+            [0] => Array
+                (
+                    [category] => Abbonamenti
+                    [can_read] => 1
+                    [can_write] => 0
+                    [can_create] => 0
+                )
+
+            [1] => Array
+                (
+                    [category] => Analytics
+                    [can_read] => 1
+                    [can_write] => 1
+                    [can_create] => 0
+                )
+
+            [2] => Array
+                (
+                    [category] => Assegnazione ordini
+                    [can_read] => 0
+                    [can_write] => 1
+                    [can_create] => 0
+                )
+
+        )
+
+)
+
+Ruolo creato con ID: 7
+Elaborazione permesso per categoria: Abbonamenti
+Aggiunto permesso ID 39 per Abbonamenti
+Elaborazione permesso per categoria: Analytics
+Aggiunto permesso ID 23 per Analytics
+Elaborazione permesso per categoria: Assegnazione ordini
+Aggiunto permesso ID 20 per Assegnazione ordini
+Permessi aggiunti: 3
+[2025-03-09 18:46:26] Method: POST
+Input: {"name":"test4","description":"","permissions":[{"category":"Abbonamenti","can_read":1,"can_write":0,"can_create":0},{"category":"Analytics","can_read":0,"can_write":1,"can_create":0},{"category":"Assegnazione ordini","can_read":1,"can_write":0,"can_create":0}]}
+
+Dati decodificati: Array
+(
+    [name] => test4
+    [description] => 
+    [permissions] => Array
+        (
+            [0] => Array
+                (
+                    [category] => Abbonamenti
+                    [can_read] => 1
+                    [can_write] => 0
+                    [can_create] => 0
+                )
+
+            [1] => Array
+                (
+                    [category] => Analytics
+                    [can_read] => 0
+                    [can_write] => 1
+                    [can_create] => 0
+                )
+
+            [2] => Array
+                (
+                    [category] => Assegnazione ordini
+                    [can_read] => 1
+                    [can_write] => 0
+                    [can_create] => 0
+                )
+
+        )
+
+)
+
+Ruolo creato con ID: 8
+Elaborazione permesso per categoria: Abbonamenti
+Aggiunto permesso ID 39 per Abbonamenti
+Elaborazione permesso per categoria: Analytics
+Aggiunto permesso ID 23 per Analytics
+Elaborazione permesso per categoria: Assegnazione ordini
+Aggiunto permesso ID 20 per Assegnazione ordini
+Permessi aggiunti: 3
+[2025-03-09 19:41:35] Method: POST
+Input: {"name":"test","description":"","permissions":[{"category":"Abbonamenti","can_read":1,"can_write":0,"can_create":0},{"category":"Analytics","can_read":0,"can_write":1,"can_create":0}]}
+
+Dati decodificati: Array
+(
+    [name] => test
+    [description] => 
+    [permissions] => Array
+        (
+            [0] => Array
+                (
+                    [category] => Abbonamenti
+                    [can_read] => 1
+                    [can_write] => 0
+                    [can_create] => 0
+                )
+
+            [1] => Array
+                (
+                    [category] => Analytics
+                    [can_read] => 0
+                    [can_write] => 1
+                    [can_create] => 0
+                )
+
+        )
+
+)
+
+Ruolo creato con ID: 9
+Elaborazione permesso per categoria: Abbonamenti
+Aggiunto permesso ID 39 per Abbonamenti
+Elaborazione permesso per categoria: Analytics
+Aggiunto permesso ID 23 per Analytics
+Permessi aggiunti: 2
