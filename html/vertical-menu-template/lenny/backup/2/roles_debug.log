@@ -1,0 +1,924 @@
+[2025-03-09 16:36:00] Method: GET
+Input: 
+
+[2025-03-09 16:36:02] Method: GET
+Input: 
+
+[2025-03-09 16:40:29] Request method: GET
+[2025-03-09 16:40:29] GET all roles
+[2025-03-09 16:40:29] Retrieved roles: 5
+[2025-03-09 16:40:31] Request method: GET
+[2025-03-09 16:40:31] GET all roles
+[2025-03-09 16:40:31] Retrieved roles: 5
+[2025-03-09 16:41:17] Request method: GET
+[2025-03-09 16:41:17] GET role by ID: 1
+[2025-03-09 16:41:17] Role data retrieved: 48 permissions
+[2025-03-09 16:41:17] Request method: GET
+[2025-03-09 16:41:17] GET role by ID: 1
+[2025-03-09 16:41:17] Role data retrieved: 48 permissions
+[2025-03-09 16:44:32] Request method: GET
+[2025-03-09 16:44:32] GET all roles
+[2025-03-09 16:44:32] Retrieved roles: 5
+[2025-03-09 16:44:34] Request method: GET
+[2025-03-09 16:44:34] GET all roles
+[2025-03-09 16:44:34] Retrieved roles: 5
+[2025-03-09 16:44:36] Request method: GET
+[2025-03-09 16:44:36] GET role by ID: 1
+[2025-03-09 16:44:36] Role data retrieved: 48 permissions
+[2025-03-09 16:47:21] Request method: GET
+[2025-03-09 16:47:21] GET all roles
+[2025-03-09 16:47:21] Retrieved roles: 5
+[2025-03-09 16:47:22] Request method: GET
+[2025-03-09 16:47:22] GET all roles
+[2025-03-09 16:47:22] Retrieved roles: 5
+[2025-03-09 16:51:08] Request method: GET
+[2025-03-09 16:51:08] GET all roles
+[2025-03-09 16:51:08] Retrieved roles: 5
+[2025-03-09 16:51:10] Request method: GET
+[2025-03-09 16:51:10] GET all roles
+[2025-03-09 16:51:10] Retrieved roles: 5
+[2025-03-09 16:55:09] Request method: GET
+[2025-03-09 16:55:09] GET all roles
+[2025-03-09 16:55:09] Retrieved roles: 5
+[2025-03-09 16:55:11] Request method: GET
+[2025-03-09 16:55:11] GET all roles
+[2025-03-09 16:55:11] Retrieved roles: 5
+[2025-03-09 16:55:16] Request method: GET
+[2025-03-09 16:55:16] GET all roles
+[2025-03-09 16:55:16] Retrieved roles: 5
+[2025-03-09 16:55:18] Request method: GET
+[2025-03-09 16:55:18] GET all roles
+[2025-03-09 16:55:18] Retrieved roles: 5
+[2025-03-09 16:59:44] Request method: GET
+[2025-03-09 16:59:44] GET all roles
+[2025-03-09 16:59:44] Retrieved roles: 5
+[2025-03-09 16:59:46] Request method: GET
+[2025-03-09 16:59:46] GET all roles
+[2025-03-09 16:59:46] Retrieved roles: 5
+[2025-03-09 17:02:46] Request method: GET
+[2025-03-09 17:02:46] GET all roles
+[2025-03-09 17:02:46] Retrieved roles: 5
+[2025-03-09 17:02:48] Request method: GET
+[2025-03-09 17:02:48] GET all roles
+[2025-03-09 17:02:48] Retrieved roles: 5
+[2025-03-09 17:03:03] Request method: GET
+[2025-03-09 17:03:03] GET all roles
+[2025-03-09 17:03:03] Retrieved roles: 5
+[2025-03-09 17:03:05] Request method: GET
+[2025-03-09 17:03:05] GET all roles
+[2025-03-09 17:03:05] Retrieved roles: 5
+[2025-03-09 17:03:59] Request method: GET
+[2025-03-09 17:03:59] GET all roles
+[2025-03-09 17:03:59] Retrieved roles: 5
+[2025-03-09 17:04:00] Request method: GET
+[2025-03-09 17:04:00] GET all roles
+[2025-03-09 17:04:00] Retrieved roles: 5
+[2025-03-09 17:04:17] Request method: GET
+[2025-03-09 17:04:17] GET role by ID: 2
+[2025-03-09 17:04:17] Role data retrieved: 48 permissions
+[2025-03-09 17:08:38] Request method: GET
+[2025-03-09 17:08:38] GET all roles
+[2025-03-09 17:08:38] Retrieved roles: 5
+[2025-03-09 17:08:40] Request method: GET
+[2025-03-09 17:08:40] GET all roles
+[2025-03-09 17:08:40] Retrieved roles: 5
+[2025-03-09 17:12:03] Request method: GET
+[2025-03-09 17:12:03] GET all roles
+[2025-03-09 17:12:03] Retrieved roles: 5
+[2025-03-09 17:12:05] Request method: GET
+[2025-03-09 17:12:05] GET all roles
+[2025-03-09 17:12:05] Retrieved roles: 5
+[2025-03-09 17:12:14] Request method: GET
+[2025-03-09 17:12:14] GET all roles
+[2025-03-09 17:12:14] Retrieved roles: 6
+[2025-03-09 17:12:54] Request method: DELETE
+[2025-03-09 17:12:54] DELETE role: 6
+[2025-03-09 17:12:54] Deleted role permissions
+[2025-03-09 17:12:54] Role deleted successfully
+[2025-03-09 17:12:55] Request method: DELETE
+[2025-03-09 17:12:55] DELETE role: 6
+[2025-03-09 17:12:55] Deleted role permissions
+[2025-03-09 17:12:55] Role deleted successfully
+[2025-03-09 17:12:55] Request method: GET
+[2025-03-09 17:12:55] GET all roles
+[2025-03-09 17:12:55] Retrieved roles: 5
+[2025-03-09 17:12:58] Request method: GET
+[2025-03-09 17:12:58] GET all roles
+[2025-03-09 17:12:58] Retrieved roles: 5
+[2025-03-09 17:13:00] Request method: GET
+[2025-03-09 17:13:00] GET all roles
+[2025-03-09 17:13:00] Retrieved roles: 5
+[2025-03-09 17:13:10] Request method: GET
+[2025-03-09 17:13:10] GET all roles
+[2025-03-09 17:13:10] Retrieved roles: 6
+[2025-03-09 17:13:15] Request method: GET
+[2025-03-09 17:13:15] GET role by ID: 7
+[2025-03-09 17:13:15] Role data retrieved: 48 permissions
+[2025-03-09 17:35:07] Request method: GET
+[2025-03-09 17:35:07] GET all roles
+[2025-03-09 17:35:07] Retrieved roles: 6
+[2025-03-09 17:38:05] Request method: GET
+[2025-03-09 17:38:05] GET all roles
+[2025-03-09 17:38:05] Retrieved roles: 6
+[2025-03-09 17:38:08] Request method: GET
+[2025-03-09 17:38:08] GET all roles
+[2025-03-09 17:38:08] Retrieved roles: 6
+[2025-03-09 17:38:13] Request method: GET
+[2025-03-09 17:38:13] GET all roles
+[2025-03-09 17:38:13] Retrieved roles: 6
+[2025-03-09 18:12:33] Request method: GET
+[2025-03-09 18:12:33] GET all roles
+[2025-03-09 18:12:33] Retrieved roles: 6
+[2025-03-09 18:15:23] Request method: GET
+[2025-03-09 18:15:23] GET all roles
+[2025-03-09 18:15:23] Retrieved roles: 6
+[2025-03-09 18:46:26] Request method: GET
+[2025-03-09 18:46:26] GET all roles
+[2025-03-09 18:46:26] Retrieved roles: 7
+[2025-03-09 18:46:33] Request method: DELETE
+[2025-03-09 18:46:33] DELETE role: 8
+[2025-03-09 18:46:33] Deleted role permissions
+[2025-03-09 18:46:33] Role deleted successfully
+[2025-03-09 18:46:38] Request method: GET
+[2025-03-09 18:46:38] GET all roles
+[2025-03-09 18:46:38] Retrieved roles: 6
+[2025-03-09 18:46:38] Request method: DELETE
+[2025-03-09 18:46:38] DELETE role: 8
+[2025-03-09 18:46:38] Deleted role permissions
+[2025-03-09 18:46:38] Role deleted successfully
+[2025-03-09 18:46:41] Request method: GET
+[2025-03-09 18:46:41] GET all roles
+[2025-03-09 18:46:41] Retrieved roles: 6
+[2025-03-09 18:50:14] Request method: GET
+[2025-03-09 18:50:14] GET all roles
+[2025-03-09 18:50:14] Retrieved roles: 6
+[2025-03-09 18:50:16] Request method: GET
+[2025-03-09 18:50:16] GET all roles
+[2025-03-09 18:50:16] Retrieved roles: 6
+[2025-03-09 18:50:41] Request method: GET
+[2025-03-09 18:50:41] GET all roles
+[2025-03-09 18:50:41] Retrieved roles: 6
+[2025-03-09 18:50:42] Request method: GET
+[2025-03-09 18:50:42] GET all roles
+[2025-03-09 18:50:42] Retrieved roles: 6
+[2025-03-09 18:50:43] Request method: GET
+[2025-03-09 18:50:43] GET all roles
+[2025-03-09 18:50:43] Retrieved roles: 6
+[2025-03-09 18:50:44] Request method: GET
+[2025-03-09 18:50:44] GET all roles
+[2025-03-09 18:50:44] Retrieved roles: 6
+[2025-03-09 18:50:46] Request method: GET
+[2025-03-09 18:50:46] GET all roles
+[2025-03-09 18:50:46] Retrieved roles: 6
+[2025-03-09 19:04:20] Request method: GET
+[2025-03-09 19:04:20] GET all roles
+[2025-03-09 19:04:20] Retrieved roles: 6
+[2025-03-09 19:04:29] Request method: GET
+[2025-03-09 19:04:29] GET all roles
+[2025-03-09 19:04:29] Retrieved roles: 6
+[2025-03-09 19:04:32] Request method: GET
+[2025-03-09 19:04:32] GET all roles
+[2025-03-09 19:04:32] Retrieved roles: 6
+[2025-03-09 19:10:07] Request method: GET
+[2025-03-09 19:10:07] GET all roles
+[2025-03-09 19:10:07] Retrieved roles: 6
+[2025-03-09 19:10:11] Request method: GET
+[2025-03-09 19:10:11] GET all roles
+[2025-03-09 19:10:11] Retrieved roles: 6
+[2025-03-09 19:10:12] Request method: GET
+[2025-03-09 19:10:12] GET all roles
+[2025-03-09 19:10:12] Retrieved roles: 6
+[2025-03-09 19:10:16] Request method: GET
+[2025-03-09 19:10:16] GET all roles
+[2025-03-09 19:10:16] Retrieved roles: 6
+[2025-03-09 19:10:17] Request method: GET
+[2025-03-09 19:10:17] GET all roles
+[2025-03-09 19:10:17] Retrieved roles: 6
+[2025-03-09 19:10:18] Request method: GET
+[2025-03-09 19:10:18] GET all roles
+[2025-03-09 19:10:18] Retrieved roles: 6
+[2025-03-09 19:10:21] Request method: GET
+[2025-03-09 19:10:21] GET all roles
+[2025-03-09 19:10:21] Retrieved roles: 6
+[2025-03-09 19:10:22] Request method: GET
+[2025-03-09 19:10:22] GET all roles
+[2025-03-09 19:10:22] Retrieved roles: 6
+[2025-03-09 19:10:22] Request method: GET
+[2025-03-09 19:10:22] GET all roles
+[2025-03-09 19:10:22] Retrieved roles: 6
+[2025-03-09 19:10:23] Request method: GET
+[2025-03-09 19:10:23] GET all roles
+[2025-03-09 19:10:23] Retrieved roles: 6
+[2025-03-09 19:10:24] Request method: GET
+[2025-03-09 19:10:24] GET all roles
+[2025-03-09 19:10:24] Retrieved roles: 6
+[2025-03-09 19:21:32] Request method: GET
+[2025-03-09 19:21:32] GET all roles
+[2025-03-09 19:21:32] Retrieved roles: 6
+[2025-03-09 19:21:32] Request method: GET
+[2025-03-09 19:21:32] GET all roles
+[2025-03-09 19:21:32] Retrieved roles: 6
+[2025-03-09 19:21:33] Request method: GET
+[2025-03-09 19:21:33] GET all roles
+[2025-03-09 19:21:33] Retrieved roles: 6
+[2025-03-09 19:21:34] Request method: GET
+[2025-03-09 19:21:34] GET all roles
+[2025-03-09 19:21:34] Retrieved roles: 6
+[2025-03-09 19:26:39] Request method: GET
+[2025-03-09 19:26:39] GET all roles
+[2025-03-09 19:26:39] Retrieved roles: 6
+[2025-03-09 19:26:47] Request method: GET
+[2025-03-09 19:26:47] GET all roles
+[2025-03-09 19:26:47] Retrieved roles: 6
+[2025-03-09 19:29:56] Request method: GET
+[2025-03-09 19:29:56] GET all roles
+[2025-03-09 19:29:56] Retrieved roles: 6
+[2025-03-09 19:29:59] Request method: GET
+[2025-03-09 19:29:59] GET all roles
+[2025-03-09 19:29:59] Retrieved roles: 6
+[2025-03-09 19:32:37] Request method: GET
+[2025-03-09 19:32:37] GET all roles
+[2025-03-09 19:32:37] Retrieved roles: 6
+[2025-03-09 19:32:55] Request method: GET
+[2025-03-09 19:32:55] GET all roles
+[2025-03-09 19:32:55] Retrieved roles: 6
+[2025-03-09 19:36:10] Request method: GET
+[2025-03-09 19:36:10] GET all roles
+[2025-03-09 19:36:10] Retrieved roles: 6
+[2025-03-09 19:36:16] Request method: GET
+[2025-03-09 19:36:16] GET all roles
+[2025-03-09 19:36:16] Retrieved roles: 6
+[2025-03-09 19:36:20] Request method: GET
+[2025-03-09 19:36:20] GET all roles
+[2025-03-09 19:36:20] Retrieved roles: 6
+[2025-03-09 19:39:52] Request method: GET
+[2025-03-09 19:39:52] GET all roles
+[2025-03-09 19:39:52] Retrieved roles: 6
+[2025-03-09 19:39:58] Request method: GET
+[2025-03-09 19:39:58] GET all roles
+[2025-03-09 19:39:58] Retrieved roles: 6
+[2025-03-09 19:41:07] Request method: GET
+[2025-03-09 19:41:07] GET all roles
+[2025-03-09 19:41:07] Retrieved roles: 6
+[2025-03-09 19:41:17] Request method: GET
+[2025-03-09 19:41:17] GET all roles
+[2025-03-09 19:41:17] Retrieved roles: 6
+[2025-03-09 19:41:35] Request method: GET
+[2025-03-09 19:41:35] GET all roles
+[2025-03-09 19:41:35] Retrieved roles: 7
+[2025-03-09 19:41:40] Request method: DELETE
+[2025-03-09 19:41:40] DELETE role: 7
+[2025-03-09 19:41:40] Deleted role permissions
+[2025-03-09 19:41:40] Role deleted successfully
+[2025-03-09 19:41:40] Request method: GET
+[2025-03-09 19:41:40] GET all roles
+[2025-03-09 19:41:40] Retrieved roles: 6
+[2025-03-09 19:43:36] Request method: GET
+[2025-03-09 19:43:36] GET all roles
+[2025-03-09 19:43:36] Retrieved roles: 6
+[2025-03-09 19:43:40] Request method: GET
+[2025-03-09 19:43:40] GET all roles
+[2025-03-09 19:43:40] Retrieved roles: 6
+[2025-03-09 19:43:55] Request method: GET
+[2025-03-09 19:43:55] GET all roles
+[2025-03-09 19:43:55] Retrieved roles: 6
+[2025-03-09 19:46:56] Request method: GET
+[2025-03-09 19:46:56] GET all roles
+[2025-03-09 19:46:56] Retrieved roles: 6
+[2025-03-09 19:47:46] Request method: GET
+[2025-03-09 19:47:46] GET all roles
+[2025-03-09 19:47:46] Retrieved roles: 6
+[2025-03-09 19:54:29] Request method: GET
+[2025-03-09 19:54:29] GET all roles
+[2025-03-09 19:54:29] Retrieved roles: 6
+[2025-03-09 20:00:07] Request method: GET
+[2025-03-09 20:00:07] GET all roles
+[2025-03-09 20:00:07] Retrieved roles: 6
+[2025-03-09 20:03:36] Request method: GET
+[2025-03-09 20:03:36] GET all roles
+[2025-03-09 20:03:36] Retrieved roles: 6
+[2025-03-09 20:03:39] Request method: GET
+[2025-03-09 20:03:39] GET all roles
+[2025-03-09 20:03:39] Retrieved roles: 6
+[2025-03-09 20:06:18] Request method: GET
+[2025-03-09 20:06:18] GET all roles
+[2025-03-09 20:06:18] Retrieved roles: 6
+[2025-03-09 20:08:01] Request method: GET
+[2025-03-09 20:08:01] GET all roles
+[2025-03-09 20:08:01] Retrieved roles: 6
+[2025-03-09 20:08:55] Request method: GET
+[2025-03-09 20:08:55] GET all roles
+[2025-03-09 20:08:55] Retrieved roles: 6
+[2025-03-09 20:10:15] Request method: GET
+[2025-03-09 20:10:15] GET all roles
+[2025-03-09 20:10:15] Retrieved roles: 6
+[2025-03-09 20:10:18] Request method: GET
+[2025-03-09 20:10:18] GET all roles
+[2025-03-09 20:10:18] Retrieved roles: 6
+[2025-03-09 20:10:20] Request method: GET
+[2025-03-09 20:10:20] GET all roles
+[2025-03-09 20:10:20] Retrieved roles: 6
+[2025-03-09 20:10:21] Request method: GET
+[2025-03-09 20:10:21] GET all roles
+[2025-03-09 20:10:21] Retrieved roles: 6
+[2025-03-09 20:10:22] Request method: GET
+[2025-03-09 20:10:22] GET all roles
+[2025-03-09 20:10:22] Retrieved roles: 6
+[2025-03-09 20:10:23] Request method: GET
+[2025-03-09 20:10:23] GET all roles
+[2025-03-09 20:10:23] Retrieved roles: 6
+[2025-03-09 20:10:24] Request method: GET
+[2025-03-09 20:10:24] GET all roles
+[2025-03-09 20:10:24] Retrieved roles: 6
+[2025-03-09 20:13:46] Request method: GET
+[2025-03-09 20:13:46] GET all roles
+[2025-03-09 20:13:46] Retrieved roles: 6
+[2025-03-09 20:13:47] Request method: GET
+[2025-03-09 20:13:47] GET all roles
+[2025-03-09 20:13:47] Retrieved roles: 6
+[2025-03-09 20:13:48] Request method: GET
+[2025-03-09 20:13:48] GET all roles
+[2025-03-09 20:13:48] Retrieved roles: 6
+[2025-03-09 20:13:48] Request method: GET
+[2025-03-09 20:13:48] GET all roles
+[2025-03-09 20:13:48] Retrieved roles: 6
+[2025-03-09 20:13:49] Request method: GET
+[2025-03-09 20:13:49] GET all roles
+[2025-03-09 20:13:49] Retrieved roles: 6
+[2025-03-09 20:13:50] Request method: GET
+[2025-03-09 20:13:50] GET all roles
+[2025-03-09 20:13:50] Retrieved roles: 6
+[2025-03-09 20:13:50] Request method: GET
+[2025-03-09 20:13:50] GET all roles
+[2025-03-09 20:13:50] Retrieved roles: 6
+[2025-03-09 20:13:51] Request method: GET
+[2025-03-09 20:13:51] GET all roles
+[2025-03-09 20:13:51] Retrieved roles: 6
+[2025-03-09 20:13:51] Request method: GET
+[2025-03-09 20:13:51] GET all roles
+[2025-03-09 20:13:51] Retrieved roles: 6
+[2025-03-09 20:48:50] Request method: GET
+[2025-03-09 20:48:50] GET all roles
+[2025-03-09 20:48:50] Retrieved roles: 6
+[2025-03-09 20:53:13] Request method: GET
+[2025-03-09 20:53:13] GET all roles
+[2025-03-09 20:53:13] Retrieved roles: 6
+[2025-03-09 20:53:16] Request method: GET
+[2025-03-09 20:53:16] GET role by ID: 9
+[2025-03-09 20:53:16] Role data retrieved: 48 permissions
+[2025-03-09 20:53:24] Request method: DELETE
+[2025-03-09 20:53:24] DELETE role: 9
+[2025-03-09 20:53:24] Deleted role permissions
+[2025-03-09 20:53:24] Role deleted successfully
+[2025-03-09 20:53:24] Request method: GET
+[2025-03-09 20:53:24] GET all roles
+[2025-03-09 20:53:24] Retrieved roles: 5
+[2025-03-09 20:54:01] Request method: GET
+[2025-03-09 20:54:01] GET role by ID: 3
+[2025-03-09 20:54:01] Role data retrieved: 48 permissions
+[2025-03-09 20:54:16] Request method: GET
+[2025-03-09 20:54:16] GET all roles
+[2025-03-09 20:54:16] Retrieved roles: 5
+[2025-03-09 20:54:44] Request method: GET
+[2025-03-09 20:54:44] GET role by ID: 4
+[2025-03-09 20:54:44] Role data retrieved: 48 permissions
+[2025-03-09 20:54:45] Request method: GET
+[2025-03-09 20:54:45] GET role by ID: 4
+[2025-03-09 20:54:45] Role data retrieved: 48 permissions
+[2025-03-09 20:55:56] Request method: GET
+[2025-03-09 20:55:56] GET role by ID: 3
+[2025-03-09 20:55:56] Role data retrieved: 48 permissions
+[2025-03-09 20:55:57] Request method: GET
+[2025-03-09 20:55:57] GET role by ID: 3
+[2025-03-09 20:55:57] Role data retrieved: 48 permissions
+[2025-03-09 20:55:57] Request method: GET
+[2025-03-09 20:55:57] GET role by ID: 3
+[2025-03-09 20:55:57] Role data retrieved: 48 permissions
+[2025-03-09 20:55:57] Request method: GET
+[2025-03-09 20:55:57] GET role by ID: 3
+[2025-03-09 20:55:57] Role data retrieved: 48 permissions
+[2025-03-09 20:55:57] Request method: GET
+[2025-03-09 20:55:57] GET role by ID: 3
+[2025-03-09 20:55:57] Role data retrieved: 48 permissions
+[2025-03-09 21:05:22] Request method: GET
+[2025-03-09 21:05:22] GET all roles
+[2025-03-09 21:05:22] Retrieved roles: 5
+[2025-03-09 21:05:40] Request method: POST
+[2025-03-09 21:05:40] Request body: {"name":"test1","description":"","permissions":[{"id":"39","can_read":1,"can_write":0,"can_create":0},{"id":"20","can_read":0,"can_write":1,"can_create":0},{"id":"38","can_read":0,"can_write":1,"can_create":0},{"id":"27","can_read":0,"can_write":1,"can_create":0}]}
+[2025-03-09 21:05:40] POST create role: {"name":"test1","description":"","permissions":[{"id":"39","can_read":1,"can_write":0,"can_create":0},{"id":"20","can_read":0,"can_write":1,"can_create":0},{"id":"38","can_read":0,"can_write":1,"can_create":0},{"id":"27","can_read":0,"can_write":1,"can_create":0}]}
+[2025-03-09 21:05:40] Role created: 10
+[2025-03-09 21:05:40] Inserting permissions: 4
+[2025-03-09 21:05:40] Permission inserts completed: Success: 4, Errors: 0
+[2025-03-09 21:05:40] Request method: GET
+[2025-03-09 21:05:40] GET all roles
+[2025-03-09 21:05:40] Retrieved roles: 6
+[2025-03-09 21:05:46] Request method: GET
+[2025-03-09 21:05:46] GET role by ID: 10
+[2025-03-09 21:05:46] Role data retrieved: 48 permissions
+[2025-03-09 21:05:50] Request method: PUT
+[2025-03-09 21:05:50] Request body: {"name":"test1","description":"","permissions":[{"id":"39","can_read":1,"can_write":1,"can_create":0},{"id":"20","can_read":0,"can_write":1,"can_create":0},{"id":"38","can_read":0,"can_write":1,"can_create":0},{"id":"27","can_read":0,"can_write":1,"can_create":0}],"id":"10"}
+[2025-03-09 21:05:50] PUT update role: {"name":"test1","description":"","permissions":[{"id":"39","can_read":1,"can_write":1,"can_create":0},{"id":"20","can_read":0,"can_write":1,"can_create":0},{"id":"38","can_read":0,"can_write":1,"can_create":0},{"id":"27","can_read":0,"can_write":1,"can_create":0}],"id":"10"}
+[2025-03-09 21:05:50] Role updated: 10
+[2025-03-09 21:05:50] Deleted old permissions: Success
+[2025-03-09 21:05:50] Inserting new permissions: 4
+[2025-03-09 21:05:50] Permission inserts completed: Success: 4, Errors: 0
+[2025-03-09 21:05:50] Request method: GET
+[2025-03-09 21:05:50] GET all roles
+[2025-03-09 21:05:50] Retrieved roles: 6
+[2025-03-09 21:05:51] Request method: GET
+[2025-03-09 21:05:51] GET role by ID: 10
+[2025-03-09 21:05:51] Role data retrieved: 48 permissions
+[2025-03-09 21:06:36] Request method: GET
+[2025-03-09 21:06:36] GET all roles
+[2025-03-09 21:06:36] Retrieved roles: 6
+[2025-03-09 21:06:53] Request method: GET
+[2025-03-09 21:06:53] GET all roles
+[2025-03-09 21:06:53] Retrieved roles: 6
+[2025-03-09 21:10:25] Request method: GET
+[2025-03-09 21:10:25] GET all roles
+[2025-03-09 21:10:25] Retrieved roles: 6
+[2025-03-09 21:10:49] Request method: GET
+[2025-03-09 21:10:49] GET role by ID: 10
+[2025-03-09 21:10:49] Role data retrieved: 48 permissions
+[2025-03-09 21:10:54] Request method: GET
+[2025-03-09 21:10:54] GET role by ID: 10
+[2025-03-09 21:10:54] Role data retrieved: 48 permissions
+[2025-03-09 21:10:57] Request method: GET
+[2025-03-09 21:10:57] GET role by ID: 2
+[2025-03-09 21:10:57] Role data retrieved: 48 permissions
+[2025-03-09 21:15:40] Request method: GET
+[2025-03-09 21:15:40] GET all roles
+[2025-03-09 21:15:40] Retrieved roles: 6
+[2025-03-09 21:16:05] Request method: GET
+[2025-03-09 21:16:05] GET all roles
+[2025-03-09 21:16:05] Retrieved roles: 6
+[2025-03-09 21:18:12] Request method: GET
+[2025-03-09 21:18:12] GET all roles
+[2025-03-09 21:18:12] Retrieved roles: 6
+[2025-03-09 21:26:59] Request method: GET
+[2025-03-09 21:26:59] GET all roles
+[2025-03-09 21:26:59] Retrieved roles: 6
+[2025-03-09 21:31:02] Request method: GET
+[2025-03-09 21:31:02] GET all roles
+[2025-03-09 21:31:02] Retrieved roles: 6
+[2025-03-09 21:32:34] Request method: DELETE
+[2025-03-09 21:32:34] DELETE role: 10
+[2025-03-09 21:32:34] Cannot delete role - has users: 1
+[2025-03-09 21:41:03] Request method: GET
+[2025-03-09 21:41:03] GET all roles
+[2025-03-09 21:41:03] Retrieved roles: 6
+[2025-03-09 21:41:43] Request method: GET
+[2025-03-09 21:41:43] GET all roles
+[2025-03-09 21:41:43] Retrieved roles: 6
+[2025-03-09 21:42:57] Request method: GET
+[2025-03-09 21:42:57] GET all roles
+[2025-03-09 21:42:57] Retrieved roles: 6
+[2025-03-09 21:43:00] Request method: GET
+[2025-03-09 21:43:00] GET all roles
+[2025-03-09 21:43:00] Retrieved roles: 6
+[2025-03-09 21:43:01] Request method: GET
+[2025-03-09 21:43:01] GET all roles
+[2025-03-09 21:43:01] Retrieved roles: 6
+[2025-03-09 21:43:01] Request method: GET
+[2025-03-09 21:43:01] GET all roles
+[2025-03-09 21:43:01] Retrieved roles: 6
+[2025-03-09 21:44:35] Request method: GET
+[2025-03-09 21:44:35] GET role by ID: 1
+[2025-03-09 21:44:35] Role data retrieved: 48 permissions
+[2025-03-09 21:44:38] Request method: GET
+[2025-03-09 21:44:38] GET role by ID: 4
+[2025-03-09 21:44:38] Role data retrieved: 48 permissions
+[2025-03-09 21:44:43] Request method: GET
+[2025-03-09 21:44:43] GET role by ID: 10
+[2025-03-09 21:44:43] Role data retrieved: 48 permissions
+[2025-03-09 21:46:46] Request method: GET
+[2025-03-09 21:46:46] GET all roles
+[2025-03-09 21:46:46] Retrieved roles: 6
+[2025-03-09 21:50:19] Request method: GET
+[2025-03-09 21:50:19] GET all roles
+[2025-03-09 21:50:19] Retrieved roles: 6
+[2025-03-09 21:50:50] Request method: GET
+[2025-03-09 21:50:50] GET all roles
+[2025-03-09 21:50:50] Retrieved roles: 6
+[2025-03-09 21:51:02] Request method: POST
+[2025-03-09 21:51:02] Request body: {"name":"test2","description":"","permissions":[{"id":"39","can_read":1,"can_write":1,"can_create":1}]}
+[2025-03-09 21:51:02] POST create role: {"name":"test2","description":"","permissions":[{"id":"39","can_read":1,"can_write":1,"can_create":1}]}
+[2025-03-09 21:51:02] Role created: 11
+[2025-03-09 21:51:02] Inserting permissions: 1
+[2025-03-09 21:51:02] Permission inserts completed: Success: 1, Errors: 0
+[2025-03-09 21:51:02] Request method: GET
+[2025-03-09 21:51:02] GET all roles
+[2025-03-09 21:51:02] Retrieved roles: 7
+[2025-03-09 21:52:35] Request method: GET
+[2025-03-09 21:52:35] GET all roles
+[2025-03-09 21:52:35] Retrieved roles: 7
+[2025-03-09 21:52:54] Request method: GET
+[2025-03-09 21:52:54] GET all roles
+[2025-03-09 21:52:54] Retrieved roles: 7
+[2025-03-09 21:59:20] Request method: GET
+[2025-03-09 21:59:20] GET all roles
+[2025-03-09 21:59:20] Retrieved roles: 7
+[2025-03-09 22:00:26] Request method: GET
+[2025-03-09 22:00:26] GET all roles
+[2025-03-09 22:00:26] Retrieved roles: 7
+[2025-03-09 22:05:08] Request method: GET
+[2025-03-09 22:05:08] GET all roles
+[2025-03-09 22:05:08] Retrieved roles: 7
+[2025-03-09 22:05:52] Request method: GET
+[2025-03-09 22:05:52] GET role by ID: 10
+[2025-03-09 22:05:52] Role data retrieved: 48 permissions
+[2025-03-09 22:05:57] Request method: PUT
+[2025-03-09 22:05:57] Request body: {"name":"test1","description":"","permissions":[{"id":"39","can_read":1,"can_write":1,"can_create":1},{"id":"20","can_read":0,"can_write":1,"can_create":0},{"id":"38","can_read":0,"can_write":1,"can_create":0},{"id":"27","can_read":0,"can_write":1,"can_create":0}],"id":"10"}
+[2025-03-09 22:05:57] PUT update role: {"name":"test1","description":"","permissions":[{"id":"39","can_read":1,"can_write":1,"can_create":1},{"id":"20","can_read":0,"can_write":1,"can_create":0},{"id":"38","can_read":0,"can_write":1,"can_create":0},{"id":"27","can_read":0,"can_write":1,"can_create":0}],"id":"10"}
+[2025-03-09 22:05:57] Role updated: 10
+[2025-03-09 22:05:57] Deleted old permissions: Success
+[2025-03-09 22:05:57] Inserting new permissions: 4
+[2025-03-09 22:05:57] Permission inserts completed: Success: 4, Errors: 0
+[2025-03-09 22:05:57] Request method: GET
+[2025-03-09 22:05:57] GET all roles
+[2025-03-09 22:05:57] Retrieved roles: 7
+[2025-03-09 22:05:59] Request method: GET
+[2025-03-09 22:05:59] GET role by ID: 10
+[2025-03-09 22:05:59] Role data retrieved: 48 permissions
+[2025-03-09 22:06:06] Request method: GET
+[2025-03-09 22:06:06] GET all roles
+[2025-03-09 22:06:06] Retrieved roles: 7
+[2025-03-09 22:07:11] Request method: GET
+[2025-03-09 22:07:11] GET all roles
+[2025-03-09 22:07:11] Retrieved roles: 7
+[2025-03-09 22:07:14] Request method: GET
+[2025-03-09 22:07:14] GET role by ID: 1
+[2025-03-09 22:07:14] Role data retrieved: 48 permissions
+[2025-03-09 22:07:22] Request method: GET
+[2025-03-09 22:07:22] GET role by ID: 10
+[2025-03-09 22:07:22] Role data retrieved: 48 permissions
+[2025-03-09 22:07:26] Request method: PUT
+[2025-03-09 22:07:26] Request body: {"name":"test10","description":"","permissions":[{"id":"39","can_read":1,"can_write":1,"can_create":1},{"id":"20","can_read":0,"can_write":1,"can_create":0},{"id":"38","can_read":0,"can_write":1,"can_create":0},{"id":"27","can_read":0,"can_write":1,"can_create":0}],"id":"10"}
+[2025-03-09 22:07:26] PUT update role: {"name":"test10","description":"","permissions":[{"id":"39","can_read":1,"can_write":1,"can_create":1},{"id":"20","can_read":0,"can_write":1,"can_create":0},{"id":"38","can_read":0,"can_write":1,"can_create":0},{"id":"27","can_read":0,"can_write":1,"can_create":0}],"id":"10"}
+[2025-03-09 22:07:26] Role updated: 10
+[2025-03-09 22:07:26] Deleted old permissions: Success
+[2025-03-09 22:07:26] Inserting new permissions: 4
+[2025-03-09 22:07:27] Permission inserts completed: Success: 4, Errors: 0
+[2025-03-09 22:07:27] Request method: GET
+[2025-03-09 22:07:27] GET all roles
+[2025-03-09 22:07:27] Retrieved roles: 7
+[2025-03-09 22:07:41] Request method: GET
+[2025-03-09 22:07:41] GET all roles
+[2025-03-09 22:07:41] Retrieved roles: 7
+[2025-03-09 22:07:56] Request method: GET
+[2025-03-09 22:07:56] GET all roles
+[2025-03-09 22:07:56] Retrieved roles: 7
+[2025-03-09 22:08:00] Request method: DELETE
+[2025-03-09 22:08:00] DELETE role: 11
+[2025-03-09 22:08:00] Cannot delete role - has users: 1
+[2025-03-09 22:08:06] Request method: GET
+[2025-03-09 22:08:06] GET all roles
+[2025-03-09 22:08:06] Retrieved roles: 7
+[2025-03-09 22:08:10] Request method: DELETE
+[2025-03-09 22:08:10] DELETE role: 11
+[2025-03-09 22:08:10] Cannot delete role - has users: 1
+[2025-03-09 22:08:17] Request method: DELETE
+[2025-03-09 22:08:17] DELETE role: 10
+[2025-03-09 22:08:17] Cannot delete role - has users: 1
+[2025-03-09 22:08:20] Request method: GET
+[2025-03-09 22:08:20] GET all roles
+[2025-03-09 22:08:20] Retrieved roles: 7
+[2025-03-09 22:08:33] Request method: POST
+[2025-03-09 22:08:33] Request body: {"name":"test11","description":"","permissions":[{"id":"39","can_read":1,"can_write":0,"can_create":1}]}
+[2025-03-09 22:08:33] POST create role: {"name":"test11","description":"","permissions":[{"id":"39","can_read":1,"can_write":0,"can_create":1}]}
+[2025-03-09 22:08:33] Role created: 12
+[2025-03-09 22:08:33] Inserting permissions: 1
+[2025-03-09 22:08:33] Permission inserts completed: Success: 1, Errors: 0
+[2025-03-09 22:08:33] Request method: GET
+[2025-03-09 22:08:33] GET all roles
+[2025-03-09 22:08:33] Retrieved roles: 8
+[2025-03-09 22:08:40] Request method: DELETE
+[2025-03-09 22:08:40] DELETE role: 12
+[2025-03-09 22:08:40] Deleted role permissions
+[2025-03-09 22:08:40] Role deleted successfully
+[2025-03-09 22:08:40] Request method: GET
+[2025-03-09 22:08:40] GET all roles
+[2025-03-09 22:08:40] Retrieved roles: 7
+[2025-03-10 07:08:53] Request method: GET
+[2025-03-10 07:08:53] GET all roles
+[2025-03-10 07:08:53] Retrieved roles: 7
+[2025-03-10 08:06:34] Request method: GET
+[2025-03-10 08:06:34] GET all roles
+[2025-03-10 08:06:34] Retrieved roles: 7
+[2025-03-10 08:06:50] Request method: POST
+[2025-03-10 08:06:50] Request body: {"name":"andrea","description":"","permissions":[{"id":"6","can_read":0,"can_write":1,"can_create":0}]}
+[2025-03-10 08:06:50] POST create role: {"name":"andrea","description":"","permissions":[{"id":"6","can_read":0,"can_write":1,"can_create":0}]}
+[2025-03-10 08:06:50] Role created: 13
+[2025-03-10 08:06:50] Inserting permissions: 1
+[2025-03-10 08:06:50] Permission inserts completed: Success: 1, Errors: 0
+[2025-03-10 08:06:50] Request method: GET
+[2025-03-10 08:06:50] GET all roles
+[2025-03-10 08:06:50] Retrieved roles: 8
+[2025-03-10 08:07:32] Request method: GET
+[2025-03-10 08:07:32] GET all roles
+[2025-03-10 08:07:32] Retrieved roles: 8
+[2025-03-10 08:07:40] Request method: GET
+[2025-03-10 08:07:40] GET role by ID: 13
+[2025-03-10 08:07:40] Role data retrieved: 48 permissions
+[2025-03-10 08:15:07] Request method: GET
+[2025-03-10 08:15:07] GET all roles
+[2025-03-10 08:15:07] Retrieved roles: 8
+[2025-03-10 08:15:42] Request method: GET
+[2025-03-10 08:15:42] GET role by ID: 1
+[2025-03-10 08:15:42] Role data retrieved: 48 permissions
+[2025-03-10 08:15:55] Request method: GET
+[2025-03-10 08:15:55] GET role by ID: 5
+[2025-03-10 08:15:55] Role data retrieved: 48 permissions
+[2025-03-10 08:30:11] Request method: GET
+[2025-03-10 08:30:11] GET all roles
+[2025-03-10 08:30:11] Retrieved roles: 8
+[2025-03-10 08:30:39] Request method: GET
+[2025-03-10 08:30:39] GET all roles
+[2025-03-10 08:30:39] Retrieved roles: 8
+[2025-03-10 08:32:16] Request method: GET
+[2025-03-10 08:32:16] GET all roles
+[2025-03-10 08:32:16] Retrieved roles: 8
+[2025-03-10 08:32:34] Request method: GET
+[2025-03-10 08:32:34] GET all roles
+[2025-03-10 08:32:34] Retrieved roles: 8
+[2025-03-10 08:34:53] Request method: GET
+[2025-03-10 08:34:53] GET all roles
+[2025-03-10 08:34:53] Retrieved roles: 8
+[2025-03-10 09:44:19] Request method: DELETE
+[2025-03-10 09:44:19] DELETE role: 11
+[2025-03-10 09:44:19] Deleted role permissions
+[2025-03-10 09:44:19] Role deleted successfully
+[2025-03-10 09:44:19] Request method: GET
+[2025-03-10 09:44:19] GET all roles
+[2025-03-10 09:44:19] Retrieved roles: 7
+[2025-03-10 09:46:31] Request method: GET
+[2025-03-10 09:46:31] GET role by ID: 1
+[2025-03-10 09:46:31] Role data retrieved: 48 permissions
+[2025-03-10 10:47:19] Request method: GET
+[2025-03-10 10:47:19] GET all roles
+[2025-03-10 10:47:19] Retrieved roles: 7
+[2025-03-10 10:47:45] Request method: GET
+[2025-03-10 10:47:45] GET role by ID: 1
+[2025-03-10 10:47:45] Role data retrieved: 48 permissions
+[2025-03-10 10:59:36] Request method: GET
+[2025-03-10 10:59:36] GET all roles
+[2025-03-10 10:59:36] Retrieved roles: 7
+[2025-03-10 11:01:37] Request method: GET
+[2025-03-10 11:01:37] GET all roles
+[2025-03-10 11:01:37] Retrieved roles: 7
+[2025-03-10 11:37:01] Request method: DELETE
+[2025-03-10 11:37:01] DELETE role: 10
+[2025-03-10 11:37:01] Cannot delete role - has users: 2
+[2025-03-10 14:19:18] Request method: GET
+[2025-03-10 14:19:18] GET all roles
+[2025-03-10 14:19:18] Retrieved roles: 7
+[2025-03-10 14:28:06] Request method: GET
+[2025-03-10 14:28:06] GET all roles
+[2025-03-10 14:28:06] Retrieved roles: 7
+[2025-03-10 14:30:12] Request method: GET
+[2025-03-10 14:30:12] GET all roles
+[2025-03-10 14:30:12] Retrieved roles: 7
+[2025-03-10 14:30:14] Request method: GET
+[2025-03-10 14:30:14] GET all roles
+[2025-03-10 14:30:14] Retrieved roles: 7
+[2025-03-10 14:30:15] Request method: GET
+[2025-03-10 14:30:15] GET all roles
+[2025-03-10 14:30:15] Retrieved roles: 7
+[2025-03-10 14:30:15] Request method: GET
+[2025-03-10 14:30:15] GET all roles
+[2025-03-10 14:30:15] Retrieved roles: 7
+[2025-03-10 15:09:47] Request method: GET
+[2025-03-10 15:09:47] GET all roles
+[2025-03-10 15:09:47] Retrieved roles: 7
+[2025-03-10 15:09:51] Request method: GET
+[2025-03-10 15:09:51] GET all roles
+[2025-03-10 15:09:51] Retrieved roles: 7
+[2025-03-10 15:09:52] Request method: GET
+[2025-03-10 15:09:52] GET all roles
+[2025-03-10 15:09:52] Retrieved roles: 7
+[2025-03-10 15:09:53] Request method: GET
+[2025-03-10 15:09:53] GET all roles
+[2025-03-10 15:09:53] Retrieved roles: 7
+[2025-03-10 15:09:53] Request method: GET
+[2025-03-10 15:09:53] GET all roles
+[2025-03-10 15:09:53] Retrieved roles: 7
+[2025-03-10 15:09:55] Request method: GET
+[2025-03-10 15:09:55] GET all roles
+[2025-03-10 15:09:55] Retrieved roles: 7
+[2025-03-10 15:27:39] Request method: GET
+[2025-03-10 15:27:39] GET all roles
+[2025-03-10 15:27:39] Retrieved roles: 7
+[2025-03-10 15:39:00] Request method: GET
+[2025-03-10 15:39:00] GET all roles
+[2025-03-10 15:39:00] Retrieved roles: 7
+[2025-03-10 20:22:51] Request method: GET
+[2025-03-10 20:22:51] GET all roles
+[2025-03-10 20:22:51] Retrieved roles: 7
+[2025-03-10 20:23:33] Request method: DELETE
+[2025-03-10 20:23:33] DELETE role: 10
+[2025-03-10 20:23:33] Cannot delete role - has users: 2
+[2025-03-10 20:24:39] Request method: GET
+[2025-03-10 20:24:39] GET all roles
+[2025-03-10 20:24:39] Retrieved roles: 7
+[2025-03-10 20:25:35] Request method: GET
+[2025-03-10 20:25:35] GET all roles
+[2025-03-10 20:25:35] Retrieved roles: 7
+[2025-03-10 20:25:39] Request method: GET
+[2025-03-10 20:25:39] GET role by ID: 13
+[2025-03-10 20:25:39] Role data retrieved: 48 permissions
+[2025-03-10 20:26:04] Request method: GET
+[2025-03-10 20:26:04] GET all roles
+[2025-03-10 20:26:04] Retrieved roles: 7
+[2025-03-10 20:26:25] Request method: PUT
+[2025-03-10 20:26:25] Request body: {"name":"andrea","description":"","permissions":[{"id":"4","can_read":1,"can_write":1,"can_create":1},{"id":"2","can_read":1,"can_write":1,"can_create":1},{"id":"3","can_read":1,"can_write":1,"can_create":1}],"id":"13"}
+[2025-03-10 20:26:25] PUT update role: {"name":"andrea","description":"","permissions":[{"id":"4","can_read":1,"can_write":1,"can_create":1},{"id":"2","can_read":1,"can_write":1,"can_create":1},{"id":"3","can_read":1,"can_write":1,"can_create":1}],"id":"13"}
+[2025-03-10 20:26:25] Role updated: 13
+[2025-03-10 20:26:25] Deleted old permissions: Success
+[2025-03-10 20:26:25] Inserting new permissions: 3
+[2025-03-10 20:26:25] Permission inserts completed: Success: 3, Errors: 0
+[2025-03-10 20:26:25] Request method: GET
+[2025-03-10 20:26:25] GET all roles
+[2025-03-10 20:26:25] Retrieved roles: 7
+[2025-03-10 20:26:34] Request method: GET
+[2025-03-10 20:26:34] GET role by ID: 13
+[2025-03-10 20:26:34] Role data retrieved: 48 permissions
+[2025-03-10 20:26:42] Request method: GET
+[2025-03-10 20:26:42] GET role by ID: 13
+[2025-03-10 20:26:42] Role data retrieved: 48 permissions
+[2025-03-10 20:27:16] Request method: GET
+[2025-03-10 20:27:16] GET all roles
+[2025-03-10 20:27:16] Retrieved roles: 7
+[2025-03-10 20:49:09] Request method: GET
+[2025-03-10 20:49:09] GET all roles
+[2025-03-10 20:49:09] Retrieved roles: 7
+[2025-03-10 20:49:20] Request method: GET
+[2025-03-10 20:49:20] GET role by ID: 3
+[2025-03-10 20:49:20] Role data retrieved: 48 permissions
+[2025-03-10 20:49:44] Request method: GET
+[2025-03-10 20:49:44] GET role by ID: 13
+[2025-03-10 20:49:44] Role data retrieved: 48 permissions
+[2025-03-10 21:02:39] Request method: GET
+[2025-03-10 21:02:39] GET all roles
+[2025-03-10 21:02:39] Retrieved roles: 7
+[2025-03-10 21:02:44] Request method: GET
+[2025-03-10 21:02:44] GET role by ID: 13
+[2025-03-10 21:02:44] Role data retrieved: 48 permissions
+[2025-03-10 21:03:13] Request method: PUT
+[2025-03-10 21:03:13] Request body: {"name":"andrea","description":"","permissions":[{"id":"20","can_read":1,"can_write":1,"can_create":1},{"id":"4","can_read":1,"can_write":1,"can_create":1},{"id":"18","can_read":1,"can_write":1,"can_create":1},{"id":"2","can_read":1,"can_write":1,"can_create":1},{"id":"3","can_read":1,"can_write":1,"can_create":1}],"id":"13"}
+[2025-03-10 21:03:13] PUT update role: {"name":"andrea","description":"","permissions":[{"id":"20","can_read":1,"can_write":1,"can_create":1},{"id":"4","can_read":1,"can_write":1,"can_create":1},{"id":"18","can_read":1,"can_write":1,"can_create":1},{"id":"2","can_read":1,"can_write":1,"can_create":1},{"id":"3","can_read":1,"can_write":1,"can_create":1}],"id":"13"}
+[2025-03-10 21:03:13] Role updated: 13
+[2025-03-10 21:03:13] Deleted old permissions: Success
+[2025-03-10 21:03:13] Inserting new permissions: 5
+[2025-03-10 21:03:13] Permission inserts completed: Success: 5, Errors: 0
+[2025-03-10 21:03:13] Request method: GET
+[2025-03-10 21:03:13] GET all roles
+[2025-03-10 21:03:13] Retrieved roles: 7
+[2025-03-10 21:04:19] Request method: GET
+[2025-03-10 21:04:19] GET role by ID: 13
+[2025-03-10 21:04:19] Role data retrieved: 48 permissions
+[2025-03-10 21:04:43] Request method: GET
+[2025-03-10 21:04:43] GET all roles
+[2025-03-10 21:04:43] Retrieved roles: 7
+[2025-03-10 21:04:45] Request method: GET
+[2025-03-10 21:04:45] GET role by ID: 13
+[2025-03-10 21:04:45] Role data retrieved: 48 permissions
+[2025-03-10 21:05:12] Request method: PUT
+[2025-03-10 21:05:12] Request body: {"name":"andrea","description":"","permissions":[{"id":"20","can_read":1,"can_write":1,"can_create":1},{"id":"4","can_read":1,"can_write":1,"can_create":1},{"id":"18","can_read":1,"can_write":1,"can_create":1},{"id":"2","can_read":1,"can_write":1,"can_create":1},{"id":"3","can_read":1,"can_write":1,"can_create":1},{"id":"44","can_read":1,"can_write":0,"can_create":0},{"id":"42","can_read":1,"can_write":0,"can_create":0}],"id":"13"}
+[2025-03-10 21:05:12] PUT update role: {"name":"andrea","description":"","permissions":[{"id":"20","can_read":1,"can_write":1,"can_create":1},{"id":"4","can_read":1,"can_write":1,"can_create":1},{"id":"18","can_read":1,"can_write":1,"can_create":1},{"id":"2","can_read":1,"can_write":1,"can_create":1},{"id":"3","can_read":1,"can_write":1,"can_create":1},{"id":"44","can_read":1,"can_write":0,"can_create":0},{"id":"42","can_read":1,"can_write":0,"can_create":0}],"id":"13"}
+[2025-03-10 21:05:12] Role updated: 13
+[2025-03-10 21:05:12] Deleted old permissions: Success
+[2025-03-10 21:05:12] Inserting new permissions: 7
+[2025-03-10 21:05:12] Permission inserts completed: Success: 7, Errors: 0
+[2025-03-10 21:05:12] Request method: GET
+[2025-03-10 21:05:12] GET all roles
+[2025-03-10 21:05:12] Retrieved roles: 7
+[2025-03-10 21:05:36] Request method: GET
+[2025-03-10 21:05:36] GET all roles
+[2025-03-10 21:05:36] Retrieved roles: 7
+[2025-03-10 21:05:37] Request method: GET
+[2025-03-10 21:05:37] GET role by ID: 13
+[2025-03-10 21:05:37] Role data retrieved: 48 permissions
+[2025-03-10 21:05:49] Request method: PUT
+[2025-03-10 21:05:49] Request body: {"name":"andrea","description":"","permissions":[{"id":"20","can_read":1,"can_write":1,"can_create":1},{"id":"4","can_read":1,"can_write":1,"can_create":1},{"id":"18","can_read":1,"can_write":1,"can_create":1},{"id":"2","can_read":1,"can_write":1,"can_create":1},{"id":"3","can_read":1,"can_write":1,"can_create":1},{"id":"44","can_read":1,"can_write":0,"can_create":0},{"id":"42","can_read":1,"can_write":1,"can_create":1}],"id":"13"}
+[2025-03-10 21:05:49] PUT update role: {"name":"andrea","description":"","permissions":[{"id":"20","can_read":1,"can_write":1,"can_create":1},{"id":"4","can_read":1,"can_write":1,"can_create":1},{"id":"18","can_read":1,"can_write":1,"can_create":1},{"id":"2","can_read":1,"can_write":1,"can_create":1},{"id":"3","can_read":1,"can_write":1,"can_create":1},{"id":"44","can_read":1,"can_write":0,"can_create":0},{"id":"42","can_read":1,"can_write":1,"can_create":1}],"id":"13"}
+[2025-03-10 21:05:49] Role updated: 13
+[2025-03-10 21:05:49] Deleted old permissions: Success
+[2025-03-10 21:05:49] Inserting new permissions: 7
+[2025-03-10 21:05:49] Permission inserts completed: Success: 7, Errors: 0
+[2025-03-10 21:05:49] Request method: GET
+[2025-03-10 21:05:49] GET all roles
+[2025-03-10 21:05:49] Retrieved roles: 7
+[2025-03-10 21:07:46] Request method: GET
+[2025-03-10 21:07:46] GET all roles
+[2025-03-10 21:07:46] Retrieved roles: 7
+[2025-03-10 21:07:48] Request method: GET
+[2025-03-10 21:07:48] GET role by ID: 13
+[2025-03-10 21:07:48] Role data retrieved: 48 permissions
+[2025-03-10 21:43:40] Request method: GET
+[2025-03-10 21:43:40] GET all roles
+[2025-03-10 21:43:40] Retrieved roles: 7
+[2025-03-10 21:43:44] Request method: GET
+[2025-03-10 21:43:44] GET all roles
+[2025-03-10 21:43:44] Retrieved roles: 7
+[2025-03-10 21:43:48] Request method: GET
+[2025-03-10 21:43:48] GET all roles
+[2025-03-10 21:43:48] Retrieved roles: 7
+[2025-03-10 21:43:51] Request method: GET
+[2025-03-10 21:43:51] GET all roles
+[2025-03-10 21:43:51] Retrieved roles: 7
+[2025-03-10 21:43:51] Request method: GET
+[2025-03-10 21:43:51] GET all roles
+[2025-03-10 21:43:51] Retrieved roles: 7
+[2025-03-10 21:44:21] Request method: GET
+[2025-03-10 21:44:21] GET all roles
+[2025-03-10 21:44:21] Retrieved roles: 7
+[2025-03-10 21:44:45] Request method: GET
+[2025-03-10 21:44:45] GET all roles
+[2025-03-10 21:44:45] Retrieved roles: 7
+[2025-03-10 21:45:25] Request method: POST
+[2025-03-10 21:45:25] Request body: {"name":"test5","description":"","permissions":[{"id":"28","can_read":1,"can_write":0,"can_create":0},{"id":"27","can_read":1,"can_write":0,"can_create":0}]}
+[2025-03-10 21:45:25] POST create role: {"name":"test5","description":"","permissions":[{"id":"28","can_read":1,"can_write":0,"can_create":0},{"id":"27","can_read":1,"can_write":0,"can_create":0}]}
+[2025-03-10 21:45:25] Request method: POST
+[2025-03-10 21:45:25] Request body: {"action":"addRole","role":{"id":"","name":"test5","description":"ciao"},"permissions":[{"category":"Clienti","can_read":1,"can_write":0,"can_create":0},{"category":"CRM","can_read":1,"can_write":0,"can_create":0}]}
+[2025-03-10 21:45:25] Inserting permissions: 2
+n":"addRole","role":{"id":"","name":"test5","description":"ciao"},"permissions":[{"category":"Clienti","can_read":1,"can_write":0,"can_create":0},{"category":"CRM","can_read":1,"can_write":0,"can_create":0}]}
+[2025-03-10 21:45:25] Error: Role name is required
+[2025-03-10 21:45:25] Permission inserts completed: Success: 2, Errors: 0
+[2025-03-10 21:45:25] Request method: GET
+[2025-03-10 21:45:25] GET all roles
+[2025-03-10 21:45:25] Retrieved roles: 8
+[2025-03-10 21:45:51] Request method: POST
+[2025-03-10 21:45:51] Request body: {"name":"test11","description":"","permissions":[{"id":"28","can_read":1,"can_write":0,"can_create":0},{"id":"27","can_read":1,"can_write":0,"can_create":0}]}
+[2025-03-10 21:45:51] POST create role: {"name":"test11","description":"","permissions":[{"id":"28","can_read":1,"can_write":0,"can_create":0},{"id":"27","can_read":1,"can_write":0,"can_create":0}]}
+[2025-03-10 21:45:51] Role created: 15
+[2025-03-10 21:45:51] Inserting permissions: 2
+[2025-03-10 21:45:51] Request method: POST
+[2025-03-10 21:45:51] Request body: {"action":"addRole","role":{"id":"","name":"test11","description":""},"permissions":[{"category":"Clienti","can_read":1,"can_write":0,"can_create":0},{"category":"CRM","can_read":1,"can_write":0,"can_create":0}]}
+[2025-03-10 21:45:51] POST create role: {"action":"addRole","role":{"id":"","name":"test11","description":""},"permissions":[{"category":"Clienti","can_read":1,"can_write":0,"can_create":0},{"category":"CRM","can_read":1,"can_write":0,"can_create":0}]}
+[2025-03-10 21:45:51] Error: Role name is required
+[2025-03-10 21:45:51] Permission inserts completed: Success: 2, Errors: 0
+[2025-03-10 21:45:51] Request method: GET
+[2025-03-10 21:45:51] GET all roles
+[2025-03-10 21:45:51] Retrieved roles: 9
+[2025-03-10 21:46:19] Request method: GET
+[2025-03-10 21:46:19] GET all roles
+[2025-03-10 21:46:19] Retrieved roles: 9
+[2025-03-10 21:46:34] Request method: GET
+[2025-03-10 21:46:34] GET all roles
+[2025-03-10 21:46:34] Retrieved roles: 9
+[2025-03-10 21:46:36] Request method: GET
+[2025-03-10 21:46:36] GET all roles
+[2025-03-10 21:46:36] Retrieved roles: 9
+[2025-03-10 21:48:00] Request method: GET
+[2025-03-10 21:48:00] GET all roles
+[2025-03-10 21:48:00] Retrieved roles: 9
+[2025-03-10 21:49:47] Request method: GET
+[2025-03-10 21:49:47] GET all roles
+[2025-03-10 21:49:47] Retrieved roles: 9
+[2025-03-10 22:01:30] Request method: GET
+[2025-03-10 22:01:30] GET all roles
+[2025-03-10 22:01:30] Retrieved roles: 9
+[2025-03-10 22:02:04] Request method: GET
+[2025-03-10 22:02:04] GET all roles
+[2025-03-10 22:02:04] Retrieved roles: 9
+[2025-03-11 08:18:26] Request method: GET
+[2025-03-11 08:18:26] GET all roles
+[2025-03-11 08:18:26] Retrieved roles: 9
+[2025-03-11 08:18:30] Request method: GET
+[2025-03-11 08:18:30] GET all roles
+[2025-03-11 08:18:30] Retrieved roles: 9
+[2025-03-11 08:18:51] Request method: GET
+[2025-03-11 08:18:51] GET all roles
+[2025-03-11 08:18:51] Retrieved roles: 9
+[2025-03-11 08:19:30] Request method: GET
+[2025-03-11 08:19:30] GET all roles
+[2025-03-11 08:19:30] Retrieved roles: 9
+[2025-03-11 08:19:45] Request method: GET
+[2025-03-11 08:19:45] GET all roles
+[2025-03-11 08:19:45] Retrieved roles: 9
+[2025-03-11 08:20:20] Request method: GET
+[2025-03-11 08:20:20] GET all roles
+[2025-03-11 08:20:20] Retrieved roles: 9
+[2025-03-11 08:20:24] Request method: GET
+[2025-03-11 08:20:24] GET role by ID: 13
+[2025-03-11 08:20:24] Role data retrieved: 48 permissions
+[2025-03-11 08:20:38] Request method: PUT
+[2025-03-11 08:20:38] Request body: {"name":"andrea","description":"","permissions":[{"id":"20","can_read":1,"can_write":1,"can_create":1},{"id":"4","can_read":1,"can_write":1,"can_create":1},{"id":"18","can_read":1,"can_write":1,"can_create":1},{"id":"2","can_read":1,"can_write":1,"can_create":1},{"id":"45","can_read":1,"can_write":0,"can_create":0},{"id":"3","can_read":1,"can_write":1,"can_create":1},{"id":"44","can_read":1,"can_write":0,"can_create":0},{"id":"42","can_read":1,"can_write":1,"can_create":1}],"id":"13"}
+[2025-03-11 08:20:38] PUT update role: {"name":"andrea","description":"","permissions":[{"id":"20","can_read":1,"can_write":1,"can_create":1},{"id":"4","can_read":1,"can_write":1,"can_create":1},{"id":"18","can_read":1,"can_write":1,"can_create":1},{"id":"2","can_read":1,"can_write":1,"can_create":1},{"id":"45","can_read":1,"can_write":0,"can_create":0},{"id":"3","can_read":1,"can_write":1,"can_create":1},{"id":"44","can_read":1,"can_write":0,"can_create":0},{"id":"42","can_read":1,"can_write":1,"can_create":1}],"id":"13"}
+[2025-03-11 08:20:38] Role updated: 13
+[2025-03-11 08:20:38] Request method: POST
+ns: Success
+[2025-03-11 08:20:38] Request body: {"action":"addRole","role":{"id":"","name":"andrea","description":""},"permissions":[{"category":"Assegnazione ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Cronologia ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Gestione Driver","can_read":1,"can_write":1,"can_create":1},{"category":"Gestione Ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Integrazioni","can_read":1,"can_write":0,"can_create":0},{"category":"Ordini in corso","can_read":1,"can_write":1,"can_create":1},{"category":"Ruoli & permessi","can_read":1,"can_write":0,"can_create":0},{"category":"Sistema","can_read":1,"can_write":1,"can_create":1}]}
+[2025-03-11 08:20:38] Inserting new permissions: 8
+[2025-03-11 08:20:38] POST create role: {"action":"addRole","role":{"id":"","name":"andrea","description":""},"permissions":[{"category":"Assegnazione ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Cronologia ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Gestione Driver","can_read":1,"can_write":1,"can_create":1},{"category":"Gestione Ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Integrazioni","can_read":1,"can_write":0,"can_create":0},{"category":"Ordini in corso","can_read":1,"can_write":1,"can_create":1},{"category":"Ruoli & permessi","can_read":1,"can_write":0,"can_create":0},{"category":"Sistema","can_read":1,"can_write":1,"can_create":1}]}
+[2025-03-11 08:20:38] Error: Role name is required
+[2025-03-11 08:20:38] Permission inserts completed: Success: 8, Errors: 0
+[2025-03-11 08:20:38] Request method: GET
+[2025-03-11 08:20:38] GET all roles
+[2025-03-11 08:20:38] Retrieved roles: 9
+[2025-03-11 08:20:43] Request method: GET
+[2025-03-11 08:20:43] GET role by ID: 13
+[2025-03-11 08:20:43] Role data retrieved: 48 permissions
+[2025-03-11 08:28:31] Request method: GET
+[2025-03-11 08:28:31] GET all roles
+[2025-03-11 08:28:31] Retrieved roles: 9

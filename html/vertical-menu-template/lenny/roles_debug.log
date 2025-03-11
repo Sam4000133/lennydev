@@ -922,3 +922,15 @@ ns: Success
 [2025-03-11 08:28:31] Request method: GET
 [2025-03-11 08:28:31] GET all roles
 [2025-03-11 08:28:31] Retrieved roles: 9
+[2025-03-11 10:41:03] Request method: GET
+[2025-03-11 10:41:03] GET all roles
+[2025-03-11 10:41:03] Retrieved roles: 9
+[2025-03-11 10:46:30] Request method: GET
+[2025-03-11 10:46:30] GET all roles
+[2025-03-11 10:46:30] Retrieved roles: 9
+[2025-03-11 10:46:34] Request method: GET
+[2025-03-11 10:46:34] GET all roles
+[2025-03-11 10:46:34] Retrieved roles: 9
+[2025-03-11 10:47:51] Request method: GET
+[2025-03-11 10:47:51] GET all roles
+[2025-03-11 10:47:51] Retrieved roles: 9
