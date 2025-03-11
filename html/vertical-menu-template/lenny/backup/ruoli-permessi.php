@@ -1,15 +1,4 @@
 <?php
-// Include il controllo dell'autenticazione
-require_once 'check_auth.php';
-
-// Verifica l'accesso specifico a questa pagina
-if (!userHasAccess('Ruoli&permessi')) {
-    // Reindirizza alla pagina di accesso negato
-    header("Location: access-denied.php");
-    exit;
-}
-
-// Resto del codice della pagina...
 // Abilita visualizzazione errori per debug
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -1175,13 +1164,8 @@ if ($check_tables->num_rows == 0) {
       }
     });
     </script>
-
-    
-
-    
 </body>
 </html>
 <?php
 $conn->close();
 ?>
-    <script src="../../../assets/js/menu_accordion.js"></script>
