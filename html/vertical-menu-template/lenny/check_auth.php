@@ -47,7 +47,8 @@ if (in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1'])) {
  * @return string Nome normalizzato
  */
 function normalizePermissionName($name) {
-    // Rimuove spazi extra intorno a caratteri speciali come&$normalized = preg_replace('/\s*([&])\s*/', '$1', $name);
+    // Rimuove spazi extra intorno a caratteri speciali come &
+    $normalized = preg_replace('/\s*([&])\s*/', '$1', $name);
     // Converte in minuscolo
     return strtolower($normalized);
 }

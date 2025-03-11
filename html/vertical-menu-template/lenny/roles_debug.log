@@ -934,3 +934,6 @@ ns: Success
 [2025-03-11 10:47:51] Request method: GET
 [2025-03-11 10:47:51] GET all roles
 [2025-03-11 10:47:51] Retrieved roles: 9
+[2025-03-11 14:15:35] Request method: GET
+[2025-03-11 14:15:35] GET all roles
+[2025-03-11 14:15:35] Retrieved roles: 9

@@ -3,7 +3,7 @@
 require_once 'check_auth.php';
 
 // Verifica l'accesso specifico a questa pagina
-if (!userHasAccess('Ordiniincorso')) {
+if (!userHasAccess('Fatturazione')) {
     // Reindirizza alla pagina di accesso negato
     header("Location: access-denied.php");
     exit;

@@ -1,0 +1,69 @@
+Warning: No mapping found for access-denied.php
+Warning: No mapping found for assegnazione-ordini.php
+Updated backup.php: Changed permission from 'Ordiniincorso' to 'Backup'
+Updated categorie.php: Changed permission from 'Ordiniincorso' to 'Categorie'
+Warning: No mapping found for chat-supporto.php
+Skipping system file: check_auth.php
+Updated clienti.php: Changed permission from 'Ordiniincorso' to 'Clienti'
+Updated commissioni.php: Changed permission from 'Ordiniincorso' to 'Commissioni'
+Warning: No mapping found for correct_passwords.php
+Warning: No mapping found for cronologia-ordini.php
+Warning: No mapping found for dati-operativi.php
+Skipping system file: db_connection.php
+Warning: No mapping found for db_setup.php
+Warning: No mapping found for db_test.php
+Warning: No mapping found for debug_form.php
+Updated documenti.php: Changed permission from 'Ordiniincorso' to 'Documenti'
+Warning: No mapping found for elenco-ristoranti.php
+Warning: No mapping found for email-automatiche.php
+Updated fatturazione.php: Changed permission from 'Ordiniincorso' to 'Fatturazione'
+Warning: No mapping found for filtri-ricerca.php
+Warning: No mapping found for fix_duplicates.php
+Warning: No mapping found for fix_permissions.php
+Warning: No mapping found for genera_pagine.php
+Warning: No mapping found for genera_pagine_v2.php
+Warning: No mapping found for generateMenuActivationScrip.php
+Updated impostazioni.php: Changed permission from 'Ordiniincorso' to 'Impostazioni'
+Warning: No mapping found for index.php
+Warning: No mapping found for indirizzo-consegna.php
+Warning: No mapping found for informazioni-base.php
+Warning: No mapping found for integrazione-ia.php
+File integrazioni.php already uses correct permission: Integrazioni
+Warning: No mapping found for login-debug.php
+Warning: No mapping found for login-direct.php
+Warning: No mapping found for login.php
+Warning: No mapping found for logout.php
+Updated menu.php: Changed permission from 'Ordiniincorso' to 'Menu'
+Warning: No mapping found for menu_helper.php
+Warning: No mapping found for modals.php
+Warning: No mapping found for modifica.php
+Skipping system file: navbar.php
+Updated notifiche.php: Changed permission from 'Ordiniincorso' to 'Notifiche'
+Warning: No mapping found for orari-apertura.php
+Warning: No mapping found for ordini-in-corso.php
+Warning: No mapping found for pagamenti-driver.php
+Updated pagamenti.php: Changed permission from 'Ordiniincorso' to 'Pagamenti'
+Warning: No mapping found for password_tester.php
+Updated performance.php: Changed permission from 'Ordiniincorso' to 'Performance'
+Warning: No mapping found for permissions_api.php
+Warning: No mapping found for piani-membership.php
+Updated privacy.php: Changed permission from 'Ordiniincorso' to 'Privacy'
+Warning: No mapping found for profile.php
+Updated promozioni.php: Changed permission from 'Ordiniincorso' to 'Promozioni'
+Updated recensioni.php: Changed permission from 'Ordiniincorso' to 'Recensioni'
+Updated reclami.php: Changed permission from 'Ordiniincorso' to 'Reclami'
+Warning: No mapping found for registrazione.php
+Warning: No mapping found for report-vendite.php
+Warning: No mapping found for resi-rimborsi.php
+Warning: No mapping found for roles_api.php
+Warning: No mapping found for ruoli-permessi.php
+Warning: No mapping found for ruoli-permessi1.php
+Warning: No mapping found for ruoli-permessi2.php
+Updated sicurezza.php: Changed permission from 'Ordiniincorso' to 'Sicurezza'
+Skipping system file: sidebar.php
+Updated sms.php: Changed permission from 'Ordiniincorso' to 'SMS'
+Warning: No mapping found for statistiche-prodotti.php
+Warning: No mapping found for tracking-gps.php
+Warning: No mapping found for update_auth_checks.php
+Warning: No mapping found for users.php
+Warning: No mapping found for users_api.php
