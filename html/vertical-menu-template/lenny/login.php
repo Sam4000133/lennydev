@@ -7,32 +7,75 @@ error_reporting(E_ALL);
 // Inizia la sessione
 session_start();
 
-// Se l'utente e gia loggato, reindirizza alla dashboard
+// Se l'utente è già loggato, reindirizza alla dashboard
 if (isset($_SESSION['user_id'])) {
     header("Location: index.php");
     exit;
 }
 
-// Connessione diretta al database
-$db_host = "localhost";
-$db_user = "root";
-$db_password = "";
-$db_name = "lennytest";
+// Includi la connessione al database
+require_once 'db_connection.php';
 
-$conn = new mysqli($db_host, $db_user, $db_password, $db_name);
-if ($conn->connect_error) {
-    die("Errore di connessione al database: " . $conn->connect_error);
+// Funzione per ottenere un'impostazione dal database
+function getSetting($conn, $key, $default = null) {
+    $stmt = $conn->prepare("SELECT setting_value FROM system_settings WHERE setting_key = ?");
+    if ($stmt) {
+        $stmt->bind_param("s", $key);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        if ($result&&$result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $stmt->close();
+            return $row['setting_value'];
+        }
+        
+        $stmt->close();
+    }
+    
+    return $default;
 }
 
-// Imposta il set di caratteri e la collation esplicitamente per la connessione
-$conn->set_charset("utf8mb4");
-$conn->query("SET NAMES utf8mb4 COLLATE utf8mb4_0900_ai_ci");
+// Recupera le impostazioni del sito
+$siteName = getSetting($conn, 'site_name', 'Lenny');
+$siteLogo = getSetting($conn, 'site_logo', '');
+$primaryColor = getSetting($conn, 'primary_color', '#5A8DEE');
+$passwordExpiry = getSetting($conn, 'password_expiry', 90);
+
+// Ottieni le impostazioni di sicurezza per il blocco account
+$accountLocking = getSetting($conn, 'account_locking', '1');
+$maxLoginAttempts = (int)getSetting($conn, 'max_login_attempts', '5');
+$lockoutTime = (int)getSetting($conn, 'lockout_time', '30'); // in minuti
+
+// Ottieni impostazione two factor auth
+$twoFactorAuthEnabled = getSetting($conn, 'two_factor_auth', '1');
 
 // Verifica se esiste la tabella login_logs
 $has_login_logs_table = false;
 $result = $conn->query("SHOW TABLES LIKE 'login_logs'");
 if ($result&&$result->num_rows > 0) {
     $has_login_logs_table = true;
+}
+
+// Verifica se esiste la tabella user_2fa
+$has_user_2fa_table = false;
+$result = $conn->query("SHOW TABLES LIKE 'user_2fa'");
+if ($result&&$result->num_rows > 0) {
+    $has_user_2fa_table = true;
+} else {
+    // Crea la tabella user_2fa se non esiste
+    $create_table_query = "
+    CREATE TABLE IF NOT EXISTS `user_2fa` (
+      `user_id` int NOT NULL PRIMARY KEY,
+      `secret_key` varchar(255) NOT NULL,
+      `is_configured` tinyint(1) DEFAULT '0',
+      `backup_codes` text,
+      `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+      `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+      FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
+    )";
+    $conn->query($create_table_query);
+    $has_user_2fa_table = true;
 }
 
 // Variabile per i messaggi di errore/successo
@@ -51,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         try {
             // Query per verificare le credenziali
-            $stmt = $conn->prepare("SELECT id, username, email, password, full_name, role_id, status FROM users WHERE (username = ? OR email = ?)");
+            $stmt = $conn->prepare("SELECT id, username, email, password, full_name, role_id, status, password_changed_at, password_expires FROM users WHERE (username = ? OR email = ?)");
             
             if (!$stmt) {
                 throw new Exception("Errore nella preparazione della query: " . $conn->error);
@@ -64,55 +107,70 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($result->num_rows === 1) {
                 $user = $result->fetch_assoc();
                 
+                // Verifica se l'account è bloccato (solo se il blocco account è abilitato)
+                if ($accountLocking == '1') {
+                    // Controlla se l'account è attualmente bloccato
+                    $checkLockStmt = $conn->prepare("
+                        SELECT COUNT(*) as failed_attempts, 
+                               MAX(created_at) as last_attempt
+                        FROM login_logs 
+                        WHERE user_id = ? 
+                        AND success = 0 
+                        AND created_at > DATE_SUB(NOW(), INTERVAL ? MINUTE)
+                    ");
+                    
+                    if ($checkLockStmt) {
+                        $checkLockStmt->bind_param("ii", $user['id'], $lockoutTime);
+                        $checkLockStmt->execute();
+                        $lockResult = $checkLockStmt->get_result();
+                        $lockInfo = $lockResult->fetch_assoc();
+                        $checkLockStmt->close();
+                        
+                        $failedAttempts = $lockInfo['failed_attempts'];
+                        $lastAttemptTime = $lockInfo['last_attempt'];
+                        
+                        // Se ha superato il numero massimo di tentativi nel periodo di blocco
+                        if ($failedAttempts >= $maxLoginAttempts&&$lastAttemptTime) {
+                            // Calcola il tempo rimanente prima che il blocco venga rimosso
+                            $lastAttempt = new DateTime($lastAttemptTime);
+                            $unlockTime = $lastAttempt->modify("+{$lockoutTime} minutes");
+                            $now = new DateTime();
+                            
+                            if ($now < $unlockTime) {
+                                $timeLeft = $now->diff($unlockTime);
+                                $minutesLeft = ($timeLeft->days * 24 * 60) + ($timeLeft->h * 60) + $timeLeft->i;
+                                
+                                $error_message = "Account temporaneamente bloccato per sicurezza. Riprova tra {$minutesLeft} minuti.";
+                                
+                                // Log del tentativo su account bloccato
+                                if ($has_login_logs_table) {
+                                    $log_ip = $_SERVER['REMOTE_ADDR'];
+                                    $log_agent = $_SERVER['HTTP_USER_AGENT'];
+                                    $log_stmt = $conn->prepare("INSERT INTO login_logs (user_id, ip_address, user_agent, success, notes, created_at) VALUES (?, ?, ?, 0, 'Tentativo su account bloccato', NOW())");
+                                    
+                                    if ($log_stmt) {
+                                        $log_stmt->bind_param("iss", $user['id'], $log_ip, $log_agent);
+                                        $log_stmt->execute();
+                                        $log_stmt->close();
+                                    }
+                                }
+                                
+                                $stmt->close();
+                                throw new Exception($error_message);
+                            }
+                        }
+                    }
+                }
+                
                 // Verifica lo stato dell'utente
                 if ($user['status'] !== 'active') {
                     $error_message = 'Account non attivo. Contatta l\'amministratore.';
-                }
-                // Verifica la password con controllo alternativo per il caso specifico
-                else if (password_verify($password, $user['password']) || 
-                         // Hash fisso per password123 (il valore corretto)
-                         ($password === 'password123'&&$user['password'] === '$2y$10$xtskTnXUJAy/iEiDkvj2c.D.1CMKvTsWkqUmNZeZQTBw4hRF7ZBme')) {
                     
-                    // Password corretta, crea la sessione
-                    $_SESSION['user_id'] = $user['id'];
-                    $_SESSION['username'] = $user['username'];
-                    $_SESSION['email'] = $user['email'];
-                    $_SESSION['full_name'] = $user['full_name'];
-                    $_SESSION['role_id'] = $user['role_id'];
-                    
-                    // Ottieni i permessi del ruolo
-                    $permissions = [];
-                    $permStmt = $conn->prepare("
-                        SELECT p.name, p.category, rp.can_read, rp.can_write, rp.can_create 
-                        FROM role_permissions rp
-                        JOIN permissions p ON rp.permission_id = p.id
-                        WHERE rp.role_id = ?
-                    ");
-                    
-                    if ($permStmt) {
-                        $permStmt->bind_param("i", $user['role_id']);
-                        $permStmt->execute();
-                        $permResult = $permStmt->get_result();
-                        
-                        while ($perm = $permResult->fetch_assoc()) {
-                            $permissions[$perm['name']] = [
-                                'category' => $perm['category'],
-                                'can_read' => $perm['can_read'],
-                                'can_write' => $perm['can_write'],
-                                'can_create' => $perm['can_create']
-                            ];
-                        }
-                        $permStmt->close();
-                    }
-                    
-                    // Salva i permessi nella sessione
-                    $_SESSION['permissions'] = $permissions;
-                    
-                    // Log dell'accesso riuscito (solo se la tabella esiste)
+                    // Log del tentativo su account non attivo
                     if ($has_login_logs_table) {
                         $log_ip = $_SERVER['REMOTE_ADDR'];
                         $log_agent = $_SERVER['HTTP_USER_AGENT'];
-                        $log_stmt = $conn->prepare("INSERT INTO login_logs (user_id, ip_address, user_agent, success, created_at) VALUES (?, ?, ?, 1, NOW())");
+                        $log_stmt = $conn->prepare("INSERT INTO login_logs (user_id, ip_address, user_agent, success, notes, created_at) VALUES (?, ?, ?, 0, 'Account non attivo', NOW())");
                         
                         if ($log_stmt) {
                             $log_stmt->bind_param("iss", $user['id'], $log_ip, $log_agent);
@@ -120,37 +178,249 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             $log_stmt->close();
                         }
                     }
+                }
+                // Verifica la password con controllo alternativo per il caso specifico
+                else if (password_verify($password, $user['password']) || 
+                         // Hash fisso per password123 (il valore corretto)
+                         ($password === 'password123'&&$user['password'] === '$2y$10$xtskTnXUJAy/iEiDkvj2c.D.1CMKvTsWkqUmNZeZQTBw4hRF7ZBme')) {
                     
-                    // Gestisci "Ricordami"
-                    if (isset($_POST['remember-me'])&&$_POST['remember-me'] === 'on') {
-                        // Genera un token per il cookie "ricordami"
-                        $token = bin2hex(random_bytes(32));
-                        $expires = time() + 86400 * 30; // 30 giorni
+                    // Verifica se la password è scaduta (solo se la password può scadere)
+                    if (isset($user['password_changed_at'])&&isset($user['password_expires'])&&$user['password_expires'] == 1&&intval($passwordExpiry) > 0) {
                         
-                        // Verifica se esiste la tabella user_sessions
-                        $result = $conn->query("SHOW TABLES LIKE 'user_sessions'");
-                        if ($result->num_rows > 0) {
-                            // Rimuovi eventuali token precedenti
-                            $clean_stmt = $conn->prepare("DELETE FROM user_sessions WHERE user_id = ?");
-                            $clean_stmt->bind_param("i", $user['id']);
-                            $clean_stmt->execute();
-                            $clean_stmt->close();
+                        // Calcola la differenza in giorni tra la data di modifica e oggi
+                        $passwordChangedAt = new DateTime($user['password_changed_at']);
+                        $currentDate = new DateTime();
+                        $diff = $passwordChangedAt->diff($currentDate);
+                        $daysSinceChange = $diff->days;
+                        
+                        // Se sono passati più giorni del periodo di scadenza, richiedi il cambio password
+                        if ($daysSinceChange >= intval($passwordExpiry)) {
+                            // Genera un token di reset password
+                            $token = bin2hex(random_bytes(32));
+                            $expiryDate = date('Y-m-d H:i:s', strtotime('+24 hours'));
                             
-                            // Salva il token nel database
-                            $tokenStmt = $conn->prepare("INSERT INTO user_sessions (user_id, token, expires_at) VALUES (?, ?, FROM_UNIXTIME(?))");
-                            $tokenStmt->bind_param("isi", $user['id'], $token, $expires);
-                            $tokenStmt->execute();
-                            $tokenStmt->close();
+                            // Verifica se esiste la tabella password_resets
+                            $resultTable = $conn->query("SHOW TABLES LIKE 'password_resets'");
+                            if ($resultTable&&$resultTable->num_rows > 0) {
+                                // Elimina eventuali vecchi token per questo utente
+                                $cleanStmt = $conn->prepare("DELETE FROM password_resets WHERE email = ?");
+                                $cleanStmt->bind_param("s", $user['email']);
+                                $cleanStmt->execute();
+                                $cleanStmt->close();
+                                
+                                // Inserisci il nuovo token
+                                $tokenStmt = $conn->prepare("INSERT INTO password_resets (email, token, expires_at) VALUES (?, ?, ?)");
+                                $tokenStmt->bind_param("sss", $user['email'], $token, $expiryDate);
+                                $tokenStmt->execute();
+                                $tokenStmt->close();
+                                
+                                // Log del reindirizzamento per password scaduta
+                                if ($has_login_logs_table) {
+                                    $log_ip = $_SERVER['REMOTE_ADDR'];
+                                    $log_agent = $_SERVER['HTTP_USER_AGENT'];
+                                    $log_stmt = $conn->prepare("INSERT INTO login_logs (user_id, ip_address, user_agent, success, notes, created_at) VALUES (?, ?, ?, 1, 'Password scaduta, reindirizzamento al reset', NOW())");
+                                    
+                                    if ($log_stmt) {
+                                        $log_stmt->bind_param("iss", $user['id'], $log_ip, $log_agent);
+                                        $log_stmt->execute();
+                                        $log_stmt->close();
+                                    }
+                                }
+                                
+                                // Reindirizza alla pagina di reset password
+                                header("Location: reset-password.php?token=" . $token . "&expired=1");
+                                exit;
+                            }
                         }
-                        
-                        // Imposta il cookie
-                        setcookie('remember_token', $token, $expires, '/', '', false, true);
-                        setcookie('remember_user', $user['id'], $expires, '/', '', false, true);
                     }
                     
-                    // Reindirizza all'index
-                    header("Location: index.php");
-                    exit;
+                    // Password corretta
+                    
+                    // Controlla se serve 2FA per questo utente (solo admin diversi da ID 1)
+                    $needs2FA = false;
+                    
+                    if ($twoFactorAuthEnabled === '1'&&$user['role_id'] == 1&&$user['id'] != 1) {
+                        $needs2FA = true;
+                        
+                        // Verifica se l'utente ha già configurato 2FA
+                        $check2faStmt = $conn->prepare("SELECT secret_key, is_configured FROM user_2fa WHERE user_id = ?");
+                        if ($check2faStmt) {
+                            $check2faStmt->bind_param("i", $user['id']);
+                            $check2faStmt->execute();
+                            $result2fa = $check2faStmt->get_result();
+                            
+                            if ($result2fa->num_rows === 0) {
+                                // L'utente non ha mai configurato 2FA, crea un record
+                                $secret = generateSecretKey(); // Funzione che definiremo dopo
+                                $insert2faStmt = $conn->prepare("INSERT INTO user_2fa (user_id, secret_key, is_configured) VALUES (?, ?, 0)");
+                                $insert2faStmt->bind_param("is", $user['id'], $secret);
+                                $insert2faStmt->execute();
+                                $insert2faStmt->close();
+                                
+                                // Imposta una sessione temporanea per la configurazione 2FA
+                                $_SESSION['2fa_pending'] = true;
+                                $_SESSION['2fa_user_id'] = $user['id'];
+                                $_SESSION['2fa_username'] = $user['username'];
+                                $_SESSION['2fa_user_email'] = $user['email'];
+                                
+                                // Log del login parziale
+                                if ($has_login_logs_table) {
+                                    $log_ip = $_SERVER['REMOTE_ADDR'];
+                                    $log_agent = $_SERVER['HTTP_USER_AGENT'];
+                                    $log_stmt = $conn->prepare("INSERT INTO login_logs (user_id, ip_address, user_agent, success, notes, created_at) VALUES (?, ?, ?, 1, 'Login parziale, reindirizzamento alla configurazione 2FA', NOW())");
+                                    
+                                    if ($log_stmt) {
+                                        $log_stmt->bind_param("iss", $user['id'], $log_ip, $log_agent);
+                                        $log_stmt->execute();
+                                        $log_stmt->close();
+                                    }
+                                }
+                                
+                                // Reindirizza alla pagina di configurazione 2FA
+                                header("Location: setup-2fa.php");
+                                exit;
+                            } else {
+                                $twoFaInfo = $result2fa->fetch_assoc();
+                                
+                                if ($twoFaInfo['is_configured'] == 0) {
+                                    // L'utente ha iniziato ma non ha completato la configurazione 2FA
+                                    $_SESSION['2fa_pending'] = true;
+                                    $_SESSION['2fa_user_id'] = $user['id'];
+                                    $_SESSION['2fa_username'] = $user['username'];
+                                    $_SESSION['2fa_user_email'] = $user['email'];
+                                    
+                                    // Log del login parziale
+                                    if ($has_login_logs_table) {
+                                        $log_ip = $_SERVER['REMOTE_ADDR'];
+                                        $log_agent = $_SERVER['HTTP_USER_AGENT'];
+                                        $log_stmt = $conn->prepare("INSERT INTO login_logs (user_id, ip_address, user_agent, success, notes, created_at) VALUES (?, ?, ?, 1, 'Login parziale, reindirizzamento alla configurazione 2FA', NOW())");
+                                        
+                                        if ($log_stmt) {
+                                            $log_stmt->bind_param("iss", $user['id'], $log_ip, $log_agent);
+                                            $log_stmt->execute();
+                                            $log_stmt->close();
+                                        }
+                                    }
+                                    
+                                    // Reindirizza alla pagina di configurazione 2FA
+                                    header("Location: setup-2fa.php");
+                                    exit;
+                                } else {
+                                    // L'utente ha già configurato 2FA, richiedi il codice di verifica
+                                    $_SESSION['2fa_pending'] = true;
+                                    $_SESSION['2fa_user_id'] = $user['id'];
+                                    $_SESSION['2fa_username'] = $user['username'];
+                                    $_SESSION['2fa_user_email'] = $user['email'];
+                                    
+                                    // Gestisci "Ricordami" solo dopo la verifica 2FA
+                                    if (isset($_POST['remember-me'])&&$_POST['remember-me'] === 'on') {
+                                        $_SESSION['2fa_remember_me'] = true;
+                                    }
+                                    
+                                    // Log del login parziale
+                                    if ($has_login_logs_table) {
+                                        $log_ip = $_SERVER['REMOTE_ADDR'];
+                                        $log_agent = $_SERVER['HTTP_USER_AGENT'];
+                                        $log_stmt = $conn->prepare("INSERT INTO login_logs (user_id, ip_address, user_agent, success, notes, created_at) VALUES (?, ?, ?, 1, 'Login parziale, richiesta verifica 2FA', NOW())");
+                                        
+                                        if ($log_stmt) {
+                                            $log_stmt->bind_param("iss", $user['id'], $log_ip, $log_agent);
+                                            $log_stmt->execute();
+                                            $log_stmt->close();
+                                        }
+                                    }
+                                    
+                                    // Reindirizza alla pagina di verifica 2FA
+                                    header("Location: verify-2fa.php");
+                                    exit;
+                                }
+                            }
+                            
+                            $check2faStmt->close();
+                        }
+                    }
+                    
+                    // Se non serve 2FA o c'è stato un errore nei controlli 2FA, continua con il login normale
+                    if (!$needs2FA) {
+                        // Crea la sessione normale
+                        $_SESSION['user_id'] = $user['id'];
+                        $_SESSION['username'] = $user['username'];
+                        $_SESSION['email'] = $user['email'];
+                        $_SESSION['full_name'] = $user['full_name'];
+                        $_SESSION['role_id'] = $user['role_id'];
+                        
+                        // Ottieni i permessi del ruolo
+                        $permissions = [];
+                        $permStmt = $conn->prepare("
+                            SELECT p.name, p.category, rp.can_read, rp.can_write, rp.can_create 
+                            FROM role_permissions rp
+                            JOIN permissions p ON rp.permission_id = p.id
+                            WHERE rp.role_id = ?
+                        ");
+                        
+                        if ($permStmt) {
+                            $permStmt->bind_param("i", $user['role_id']);
+                            $permStmt->execute();
+                            $permResult = $permStmt->get_result();
+                            
+                            while ($perm = $permResult->fetch_assoc()) {
+                                $permissions[$perm['name']] = [
+                                    'category' => $perm['category'],
+                                    'can_read' => $perm['can_read'],
+                                    'can_write' => $perm['can_write'],
+                                    'can_create' => $perm['can_create']
+                                ];
+                            }
+                            $permStmt->close();
+                        }
+                        
+                        // Salva i permessi nella sessione
+                        $_SESSION['permissions'] = $permissions;
+                        
+                        // Log dell'accesso riuscito (solo se la tabella esiste)
+                        if ($has_login_logs_table) {
+                            $log_ip = $_SERVER['REMOTE_ADDR'];
+                            $log_agent = $_SERVER['HTTP_USER_AGENT'];
+                            $log_stmt = $conn->prepare("INSERT INTO login_logs (user_id, ip_address, user_agent, success, created_at) VALUES (?, ?, ?, 1, NOW())");
+                            
+                            if ($log_stmt) {
+                                $log_stmt->bind_param("iss", $user['id'], $log_ip, $log_agent);
+                                $log_stmt->execute();
+                                $log_stmt->close();
+                            }
+                        }
+                        
+                        // Gestisci "Ricordami"
+                        if (isset($_POST['remember-me'])&&$_POST['remember-me'] === 'on') {
+                            // Genera un token per il cookie "ricordami"
+                            $token = bin2hex(random_bytes(32));
+                            $expires = time() + 86400 * 30; // 30 giorni
+                            
+                            // Verifica se esiste la tabella user_sessions
+                            $result = $conn->query("SHOW TABLES LIKE 'user_sessions'");
+                            if ($result->num_rows > 0) {
+                                // Rimuovi eventuali token precedenti
+                                $clean_stmt = $conn->prepare("DELETE FROM user_sessions WHERE user_id = ?");
+                                $clean_stmt->bind_param("i", $user['id']);
+                                $clean_stmt->execute();
+                                $clean_stmt->close();
+                                
+                                // Salva il token nel database
+                                $tokenStmt = $conn->prepare("INSERT INTO user_sessions (user_id, token, expires_at) VALUES (?, ?, FROM_UNIXTIME(?))");
+                                $tokenStmt->bind_param("isi", $user['id'], $token, $expires);
+                                $tokenStmt->execute();
+                                $tokenStmt->close();
+                            }
+                            
+                            // Imposta il cookie
+                            setcookie('remember_token', $token, $expires, '/', '', false, true);
+                            setcookie('remember_user', $user['id'], $expires, '/', '', false, true);
+                        }
+                        
+                        // Reindirizza all'index
+                        header("Location: index.php");
+                        exit;
+                    }
                 } else {
                     $error_message = 'Username o password non validi.';
                     
@@ -164,6 +434,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             $log_stmt->bind_param("iss", $user['id'], $log_ip, $log_agent);
                             $log_stmt->execute();
                             $log_stmt->close();
+                        }
+                    }
+                    
+                    // Se il blocco account è abilitato, verifica se l'utente ha raggiunto il limite
+                    if ($accountLocking == '1'&&$has_login_logs_table) {
+                        $checkAttemptsStmt = $conn->prepare("
+                            SELECT COUNT(*) as failed_attempts 
+                            FROM login_logs 
+                            WHERE user_id = ? 
+                            AND success = 0 
+                            AND created_at > DATE_SUB(NOW(), INTERVAL ? MINUTE)
+                        ");
+                        
+                        if ($checkAttemptsStmt) {
+                            $checkAttemptsStmt->bind_param("ii", $user['id'], $lockoutTime);
+                            $checkAttemptsStmt->execute();
+                            $attemptsResult = $checkAttemptsStmt->get_result();
+                            $attemptsInfo = $attemptsResult->fetch_assoc();
+                            $checkAttemptsStmt->close();
+                            
+                            $failedAttempts = (int)$attemptsInfo['failed_attempts'];
+                            
+                            // Se ha raggiunto il limite
+                            if ($failedAttempts >= $maxLoginAttempts) {
+                                $remainingAttempts = 0;
+                                $error_message = "Account temporaneamente bloccato per troppi tentativi falliti. Riprova tra {$lockoutTime} minuti.";
+                            } else {
+                                $remainingAttempts = $maxLoginAttempts - $failedAttempts;
+                                $error_message .= " Tentativi rimasti: {$remainingAttempts}.";
+                            }
                         }
                     }
                 }
@@ -187,13 +487,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             $stmt->close();
         } catch (Exception $e) {
-            $error_message = 'Errore durante il login: ' . $e->getMessage();
+            $error_message = $e->getMessage();
             error_log('Login error: ' . $e->getMessage());
         }
     }
 }
 
-// Controlla se c'e un token "ricordami"
+// Controlla se c'è un token "ricordami"
 if (!isset($_SESSION['user_id'])&&isset($_COOKIE['remember_token'])&&isset($_COOKIE['remember_user'])) {
     $token = $_COOKIE['remember_token'];
     $user_id = (int)$_COOKIE['remember_user'];
@@ -205,7 +505,7 @@ if (!isset($_SESSION['user_id'])&&isset($_COOKIE['remember_token'])&&isset($_COO
             if ($result->num_rows > 0) {
                 // Verifica il token nel database
                 $stmt = $conn->prepare("
-                    SELECT u.id, u.username, u.email, u.full_name, u.role_id
+                    SELECT u.id, u.username, u.email, u.full_name, u.role_id, u.password_changed_at, u.password_expires
                     FROM user_sessions s
                     JOIN users u ON s.user_id = u.id
                     WHERE s.user_id = ? AND s.token = ? AND s.expires_at > NOW() AND u.status = 'active'
@@ -218,71 +518,216 @@ if (!isset($_SESSION['user_id'])&&isset($_COOKIE['remember_token'])&&isset($_COO
                 if ($result->num_rows === 1) {
                     $user = $result->fetch_assoc();
                     
-                    // Imposta la sessione
-                    $_SESSION['user_id'] = $user['id'];
-                    $_SESSION['username'] = $user['username'];
-                    $_SESSION['email'] = $user['email'];
-                    $_SESSION['full_name'] = $user['full_name'];
-                    $_SESSION['role_id'] = $user['role_id'];
-                    
-                    // Ottieni i permessi
-                    $permissions = [];
-                    $permStmt = $conn->prepare("
-                        SELECT p.name, p.category, rp.can_read, rp.can_write, rp.can_create 
-                        FROM role_permissions rp
-                        JOIN permissions p ON rp.permission_id = p.id
-                        WHERE rp.role_id = ?
-                    ");
-                    
-                    if ($permStmt) {
-                        $permStmt->bind_param("i", $user['role_id']);
-                        $permStmt->execute();
-                        $permResult = $permStmt->get_result();
+                    // Verifica se l'account è bloccato per troppi tentativi falliti
+                    if ($accountLocking == '1'&&$has_login_logs_table) {
+                        $checkLockStmt = $conn->prepare("
+                            SELECT COUNT(*) as failed_attempts, 
+                                   MAX(created_at) as last_attempt
+                            FROM login_logs 
+                            WHERE user_id = ? 
+                            AND success = 0 
+                            AND created_at > DATE_SUB(NOW(), INTERVAL ? MINUTE)
+                        ");
                         
-                        while ($perm = $permResult->fetch_assoc()) {
-                            $permissions[$perm['name']] = [
-                                'category' => $perm['category'],
-                                'can_read' => $perm['can_read'],
-                                'can_write' => $perm['can_write'],
-                                'can_create' => $perm['can_create']
-                            ];
-                        }
-                        $permStmt->close();
-                    }
-                    
-                    // Salva i permessi nella sessione
-                    $_SESSION['permissions'] = $permissions;
-                    
-                    // Rinnova il token
-                    $newToken = bin2hex(random_bytes(32));
-                    $expires = time() + 86400 * 30; // 30 giorni
-                    
-                    // Aggiorna il token nel database
-                    $updateStmt = $conn->prepare("UPDATE user_sessions SET token = ?, expires_at = FROM_UNIXTIME(?) WHERE token = ?");
-                    $updateStmt->bind_param("sis", $newToken, $expires, $token);
-                    $updateStmt->execute();
-                    $updateStmt->close();
-                    
-                    // Aggiorna il cookie
-                    setcookie('remember_token', $newToken, $expires, '/', '', false, true);
-                    setcookie('remember_user', $user['id'], $expires, '/', '', false, true);
-                    
-                    // Log dell'accesso automatico (solo se la tabella esiste)
-                    if ($has_login_logs_table) {
-                        $log_ip = $_SERVER['REMOTE_ADDR'];
-                        $log_agent = $_SERVER['HTTP_USER_AGENT'];
-                        $log_stmt = $conn->prepare("INSERT INTO login_logs (user_id, ip_address, user_agent, success, notes, created_at) VALUES (?, ?, ?, 1, 'Auto-login con cookie', NOW())");
-                        
-                        if ($log_stmt) {
-                            $log_stmt->bind_param("iss", $user['id'], $log_ip, $log_agent);
-                            $log_stmt->execute();
-                            $log_stmt->close();
+                        if ($checkLockStmt) {
+                            $checkLockStmt->bind_param("ii", $user['id'], $lockoutTime);
+                            $checkLockStmt->execute();
+                            $lockResult = $checkLockStmt->get_result();
+                            $lockInfo = $lockResult->fetch_assoc();
+                            $checkLockStmt->close();
+                            
+                            $failedAttempts = $lockInfo['failed_attempts'];
+                            $lastAttemptTime = $lockInfo['last_attempt'];
+                            
+                            // Se ha superato il numero massimo di tentativi nel periodo di blocco
+                            if ($failedAttempts >= $maxLoginAttempts&&$lastAttemptTime) {
+                                // Calcola il tempo rimanente prima che il blocco venga rimosso
+                                $lastAttempt = new DateTime($lastAttemptTime);
+                                $unlockTime = $lastAttempt->modify("+{$lockoutTime} minutes");
+                                $now = new DateTime();
+                                
+                                if ($now < $unlockTime) {
+                                    // Se l'account è bloccato, elimina i cookie e non effettuare l'accesso automatico
+                                    setcookie('remember_token', '', time() - 3600, '/');
+                                    setcookie('remember_user', '', time() - 3600, '/');
+                                    
+                                    $timeLeft = $now->diff($unlockTime);
+                                    $minutesLeft = ($timeLeft->days * 24 * 60) + ($timeLeft->h * 60) + $timeLeft->i;
+                                    
+                                    $error_message = "Account temporaneamente bloccato per sicurezza. Riprova tra {$minutesLeft} minuti.";
+                                    throw new Exception($error_message);
+                                }
+                            }
                         }
                     }
                     
-                    // Reindirizza all'index
-                    header("Location: index.php");
-                    exit;
+                    // Verifica se questo utente richiede 2FA (amministratore diverso da ID 1)
+                    $needs2FA = false;
+                    
+                    if ($twoFactorAuthEnabled === '1'&&$user['role_id'] == 1&&$user['id'] != 1) {
+                        $needs2FA = true;
+                        
+                        // Verifica se l'utente ha già configurato 2FA
+                        $check2faStmt = $conn->prepare("SELECT secret_key, is_configured FROM user_2fa WHERE user_id = ?");
+                        if ($check2faStmt) {
+                            $check2faStmt->bind_param("i", $user['id']);
+                            $check2faStmt->execute();
+                            $result2fa = $check2faStmt->get_result();
+                            
+                            if ($result2fa->num_rows === 0 || $result2fa->fetch_assoc()['is_configured'] == 0) {
+                                // L'utente non ha configurato correttamente 2FA, non consentire l'auto-login
+                                setcookie('remember_token', '', time() - 3600, '/');
+                                setcookie('remember_user', '', time() - 3600, '/');
+                                $error_message = "È necessario accedere manualmente per configurare l'autenticazione a due fattori.";
+                                throw new Exception($error_message);
+                            } else {
+                                // L'utente ha configurato 2FA, richiedi la verifica
+                                $_SESSION['2fa_pending'] = true;
+                                $_SESSION['2fa_user_id'] = $user['id'];
+                                $_SESSION['2fa_username'] = $user['username'];
+                                $_SESSION['2fa_user_email'] = $user['email'];
+                                $_SESSION['2fa_from_remember_me'] = true;
+                                
+                                // Log del login parziale con cookie
+                                if ($has_login_logs_table) {
+                                    $log_ip = $_SERVER['REMOTE_ADDR'];
+                                    $log_agent = $_SERVER['HTTP_USER_AGENT'];
+                                    $log_stmt = $conn->prepare("INSERT INTO login_logs (user_id, ip_address, user_agent, success, notes, created_at) VALUES (?, ?, ?, 1, 'Login parziale con cookie, richiesta verifica 2FA', NOW())");
+                                    
+                                    if ($log_stmt) {
+                                        $log_stmt->bind_param("iss", $user['id'], $log_ip, $log_agent);
+                                        $log_stmt->execute();
+                                        $log_stmt->close();
+                                    }
+                                }
+                                
+                                // Reindirizza alla pagina di verifica 2FA
+                                header("Location: verify-2fa.php");
+                                exit;
+                            }
+                            
+                            $check2faStmt->close();
+                        }
+                    }
+                    
+                    // Se non serve 2FA o c'è stato un errore nei controlli 2FA, continua con il login normale
+                    if (!$needs2FA) {
+                        // Verifica se la password è scaduta (solo se la password può scadere)
+                        if (isset($user['password_changed_at'])&&isset($user['password_expires'])&&$user['password_expires'] == 1&&intval($passwordExpiry) > 0) {
+                            
+                            // Calcola la differenza in giorni tra la data di modifica e oggi
+                            $passwordChangedAt = new DateTime($user['password_changed_at']);
+                            $currentDate = new DateTime();
+                            $diff = $passwordChangedAt->diff($currentDate);
+                            $daysSinceChange = $diff->days;
+                            
+                            // Se sono passati più giorni del periodo di scadenza, richiedi il cambio password
+                            if ($daysSinceChange >= intval($passwordExpiry)) {
+                                // Genera un token di reset password
+                                $pwdToken = bin2hex(random_bytes(32));
+                                $expiryDate = date('Y-m-d H:i:s', strtotime('+24 hours'));
+                                
+                                // Verifica se esiste la tabella password_resets
+                                $resultTable = $conn->query("SHOW TABLES LIKE 'password_resets'");
+                                if ($resultTable&&$resultTable->num_rows > 0) {
+                                    // Elimina eventuali vecchi token per questo utente
+                                    $cleanStmt = $conn->prepare("DELETE FROM password_resets WHERE email = ?");
+                                    $cleanStmt->bind_param("s", $user['email']);
+                                    $cleanStmt->execute();
+                                    $cleanStmt->close();
+                                    
+                                    // Inserisci il nuovo token
+                                    $tokenStmt = $conn->prepare("INSERT INTO password_resets (email, token, expires_at) VALUES (?, ?, ?)");
+                                    $tokenStmt->bind_param("sss", $user['email'], $pwdToken, $expiryDate);
+                                    $tokenStmt->execute();
+                                    $tokenStmt->close();
+                                    
+                                    // Log del reindirizzamento per password scaduta
+                                    if ($has_login_logs_table) {
+                                        $log_ip = $_SERVER['REMOTE_ADDR'];
+                                        $log_agent = $_SERVER['HTTP_USER_AGENT'];
+                                        $log_stmt = $conn->prepare("INSERT INTO login_logs (user_id, ip_address, user_agent, success, notes, created_at) VALUES (?, ?, ?, 1, 'Auto-login, password scaduta, reindirizzamento al reset', NOW())");
+                                        
+                                        if ($log_stmt) {
+                                            $log_stmt->bind_param("iss", $user['id'], $log_ip, $log_agent);
+                                            $log_stmt->execute();
+                                            $log_stmt->close();
+                                        }
+                                    }
+                                    
+                                    // Reindirizza alla pagina di reset password
+                                    header("Location: reset-password.php?token=" . $pwdToken . "&expired=1");
+                                    exit;
+                                }
+                            }
+                        }
+                        
+                        // Imposta la sessione
+                        $_SESSION['user_id'] = $user['id'];
+                        $_SESSION['username'] = $user['username'];
+                        $_SESSION['email'] = $user['email'];
+                        $_SESSION['full_name'] = $user['full_name'];
+                        $_SESSION['role_id'] = $user['role_id'];
+                        
+                        // Ottieni i permessi
+                        $permissions = [];
+                        $permStmt = $conn->prepare("
+                            SELECT p.name, p.category, rp.can_read, rp.can_write, rp.can_create 
+                            FROM role_permissions rp
+                            JOIN permissions p ON rp.permission_id = p.id
+                            WHERE rp.role_id = ?
+                        ");
+                        
+                        if ($permStmt) {
+                            $permStmt->bind_param("i", $user['role_id']);
+                            $permStmt->execute();
+                            $permResult = $permStmt->get_result();
+                            
+                            while ($perm = $permResult->fetch_assoc()) {
+                                $permissions[$perm['name']] = [
+                                    'category' => $perm['category'],
+                                    'can_read' => $perm['can_read'],
+                                    'can_write' => $perm['can_write'],
+                                    'can_create' => $perm['can_create']
+                                ];
+                            }
+                            $permStmt->close();
+                        }
+                        
+                        // Salva i permessi nella sessione
+                        $_SESSION['permissions'] = $permissions;
+                        
+                        // Rinnova il token
+                        $newToken = bin2hex(random_bytes(32));
+                        $expires = time() + 86400 * 30; // 30 giorni
+                        
+                        // Aggiorna il token nel database
+                        $updateStmt = $conn->prepare("UPDATE user_sessions SET token = ?, expires_at = FROM_UNIXTIME(?) WHERE token = ?");
+                        $updateStmt->bind_param("sis", $newToken, $expires, $token);
+                        $updateStmt->execute();
+                        $updateStmt->close();
+                        
+                        // Aggiorna il cookie
+                        setcookie('remember_token', $newToken, $expires, '/', '', false, true);
+                        setcookie('remember_user', $user['id'], $expires, '/', '', false, true);
+                        
+                        // Log dell'accesso automatico (solo se la tabella esiste)
+                        if ($has_login_logs_table) {
+                            $log_ip = $_SERVER['REMOTE_ADDR'];
+                            $log_agent = $_SERVER['HTTP_USER_AGENT'];
+                            $log_stmt = $conn->prepare("INSERT INTO login_logs (user_id, ip_address, user_agent, success, notes, created_at) VALUES (?, ?, ?, 1, 'Auto-login con cookie', NOW())");
+                            
+                            if ($log_stmt) {
+                                $log_stmt->bind_param("iss", $user['id'], $log_ip, $log_agent);
+                                $log_stmt->execute();
+                                $log_stmt->close();
+                            }
+                        }
+                        
+                        // Reindirizza all'index
+                        header("Location: index.php");
+                        exit;
+                    }
                 } else {
                     // Token non valido o scaduto, cancella i cookie
                     setcookie('remember_token', '', time() - 3600, '/');
@@ -294,14 +739,28 @@ if (!isset($_SESSION['user_id'])&&isset($_COOKIE['remember_token'])&&isset($_COO
                 }
             }
         } catch (Exception $e) {
-            // Non fare nulla, l'utente dovra fare login manualmente
+            // Non fare nulla, l'utente dovrà fare login manualmente
             error_log('Remember me error: ' . $e->getMessage());
+            $error_message = $e->getMessage();
             
             // Cancella i cookie in caso di errore
             setcookie('remember_token', '', time() - 3600, '/');
             setcookie('remember_user', '', time() - 3600, '/');
         }
     }
+}
+
+// Funzione per generare una chiave segreta per Google Authenticator
+function generateSecretKey() {
+    $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567'; // Base32 character set
+    $secret = '';
+    $length = 16; // Google Authenticator richiede 16 caratteri
+    
+    for ($i = 0; $i < $length; $i++) {
+        $secret .= $chars[random_int(0, strlen($chars) - 1)];
+    }
+    
+    return $secret;
 }
 
 // Chiudi la connessione al database
@@ -322,9 +781,9 @@ $conn->close();
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Login | Lenny Admin Panel</title>
+    <title>Login | <?php echo htmlspecialchars($siteName); ?></title>
 
-    <meta name="description" content="Lenny Admin Panel Login" />
+    <meta name="description" content="<?php echo htmlspecialchars($siteName); ?> Admin Panel Login" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../../../assets/img/favicon/favicon.ico" />
@@ -357,6 +816,10 @@ $conn->close();
     
     <!-- Custom Styles -->
     <style>
+      :root {
+        --primary-color: <?php echo $primaryColor; ?>;
+      }
+      
       .cursor-pointer {
         cursor: pointer;
       }
@@ -374,6 +837,16 @@ $conn->close();
       .show-debug {
         display: block !important;
       }
+      .btn-primary {
+        background-color: var(--primary-color) !important;
+        border-color: var(--primary-color) !important;
+      }
+      .btn-primary:hover {
+        opacity: 0.9;
+      }
+      .text-primary, .app-brand-text {
+        color: var(--primary-color) !important;
+      }
     </style>
   </head>
 
@@ -389,18 +862,22 @@ $conn->close();
               <div class="app-brand justify-content-center mb-4">
                 <a href="index.php" class="app-brand-link">
                   <span class="app-brand-logo demo">
-                    <div class="rounded-circle bg-primary p-2">
-                      <i class="ti tabler-tools-kitchen-2 text-white"></i>
-                    </div>
+                    <?php if (!empty($siteLogo)): ?>
+                      <img src="<?php echo htmlspecialchars($siteLogo); ?>" alt="<?php echo htmlspecialchars($siteName); ?> Logo" height="32">
+                    <?php else: ?>
+                      <div class="rounded-circle bg-primary p-2">
+                        <i class="ti tabler-tools-kitchen-2 text-white"></i>
+                      </div>
+                    <?php endif; ?>
                   </span>
-                  <span class="app-brand-text demo text-heading fw-bold">LENNY ADMIN PANEL</span>
+                  <span class="app-brand-text demo text-heading fw-bold"><?php echo strtoupper(htmlspecialchars($siteName)); ?> ADMIN PANEL</span>
                 </a>
               </div>
               <!-- /Logo -->
-              <h4 class="mb-2">Benvenuto su Lenny! ??</h4>
+              <h4 class="mb-2">Benvenuto su <?php echo htmlspecialchars($siteName); ?>! 👋</h4>
               <p class="mb-4">Per favore esegui il log-in per iniziare a lavorare!</p>
 
-              <?php if (!empty($error_message)&&$_SERVER['REQUEST_METHOD'] === 'POST'): ?>
+              <?php if (!empty($error_message)): ?>
                 <div class="alert alert-danger d-flex align-items-center mb-3">
                   <i class="tabler-alert-circle me-2"></i>
                   <div><?php echo htmlspecialchars($error_message); ?></div>
@@ -474,10 +951,14 @@ $conn->close();
                   Password: password123</p>
                   <p><strong>Hash for password123:</strong><br>
                   $2y$10$xtskTnXUJAy/iEiDkvj2c.D.1CMKvTsWkqUmNZeZQTBw4hRF7ZBme</p>
-                  <p><strong>Current charset:</strong> utf8mb4<br>
-                  <strong>Current collation:</strong> utf8mb4_0900_ai_ci</p>
-                  <p><strong>Tables check:</strong><br>
+                  <p><strong>Password Expiry:</strong> <?php echo intval($passwordExpiry); ?> giorni<br>
+                  <strong>Account Blocking:</strong> <?php echo $accountLocking == '1' ? 'Enabled' : 'Disabled'; ?><br>
+                  <strong>Max Login Attempts:</strong> <?php echo $maxLoginAttempts; ?><br>
+                  <strong>Lockout Time:</strong> <?php echo $lockoutTime; ?> minuti<br>
+                  <strong>2FA Enabled:</strong> <?php echo $twoFactorAuthEnabled == '1' ? 'Yes' : 'No'; ?><br>
+                  <strong>Tables check:</strong><br>
                   login_logs: <?php echo $has_login_logs_table ? 'exists' : 'missing'; ?><br>
+                  user_2fa: <?php echo $has_user_2fa_table ? 'exists' : 'missing'; ?><br>
                   </p>
                 </div>
                 <?php endif; ?>

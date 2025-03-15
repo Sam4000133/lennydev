@@ -1,0 +1,20 @@
+[2025-03-13 08:14:40] API Request GET
+[2025-03-13 08:14:40] GET all users
+[2025-03-13 08:14:43] API Request GET
+[2025-03-13 08:14:43] GET user 3
+[2025-03-13 08:15:14] API Request GET
+[2025-03-13 08:15:14] GET user 2
+[2025-03-13 17:16:06] API Request GET
+[2025-03-13 17:16:06] GET all users
+[2025-03-13 17:16:41] API Request POST
+[2025-03-13 17:16:41] POST create user {"username":"admin1","email":"admin1@hydra-dev.xyz","full_name":"Admin1","role_id":"1","status":"active","password":"password123"}
+[2025-03-13 17:16:41] User created {"id":19,"username":"admin1"}
+[2025-03-13 17:16:41] API Request GET
+[2025-03-13 17:16:41] GET all users
+[2025-03-13 17:59:57] API Request GET
+[2025-03-13 17:59:57] GET all users
+[2025-03-13 18:00:20] API Request POST
+[2025-03-13 18:00:20] POST create user {"username":"andrea","email":"andrea@hydra-dev.xyz","full_name":"Andrea","role_id":"1","status":"active","password":"password123"}
+[2025-03-13 18:00:20] User created {"id":20,"username":"andrea"}
+[2025-03-13 18:00:20] API Request GET
+[2025-03-13 18:00:20] GET all users

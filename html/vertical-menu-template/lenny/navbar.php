@@ -5,6 +5,11 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+// Definisci il percorso base per assets solo se non è già definito
+if (!defined('BASE_ASSETS_PATH')) {
+    define('BASE_ASSETS_PATH', '../../../');
+}
+
 // Ottieni i dati dell'utente dalla sessione
 $user_name = isset($_SESSION['full_name']) ? $_SESSION['full_name'] : (isset($_SESSION['username']) ? $_SESSION['username'] : 'Utente');
 $user_role = isset($_SESSION['role_name']) ? $_SESSION['role_name'] : 'Utente';
@@ -129,7 +134,7 @@ function time_elapsed_string($datetime, $full = false) {
 
 // Imposta un avatar predefinito basato sull'ID utente
 $avatar_id = $user_id % 14 + 1;
-$avatar_path = "../../../assets/img/avatars/{$avatar_id}.png";
+$avatar_path = BASE_ASSETS_PATH . "assets/img/avatars/{$avatar_id}.png";
 ?>
 
 <nav class="layout-navbar container-xxl navbar-detached navbar navbar-expand-xl align-items-center bg-navbar-theme" id="layout-navbar">
@@ -354,7 +359,7 @@ $avatar_path = "../../../assets/img/avatars/{$avatar_id}.png";
         <a class="nav-link dropdown-toggle hide-arrow p-0" href="javascript:void(0);" data-bs-toggle="dropdown">
           <div class="avatar avatar-online">
             <?php if (!empty($user_avatar)): ?>
-              <img src="<?php echo htmlspecialchars($user_avatar); ?>" alt="<?php echo htmlspecialchars($user_name); ?>" class="rounded-circle" />
+              <img src="<?php echo BASE_ASSETS_PATH . htmlspecialchars($user_avatar); ?>" alt="<?php echo htmlspecialchars($user_name); ?>" class="rounded-circle" />
             <?php elseif (file_exists($avatar_path)): ?>
               <img src="<?php echo $avatar_path; ?>" alt="<?php echo htmlspecialchars($user_name); ?>" class="rounded-circle" />
             <?php else: ?>
@@ -369,7 +374,7 @@ $avatar_path = "../../../assets/img/avatars/{$avatar_id}.png";
                 <div class="flex-shrink-0 me-2">
                   <div class="avatar avatar-online">
                     <?php if (!empty($user_avatar)): ?>
-                      <img src="<?php echo htmlspecialchars($user_avatar); ?>" alt="<?php echo htmlspecialchars($user_name); ?>" class="rounded-circle" />
+                      <img src="<?php echo BASE_ASSETS_PATH . htmlspecialchars($user_avatar); ?>" alt="<?php echo htmlspecialchars($user_name); ?>" class="rounded-circle" />
                     <?php elseif (file_exists($avatar_path)): ?>
                       <img src="<?php echo $avatar_path; ?>" alt="<?php echo htmlspecialchars($user_name); ?>" class="rounded-circle" />
                     <?php else: ?>
