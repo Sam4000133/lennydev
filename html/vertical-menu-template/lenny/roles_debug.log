@@ -934,3 +934,188 @@ ns: Success
 [2025-03-11 10:47:51] Request method: GET
 [2025-03-11 10:47:51] GET all roles
 [2025-03-11 10:47:51] Retrieved roles: 9
+[2025-03-11 14:15:35] Request method: GET
+[2025-03-11 14:15:35] GET all roles
+[2025-03-11 14:15:35] Retrieved roles: 9
+[2025-03-11 15:16:30] Request method: GET
+[2025-03-11 15:16:30] GET all roles
+[2025-03-11 15:16:30] Retrieved roles: 9
+[2025-03-11 15:17:00] Request method: DELETE
+[2025-03-11 15:17:00] DELETE role: 15
+[2025-03-11 15:17:00] Deleted role permissions
+[2025-03-11 15:17:00] Role deleted successfully
+[2025-03-11 15:17:00] Request method: GET
+[2025-03-11 15:17:00] GET all roles
+[2025-03-11 15:17:00] Retrieved roles: 8
+[2025-03-11 15:21:30] Request method: GET
+[2025-03-11 15:21:30] GET all roles
+[2025-03-11 15:21:30] Retrieved roles: 8
+[2025-03-11 16:33:15] Request method: GET
+[2025-03-11 16:33:15] GET all roles
+[2025-03-11 16:33:15] Retrieved roles: 8
+[2025-03-11 16:33:37] Request method: GET
+[2025-03-11 16:33:37] GET all roles
+[2025-03-11 16:33:37] Retrieved roles: 8
+[2025-03-11 17:21:32] Request method: GET
+[2025-03-11 17:21:32] GET all roles
+[2025-03-11 17:21:32] Retrieved roles: 8
+[2025-03-11 17:21:39] Request method: DELETE
+[2025-03-11 17:21:39] DELETE role: 14
+[2025-03-11 17:21:39] Deleted role permissions
+[2025-03-11 17:21:39] Role deleted successfully
+[2025-03-11 17:21:39] Request method: GET
+[2025-03-11 17:21:39] GET all roles
+[2025-03-11 17:21:39] Retrieved roles: 7
+[2025-03-11 17:21:52] Request method: POST
+[2025-03-11 17:21:52] Request body: {"name":"test5","description":"","permissions":[]}
+[2025-03-11 17:21:52] POST create role: {"name":"test5","description":"","permissions":[]}
+[2025-03-11 17:21:52] Role created: 16
+[2025-03-11 17:21:52] No permissions to insert
+[2025-03-11 17:21:52] Request method: GET
+[2025-03-11 17:21:52] GET all roles
+[2025-03-11 17:21:52] Retrieved roles: 8
+[2025-03-11 21:43:25] Request method: GET
+[2025-03-11 21:43:25] GET all roles
+[2025-03-11 21:43:25] Retrieved roles: 8
+[2025-03-12 07:29:28] Request method: GET
+[2025-03-12 07:29:28] GET all roles
+[2025-03-12 07:29:28] Retrieved roles: 8
+[2025-03-12 15:24:37] Request method: GET
+[2025-03-12 15:24:37] GET all roles
+[2025-03-12 15:24:37] Retrieved roles: 8
+[2025-03-13 08:14:38] Request method: GET
+[2025-03-13 08:14:38] GET all roles
+[2025-03-13 08:14:38] Retrieved roles: 8
+[2025-03-13 09:58:44] Request method: GET
+[2025-03-13 09:58:44] GET all roles
+[2025-03-13 09:58:44] Retrieved roles: 8
+[2025-03-13 09:58:47] Request method: GET
+[2025-03-13 09:58:47] GET role by ID: 1
+[2025-03-13 09:58:47] Role data retrieved: 48 permissions
+[2025-03-13 10:12:35] Request method: GET
+[2025-03-13 10:12:35] GET all roles
+[2025-03-13 10:12:35] Retrieved roles: 8
+[2025-03-13 10:12:38] Request method: GET
+[2025-03-13 10:12:38] GET role by ID: 13
+[2025-03-13 10:12:38] Role data retrieved: 48 permissions
+[2025-03-13 10:12:50] Request method: GET
+[2025-03-13 10:12:50] GET role by ID: 13
+[2025-03-13 10:12:50] Role data retrieved: 48 permissions
+[2025-03-13 10:13:13] Request method: PUT
+[2025-03-13 10:13:13] Request body: {"name":"andrea","description":"","permissions":[{"id":"20","can_read":1,"can_write":1,"can_create":1},{"id":"4","can_read":1,"can_write":1,"can_create":1},{"id":"32","can_read":1,"can_write":1,"can_create":0},{"id":"18","can_read":1,"can_write":1,"can_create":1},{"id":"2","can_read":1,"can_write":1,"can_create":1},{"id":"6","can_read":1,"can_write":0,"can_create":0},{"id":"45","can_read":1,"can_write":0,"can_create":0},{"id":"3","can_read":1,"can_write":1,"can_create":1},{"id":"44","can_read":1,"can_write":0,"can_create":0},{"id":"42","can_read":1,"can_write":1,"can_create":1}],"id":"13"}
+[2025-03-13 10:13:13] PUT update role: {"name":"andrea","description":"","permissions":[{"id":"20","can_read":1,"can_write":1,"can_create":1},{"id":"4","can_read":1,"can_write":1,"can_create":1},{"id":"32","can_read":1,"can_write":1,"can_create":0},{"id":"18","can_read":1,"can_write":1,"can_create":1},{"id":"2","can_read":1,"can_write":1,"can_create":1},{"id":"6","can_read":1,"can_write":0,"can_create":0},{"id":"45","can_read":1,"can_write":0,"can_create":0},{"id":"3","can_read":1,"can_write":1,"can_create":1},{"id":"44","can_read":1,"can_write":0,"can_create":0},{"id":"42","can_read":1,"can_write":1,"can_create":1}],"id":"13"}
+[2025-03-13 10:13:13] Role updated: 13
+[2025-03-13 10:13:13] Request method: POST
+[2025-03-13 10:13:13] Request body: {"action":"addRole","role":{"id":"","name":"andrea","description":""},"permissions":[{"category":"Assegnazione ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Cronologia ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Elenco ristoranti","can_read":1,"can_write":1,"can_create":0},{"category":"Gestione Driver","can_read":1,"can_write":1,"can_create":1},{"category":"Gestione Ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Gestione Ristorante","can_read":1,"can_write":0,"can_create":0},{"category":"Integrazioni","can_read":1,"can_write":0,"can_create":0},{"category":"Ordini in corso","can_read":1,"can_write":1,"can_create":1},{"category":"Ruoli & permessi","can_read":1,"can_write":0,"can_create":0},{"category":"Sistema","can_read":1,"can_write":1,"can_create":1}]}
+[2025-03-13 10:13:13] POST create role: {"action":"addRole","role":{"id":"","name":"andrea","description":""},"permissions":[{"category":"Assegnazione ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Cronologia ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Elenco ristoranti","can_read":1,"can_write":1,"can_create":0},{"category":"Gestione Driver","can_read":1,"can_write":1,"can_create":1},{"category":"Gestione Ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Gestione Ristorante","can_read":1,"can_write":0,"can_create":0},{"category":"Integrazioni","can_read":1,"can_write":0,"can_create":0},{"category":"Ordini in corso","can_read":1,"can_write":1,"can_create":1},{"category":"Ruoli & permessi","can_read":1,"can_write":0,"can_create":0},{"category":"Sistema","can_read":1,"can_write":1,"can_create":1}]}
+[2025-03-13 10:13:13] Error: Role name is required
+[2025-03-13 10:13:13] Deleted old permissions: Success
+[2025-03-13 10:13:13] Inserting new permissions: 10
+[2025-03-13 10:13:13] Permission inserts completed: Success: 10, Errors: 0
+[2025-03-13 10:13:13] Request method: GET
+[2025-03-13 10:13:13] GET all roles
+[2025-03-13 10:13:13] Retrieved roles: 8
+[2025-03-13 10:13:19] Request method: GET
+[2025-03-13 10:13:19] GET role by ID: 13
+[2025-03-13 10:13:19] Role data retrieved: 48 permissions
+[2025-03-13 10:13:47] Request method: GET
+[2025-03-13 10:13:47] GET all roles
+[2025-03-13 10:13:47] Retrieved roles: 8
+[2025-03-13 10:13:48] Request method: GET
+[2025-03-13 10:13:48] GET role by ID: 13
+[2025-03-13 10:13:48] Role data retrieved: 48 permissions
+[2025-03-13 10:14:14] Request method: PUT
+[2025-03-13 10:14:14] Request body: {"name":"andrea","description":"","permissions":[{"id":"20","can_read":1,"can_write":1,"can_create":1},{"id":"4","can_read":1,"can_write":1,"can_create":1},{"id":"32","can_read":1,"can_write":1,"can_create":0},{"id":"18","can_read":1,"can_write":1,"can_create":1},{"id":"2","can_read":1,"can_write":1,"can_create":1},{"id":"6","can_read":1,"can_write":0,"can_create":0},{"id":"45","can_read":1,"can_write":0,"can_create":0},{"id":"31","can_read":1,"can_write":0,"can_create":0},{"id":"3","can_read":1,"can_write":1,"can_create":1},{"id":"44","can_read":1,"can_write":0,"can_create":0},{"id":"42","can_read":1,"can_write":1,"can_create":1}],"id":"13"}
+[2025-03-13 10:14:14] PUT update role: {"name":"andrea","description":"","permissions":[{"id":"20","can_read":1,"can_write":1,"can_create":1},{"id":"4","can_read":1,"can_write":1,"can_create":1},{"id":"32","can_read":1,"can_write":1,"can_create":0},{"id":"18","can_read":1,"can_write":1,"can_create":1},{"id":"2","can_read":1,"can_write":1,"can_create":1},{"id":"6","can_read":1,"can_write":0,"can_create":0},{"id":"45","can_read":1,"can_write":0,"can_create":0},{"id":"31","can_read":1,"can_write":0,"can_create":0},{"id":"3","can_read":1,"can_write":1,"can_create":1},{"id":"44","can_read":1,"can_write":0,"can_create":0},{"id":"42","can_read":1,"can_write":1,"can_create":1}],"id":"13"}
+[2025-03-13 10:14:14] Role updated: 13
+[2025-03-13 10:14:14] Deleted old permissions: Success
+[2025-03-13 10:14:14] Inserting new permissions: 11
+[2025-03-13 10:14:14] Request method: POST
+[2025-03-13 10:14:14] Request body: {"action":"addRole","role":{"id":"","name":"andrea","description":""},"permissions":[{"category":"Assegnazione ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Cronologia ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Elenco ristoranti","can_read":1,"can_write":1,"can_create":0},{"category":"Gestione Driver","can_read":1,"can_write":1,"can_create":1},{"category":"Gestione Ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Gestione Ristorante","can_read":1,"can_write":0,"can_create":0},{"category":"Integrazioni","can_read":1,"can_write":0,"can_create":0},{"category":"Marketplace","can_read":1,"can_write":0,"can_create":0},{"category":"Ordini in corso","can_read":1,"can_write":1,"can_create":1},{"category":"Ruoli & permessi","can_read":1,"can_write":0,"can_create":0},{"category":"Sistema","can_read":1,"can_write":1,"can_create":1}]}
+[2025-03-13 10:14:14] POST create role: {"action":"addRole","role":{"id":"","name":"andrea","description":""},"permissions":[{"category":"Assegnazione ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Cronologia ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Elenco ristoranti","can_read":1,"can_write":1,"can_create":0},{"category":"Gestione Driver","can_read":1,"can_write":1,"can_create":1},{"category":"Gestione Ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Gestione Ristorante","can_read":1,"can_write":0,"can_create":0},{"category":"Integrazioni","can_read":1,"can_write":0,"can_create":0},{"category":"Marketplace","can_read":1,"can_write":0,"can_create":0},{"category":"Ordini in corso","can_read":1,"can_write":1,"can_create":1},{"category":"Ruoli & permessi","can_read":1,"can_write":0,"can_create":0},{"category":"Sistema","can_read":1,"can_write":1,"can_create":1}]}
+[2025-03-13 10:14:14] Error: Role name is required
+[2025-03-13 10:14:14] Permission inserts completed: Success: 11, Errors: 0
+[2025-03-13 10:14:14] Request method: GET
+[2025-03-13 10:14:14] GET all roles
+[2025-03-13 10:14:14] Retrieved roles: 8
+[2025-03-13 10:26:22] Request method: GET
+[2025-03-13 10:26:22] GET all roles
+[2025-03-13 10:26:22] Retrieved roles: 8
+[2025-03-13 10:26:24] Request method: GET
+[2025-03-13 10:26:24] GET role by ID: 13
+[2025-03-13 10:26:24] Role data retrieved: 48 permissions
+[2025-03-13 10:26:33] Request method: PUT
+[2025-03-13 10:26:33] Request body: {"name":"andrea","description":"","permissions":[{"id":"20","can_read":1,"can_write":1,"can_create":1},{"id":"4","can_read":1,"can_write":1,"can_create":1},{"id":"32","can_read":1,"can_write":0,"can_create":0},{"id":"18","can_read":1,"can_write":1,"can_create":1},{"id":"2","can_read":1,"can_write":1,"can_create":1},{"id":"6","can_read":1,"can_write":0,"can_create":0},{"id":"45","can_read":1,"can_write":0,"can_create":0},{"id":"31","can_read":1,"can_write":0,"can_create":0},{"id":"3","can_read":1,"can_write":1,"can_create":1},{"id":"44","can_read":1,"can_write":0,"can_create":0},{"id":"42","can_read":1,"can_write":1,"can_create":1}],"id":"13"}
+[2025-03-13 10:26:33] PUT update role: {"name":"andrea","description":"","permissions":[{"id":"20","can_read":1,"can_write":1,"can_create":1},{"id":"4","can_read":1,"can_write":1,"can_create":1},{"id":"32","can_read":1,"can_write":0,"can_create":0},{"id":"18","can_read":1,"can_write":1,"can_create":1},{"id":"2","can_read":1,"can_write":1,"can_create":1},{"id":"6","can_read":1,"can_write":0,"can_create":0},{"id":"45","can_read":1,"can_write":0,"can_create":0},{"id":"31","can_read":1,"can_write":0,"can_create":0},{"id":"3","can_read":1,"can_write":1,"can_create":1},{"id":"44","can_read":1,"can_write":0,"can_create":0},{"id":"42","can_read":1,"can_write":1,"can_create":1}],"id":"13"}
+[2025-03-13 10:26:33] Role updated: 13
+[2025-03-13 10:26:33] Request method: POST
+[2025-03-13 10:26:33] Request body: {"action":"addRole","role":{"id":"","name":"andrea","description":""},"permissions":[{"category":"Assegnazione ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Cronologia ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Elenco ristoranti","can_read":1,"can_write":0,"can_create":0},{"category":"Gestione Driver","can_read":1,"can_write":1,"can_create":1},{"category":"Gestione Ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Gestione Ristorante","can_read":1,"can_write":0,"can_create":0},{"category":"Integrazioni","can_read":1,"can_write":0,"can_create":0},{"category":"Marketplace","can_read":1,"can_write":0,"can_create":0},{"category":"Ordini in corso","can_read":1,"can_write":1,"can_create":1},{"category":"Ruoli & permessi","can_read":1,"can_write":0,"can_create":0},{"category":"Sistema","can_read":1,"can_write":1,"can_create":1}]}
+[2025-03-13 10:26:33] POST create role: {"action":"addRole","role":{"id":"","name":"andrea","description":""},"permissions":[{"category":"Assegnazione ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Cronologia ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Elenco ristoranti","can_read":1,"can_write":0,"can_create":0},{"category":"Gestione Driver","can_read":1,"can_write":1,"can_create":1},{"category":"Gestione Ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Gestione Ristorante","can_read":1,"can_write":0,"can_create":0},{"category":"Integrazioni","can_read":1,"can_write":0,"can_create":0},{"category":"Marketplace","can_read":1,"can_write":0,"can_create":0},{"category":"Ordini in corso","can_read":1,"can_write":1,"can_create":1},{"category":"Ruoli & permessi","can_read":1,"can_write":0,"can_create":0},{"category":"Sistema","can_read":1,"can_write":1,"can_create":1}]}
+[2025-03-13 10:26:33] Error: Role name is required
+[2025-03-13 10:26:33] Deleted old permissions: Success
+[2025-03-13 10:26:33] Inserting new permissions: 11
+[2025-03-13 10:26:33] Permission inserts completed: Success: 11, Errors: 0
+[2025-03-13 10:26:33] Request method: GET
+[2025-03-13 10:26:33] GET all roles
+[2025-03-13 10:26:33] Retrieved roles: 8
+[2025-03-13 10:38:09] Request method: GET
+[2025-03-13 10:38:09] GET all roles
+[2025-03-13 10:38:09] Retrieved roles: 8
+[2025-03-13 10:38:11] Request method: GET
+[2025-03-13 10:38:11] GET role by ID: 13
+[2025-03-13 10:38:11] Role data retrieved: 48 permissions
+[2025-03-13 10:38:26] Request method: PUT
+[2025-03-13 10:38:26] Request body: {"name":"andrea","description":"","permissions":[{"id":"20","can_read":1,"can_write":1,"can_create":1},{"id":"4","can_read":1,"can_write":1,"can_create":1},{"id":"32","can_read":1,"can_write":1,"can_create":0},{"id":"18","can_read":1,"can_write":1,"can_create":1},{"id":"2","can_read":1,"can_write":1,"can_create":1},{"id":"6","can_read":1,"can_write":0,"can_create":0},{"id":"45","can_read":1,"can_write":0,"can_create":0},{"id":"31","can_read":1,"can_write":0,"can_create":0},{"id":"3","can_read":1,"can_write":1,"can_create":1},{"id":"44","can_read":1,"can_write":0,"can_create":0},{"id":"42","can_read":1,"can_write":1,"can_create":1}],"id":"13"}
+[2025-03-13 10:38:26] PUT update role: {"name":"andrea","description":"","permissions":[{"id":"20","can_read":1,"can_write":1,"can_create":1},{"id":"4","can_read":1,"can_write":1,"can_create":1},{"id":"32","can_read":1,"can_write":1,"can_create":0},{"id":"18","can_read":1,"can_write":1,"can_create":1},{"id":"2","can_read":1,"can_write":1,"can_create":1},{"id":"6","can_read":1,"can_write":0,"can_create":0},{"id":"45","can_read":1,"can_write":0,"can_create":0},{"id":"31","can_read":1,"can_write":0,"can_create":0},{"id":"3","can_read":1,"can_write":1,"can_create":1},{"id":"44","can_read":1,"can_write":0,"can_create":0},{"id":"42","can_read":1,"can_write":1,"can_create":1}],"id":"13"}
+[2025-03-13 10:38:26] Role updated: 13
+[2025-03-13 10:38:26] Deleted old permissions: Success
+[2025-03-13 10:38:26] Inserting new permissions: 11
+[2025-03-13 10:38:26] Request method: POST
+[2025-03-13 10:38:26] Request body: {"action":"addRole","role":{"id":"","name":"andrea","description":""},"permissions":[{"category":"Assegnazione ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Cronologia ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Elenco ristoranti","can_read":1,"can_write":1,"can_create":0},{"category":"Gestione Driver","can_read":1,"can_write":1,"can_create":1},{"category":"Gestione Ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Gestione Ristorante","can_read":1,"can_write":0,"can_create":0},{"category":"Integrazioni","can_read":1,"can_write":0,"can_create":0},{"category":"Marketplace","can_read":1,"can_write":0,"can_create":0},{"category":"Ordini in corso","can_read":1,"can_write":1,"can_create":1},{"category":"Ruoli & permessi","can_read":1,"can_write":0,"can_create":0},{"category":"Sistema","can_read":1,"can_write":1,"can_create":1}]}
+[2025-03-13 10:38:26] POST create role: {"action":"addRole","role":{"id":"","name":"andrea","description":""},"permissions":[{"category":"Assegnazione ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Cronologia ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Elenco ristoranti","can_read":1,"can_write":1,"can_create":0},{"category":"Gestione Driver","can_read":1,"can_write":1,"can_create":1},{"category":"Gestione Ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Gestione Ristorante","can_read":1,"can_write":0,"can_create":0},{"category":"Integrazioni","can_read":1,"can_write":0,"can_create":0},{"category":"Marketplace","can_read":1,"can_write":0,"can_create":0},{"category":"Ordini in corso","can_read":1,"can_write":1,"can_create":1},{"category":"Ruoli & permessi","can_read":1,"can_write":0,"can_create":0},{"category":"Sistema","can_read":1,"can_write":1,"can_create":1}]}
+[2025-03-13 10:38:26] Error: Role name is required
+[2025-03-13 10:38:26] Permission inserts completed: Success: 11, Errors: 0
+[2025-03-13 10:38:26] Request method: GET
+[2025-03-13 10:38:26] GET all roles
+[2025-03-13 10:38:26] Retrieved roles: 8
+[2025-03-13 11:18:17] Request method: GET
+[2025-03-13 11:18:17] GET all roles
+[2025-03-13 11:18:17] Retrieved roles: 8
+[2025-03-13 17:16:02] Request method: GET
+[2025-03-13 17:16:02] GET all roles
+[2025-03-13 17:16:02] Retrieved roles: 8
+[2025-03-13 17:16:48] Request method: GET
+[2025-03-13 17:16:48] GET all roles
+[2025-03-13 17:16:48] Retrieved roles: 8
+[2025-03-13 17:43:49] Request method: GET
+[2025-03-13 17:43:49] GET all roles
+[2025-03-13 17:43:49] Retrieved roles: 8
+[2025-03-13 17:46:21] Request method: GET
+[2025-03-13 17:46:21] GET all roles
+[2025-03-13 17:46:21] Retrieved roles: 8
+[2025-03-13 17:46:28] Request method: GET
+[2025-03-13 17:46:28] GET role by ID: 13
+[2025-03-13 17:46:28] Role data retrieved: 48 permissions
+[2025-03-13 17:46:51] Request method: POST
+[2025-03-13 17:46:51] Request body: {"action":"addRole","role":{"id":"","name":"andrea","description":""},"permissions":[{"category":"Assegnazione ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Cronologia ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Elenco ristoranti","can_read":1,"can_write":0,"can_create":0},{"category":"Gestione Driver","can_read":1,"can_write":1,"can_create":1},{"category":"Gestione Ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Gestione Ristorante","can_read":1,"can_write":0,"can_create":0},{"category":"Integrazioni","can_read":1,"can_write":0,"can_create":0},{"category":"Marketplace","can_read":1,"can_write":0,"can_create":0},{"category":"Ordini in corso","can_read":1,"can_write":1,"can_create":1},{"category":"Ruoli & permessi","can_read":1,"can_write":0,"can_create":0},{"category":"Sistema","can_read":1,"can_write":1,"can_create":1}]}
+[2025-03-13 17:46:51] POST create role: {"action":"addRole","role":{"id":"","name":"andrea","description":""},"permissions":[{"category":"Assegnazione ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Cronologia ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Elenco ristoranti","can_read":1,"can_write":0,"can_create":0},{"category":"Gestione Driver","can_read":1,"can_write":1,"can_create":1},{"category":"Gestione Ordini","can_read":1,"can_write":1,"can_create":1},{"category":"Gestione Ristorante","can_read":1,"can_write":0,"can_create":0},{"category":"Integrazioni","can_read":1,"can_write":0,"can_create":0},{"category":"Marketplace","can_read":1,"can_write":0,"can_create":0},{"category":"Ordini in corso","can_read":1,"can_write":1,"can_create":1},{"category":"Ruoli & permessi","can_read":1,"can_write":0,"can_create":0},{"category":"Sistema","can_read":1,"can_write":1,"can_create":1}]}
+[2025-03-13 17:46:51] Error: Role name is required
+[2025-03-13 17:46:51] Request method: PUT
+[2025-03-13 17:46:51] Request body: {"name":"andrea","description":"","permissions":[{"id":"20","can_read":1,"can_write":1,"can_create":1},{"id":"4","can_read":1,"can_write":1,"can_create":1},{"id":"32","can_read":1,"can_write":0,"can_create":0},{"id":"18","can_read":1,"can_write":1,"can_create":1},{"id":"2","can_read":1,"can_write":1,"can_create":1},{"id":"6","can_read":1,"can_write":0,"can_create":0},{"id":"45","can_read":1,"can_write":0,"can_create":0},{"id":"31","can_read":1,"can_write":0,"can_create":0},{"id":"3","can_read":1,"can_write":1,"can_create":1},{"id":"44","can_read":1,"can_write":0,"can_create":0},{"id":"42","can_read":1,"can_write":1,"can_create":1}],"id":"13"}
+[2025-03-13 17:46:51] PUT update role: {"name":"andrea","description":"","permissions":[{"id":"20","can_read":1,"can_write":1,"can_create":1},{"id":"4","can_read":1,"can_write":1,"can_create":1},{"id":"32","can_read":1,"can_write":0,"can_create":0},{"id":"18","can_read":1,"can_write":1,"can_create":1},{"id":"2","can_read":1,"can_write":1,"can_create":1},{"id":"6","can_read":1,"can_write":0,"can_create":0},{"id":"45","can_read":1,"can_write":0,"can_create":0},{"id":"31","can_read":1,"can_write":0,"can_create":0},{"id":"3","can_read":1,"can_write":1,"can_create":1},{"id":"44","can_read":1,"can_write":0,"can_create":0},{"id":"42","can_read":1,"can_write":1,"can_create":1}],"id":"13"}
+[2025-03-13 17:46:51] Role updated: 13
+[2025-03-13 17:46:51] Deleted old permissions: Success
+[2025-03-13 17:46:51] Inserting new permissions: 11
+[2025-03-13 17:46:51] Permission inserts completed: Success: 11, Errors: 0
+[2025-03-13 17:46:51] Request method: GET
+[2025-03-13 17:46:51] GET all roles
+[2025-03-13 17:46:51] Retrieved roles: 8
+[2025-03-13 17:59:55] Request method: GET
+[2025-03-13 17:59:55] GET all roles
+[2025-03-13 17:59:55] Retrieved roles: 8
+[2025-03-14 15:34:12] Request method: GET
+[2025-03-14 15:34:12] GET all roles
+[2025-03-14 15:34:12] Retrieved roles: 8
+[2025-03-14 16:19:57] Request method: GET
+[2025-03-14 16:19:57] GET all roles
+[2025-03-14 16:19:57] Retrieved roles: 8

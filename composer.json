@@ -1,0 +1,7 @@
+{
+    "require": {
+        "phpmailer/phpmailer": "^6.9",
+        "chillerlan/php-qrcode": "^5.0",
+        "kreait/firebase-php": "^5.26"
+    }
+}
