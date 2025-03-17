@@ -375,6 +375,63 @@ function deleteIntegration($id) {
     return $stmt->execute();
 }
 
+// Funzione per sincronizzare le impostazioni di Twilio con l'integrazione
+function syncTwilioSettings() {
+    global $conn;
+    
+    // Ottieni le impostazioni SMS dal database
+    $smsSettings = getSettings('sms');
+    
+    // Trova l'integrazione Twilio
+    $query = "SELECT * FROM integrations WHERE name = 'Twilio' AND type = 'sms' LIMIT 1";
+    $result = $conn->query($query);
+    
+    if ($result&&$result->num_rows > 0) {
+        $twilioIntegration = $result->fetch_assoc();
+        $twilioConfig = json_decode($twilioIntegration['config'], true);
+        
+        // Aggiorna la configurazione con i valori delle impostazioni di sistema
+        $configChanged = false;
+        
+        if (isset($smsSettings['twilio_account_sid'])&&$twilioConfig['account_sid'] != $smsSettings['twilio_account_sid']['setting_value']) {
+            $twilioConfig['account_sid'] = $smsSettings['twilio_account_sid']['setting_value'];
+            $configChanged = true;
+        }
+        
+        if (isset($smsSettings['twilio_auth_token'])&&$twilioConfig['auth_token'] != $smsSettings['twilio_auth_token']['setting_value']) {
+            $twilioConfig['auth_token'] = $smsSettings['twilio_auth_token']['setting_value'];
+            $configChanged = true;
+        }
+        
+        if (isset($smsSettings['twilio_phone_number'])&&$twilioConfig['from_number'] != $smsSettings['twilio_phone_number']['setting_value']) {
+            $twilioConfig['from_number'] = $smsSettings['twilio_phone_number']['setting_value'];
+            $configChanged = true;
+        }
+        
+        if (isset($smsSettings['twilio_verify_service_sid'])&&$twilioConfig['verify_service_sid'] != $smsSettings['twilio_verify_service_sid']['setting_value']) {
+            $twilioConfig['verify_service_sid'] = $smsSettings['twilio_verify_service_sid']['setting_value'];
+            $configChanged = true;
+        }
+        
+        // Aggiorna lo stato basato sull'impostazione twilio_enabled
+        $newStatus = (isset($smsSettings['twilio_enabled'])&&$smsSettings['twilio_enabled']['setting_value'] == '1') ? 'active' : 'inactive';
+        $statusChanged = $twilioIntegration['status'] != $newStatus;
+        
+        // Salva le modifiche se necessario
+        if ($configChanged) {
+            updateIntegrationConfig($twilioIntegration['id'], $twilioConfig);
+        }
+        
+        if ($statusChanged) {
+            updateIntegrationStatus($twilioIntegration['id'], $newStatus);
+        }
+        
+        if ($configChanged || $statusChanged) {
+            logSystemAction('info', 'Impostazioni Twilio sincronizzate con l\'integrazione');
+        }
+    }
+}
+
 // Funzione per verificare una connessione API
 function testApiConnection($url, $method = 'GET', $headers = [], $data = null, $timeout = 10) {
     global $CERT_PATH;
@@ -433,6 +490,37 @@ function testApiConnection($url, $method = 'GET', $headers = [], $data = null, $
     ];
 }
 
+// Funzione specifica per testare l'API Twilio
+function testTwilioApi($accountSid, $authToken, $fromNumber = null, $toNumber = null, $message = null) {
+    global $CERT_PATH;
+    
+    $baseUrl = "https://api.twilio.com/2010-04-01/Accounts/{$accountSid}";
+    
+    // Se sono forniti tutti i parametri, invia un SMS di test
+    if ($fromNumber&&$toNumber&&$message) {
+        $url = $baseUrl . "/Messages.json";
+        $data = [
+            'From' => $fromNumber,
+            'To' => $toNumber,
+            'Body' => $message
+        ];
+        $method = 'POST';
+    } else {
+        // Altrimenti verifica solo l'account
+        $url = $baseUrl . ".json";
+        $data = null;
+        $method = 'GET';
+    }
+    
+    // Crea l'header di autenticazione
+    $headers = [
+        'Authorization' => 'Basic ' . base64_encode("{$accountSid}:{$authToken}")
+    ];
+    
+    // Esegui la richiesta
+    return testApiConnection($url, $method, $headers, $data);
+}
+
 // Aggiorna data ultimo test di un'integrazione
 function updateIntegrationLastTested($id) {
     global $conn;
@@ -442,6 +530,9 @@ function updateIntegrationLastTested($id) {
     $stmt->bind_param("i", $id);
     return $stmt->execute();
 }
+
+// Sincronizza le impostazioni Twilio
+syncTwilioSettings();
 
 // Gestione delle richieste AJAX
 if ($_SERVER['REQUEST_METHOD'] === 'POST'&&isset($_POST['action'])) {
@@ -468,6 +559,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'&&isset($_POST['action'])) {
             }
         }
         
+        // Se stiamo aggiornando le impostazioni SMS, sincronizza Twilio
+        if ($section === 'sms'&&$success) {
+            syncTwilioSettings();
+        }
+        
         // Registra l'operazione nei log
         $level = $success ? 'info' : 'error';
         $logMessage = $success ? 'Impostazioni ' . $section . ' aggiornate' : 'Errore aggiornamento impostazioni ' . $section;
@@ -491,6 +587,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'&&isset($_POST['action'])) {
         
         // Aggiorna lo stato
         if (updateIntegrationStatus($integrationId, $status)) {
+            // Se è Twilio, aggiorna anche l'impostazione di sistema
+            if ($integration['name'] === 'Twilio'&&$integration['type'] === 'sms') {
+                updateSetting('twilio_enabled', $status === 'active' ? '1' : '0');
+            }
+            
             // Log dell'azione
             $statusText = $status === 'active' ? 'attivata' : 'disattivata';
             logSystemAction('info', "Integrazione {$integration['name']} $statusText");
@@ -516,6 +617,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'&&isset($_POST['action'])) {
         
         // Aggiorna la configurazione
         if (updateIntegrationConfig($integrationId, $config)) {
+            // Se è Twilio, aggiorna anche le impostazioni di sistema
+            if ($integration['name'] === 'Twilio'&&$integration['type'] === 'sms') {
+                if (isset($config['account_sid'])) {
+                    updateSetting('twilio_account_sid', $config['account_sid']);
+                }
+                if (isset($config['auth_token'])) {
+                    updateSetting('twilio_auth_token', $config['auth_token']);
+                }
+                if (isset($config['from_number'])) {
+                    updateSetting('twilio_phone_number', $config['from_number']);
+                }
+                if (isset($config['verify_service_sid'])) {
+                    updateSetting('twilio_verify_service_sid', $config['verify_service_sid']);
+                }
+            }
+            
             // Log dell'azione
             logSystemAction('info', "Configurazione dell'integrazione {$integration['name']} aggiornata");
             
@@ -637,6 +754,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'&&isset($_POST['action'])) {
         exit;
     }
     
+    // Test Twilio API
+    if ($action === 'test_twilio_api'&&isset($_POST['account_sid'])&&isset($_POST['auth_token'])) {
+        $accountSid = $_POST['account_sid'];
+        $authToken = $_POST['auth_token'];
+        $fromNumber = $_POST['from_number'] ?? null;
+        $toNumber = $_POST['to_number'] ?? null;
+        $message = $_POST['message'] ?? null;
+        $integrationId = isset($_POST['integration_id']) ? intval($_POST['integration_id']) : null;
+        
+        // Esegui il test
+        $result = testTwilioApi($accountSid, $authToken, $fromNumber, $toNumber, $message);
+        
+        // Aggiorna timestamp dell'ultimo test
+        if ($integrationId) {
+            updateIntegrationLastTested($integrationId);
+        }
+        
+        // Prepara la risposta
+        $response = [
+            'success' => $result['success'],
+            'message' => $result['success'] ? 'Connessione a Twilio riuscita' : 'Errore di connessione a Twilio: ' . $result['error'],
+            'http_code' => $result['http_code'],
+            'response' => is_string($result['response']) ? $result['response'] : json_encode($result['response'])
+        ];
+        
+        // Log del test
+        $logLevel = $result['success'] ? 'info' : 'warning';
+        logSystemAction($logLevel, "Test API Twilio: " . ($result['success'] ? 'successo' : 'fallito') . " (HTTP {$result['http_code']})");
+        
+        echo json_encode($response);
+        exit;
+    }
+    
     // Test webhook
     if ($action === 'test_webhook'&&isset($_POST['url'])) {
         $url = $_POST['url'];
@@ -706,6 +856,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'&&isset($_POST['action'])) {
 $socialSettings = getSettings('social');
 $paymentSettings = getSettings('payment');
 $notificationSettings = getSettings('notifications');
+$smsSettings = getSettings('sms');
 
 // Carica tutte le integrazioni disponibili
 $integrations = getAllIntegrations();
@@ -1502,6 +1653,7 @@ $otherIntegrations = array_filter($integrations, function($item) {
                     <form id="configureIntegrationForm">
                         <input type="hidden" id="integration_id" name="integration_id" value="">
                         <input type="hidden" id="integration_is_built_in" name="integration_is_built_in" value="0">
+                        <input type="hidden" id="integration_type_value" name="integration_type_value" value="">
                         
                         <div class="mb-3">
                             <label class="form-label" for="integration_name">Nome</label>
@@ -1540,13 +1692,8 @@ $otherIntegrations = array_filter($integrations, function($item) {
                         <div class="mb-0">
                             <label class="form-label d-flex justify-content-between align-items-center">
                                 <span>Test Connessione</span>
-                                <div>
-                                    <button type="button" class="btn btn-sm btn-outline-primary" id="testApiButton">
-                                        Test API
-                                    </button>
-                                    <button type="button" class="btn btn-sm btn-outline-primary ms-1" id="testWebhookButton">
-                                        Test Webhook
-                                    </button>
+                                <div id="test_buttons_container">
+                                    <!-- I pulsanti di test saranno inseriti qui in base al tipo di integrazione -->
                                 </div>
                             </label>
                             <div id="test_result" class="alert d-none mt-2"></div>
@@ -1561,6 +1708,42 @@ $otherIntegrations = array_filter($integrations, function($item) {
                     <?php if ($canWrite): ?>
                     <button type="button" class="btn btn-primary" id="saveIntegrationBtn">Salva Configurazione</button>
                     <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Test Twilio -->
+    <div class="modal fade" id="testTwilioModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Test SMS Twilio</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="testTwilioForm">
+                        <input type="hidden" id="twilio_integration_id" name="integration_id" value="">
+                        <input type="hidden" id="twilio_account_sid" name="account_sid" value="">
+                        <input type="hidden" id="twilio_auth_token" name="auth_token" value="">
+                        <input type="hidden" id="twilio_from_number" name="from_number" value="">
+                        
+                        <div class="mb-3">
+                            <label class="form-label" for="twilio_to_number">Numero Destinatario</label>
+                            <input type="text" class="form-control" id="twilio_to_number" name="to_number" placeholder="+393XXXXXXXX" required>
+                            <small class="text-muted">Inserisci il numero in formato internazionale (es. +393XXXXXXXX)</small>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label" for="twilio_message">Messaggio di Test</label>
+                            <textarea class="form-control" id="twilio_message" name="message" rows="3" required>Questo è un messaggio di test dal sistema.</textarea>
+                        </div>
+                    </form>
+                    <div id="twilio_test_result" class="alert d-none mt-3"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Chiudi</button>
+                    <button type="button" class="btn btn-primary" id="sendTwilioTestBtn">Invia SMS</button>
                 </div>
             </div>
         </div>
@@ -1699,6 +1882,7 @@ $otherIntegrations = array_filter($integrations, function($item) {
                 $('#integration_description').val(integration.description);
                 $('#integration_status').prop('checked', integration.status === 'active');
                 $('#integration_is_built_in').val(integration.is_built_in);
+                $('#integration_type_value').val(integration.type);
                 
                 // Nascondi o mostra il pulsante Elimina in base a is_built_in
                 if (integration.is_built_in == 1) {
@@ -1709,6 +1893,9 @@ $otherIntegrations = array_filter($integrations, function($item) {
                 
                 // Genera campi di configurazione in base al tipo di integrazione
                 generateConfigFields(integration);
+                
+                // Genera pulsanti di test in base al tipo di integrazione
+                generateTestButtons(integration);
                 
                 // Mostra il modal
                 $('#integrationModal').modal('show');
@@ -1842,25 +2029,54 @@ $otherIntegrations = array_filter($integrations, function($item) {
                     break;
                     
                 case 'sms':
-                    configContainer.append(`
-                        <div class="mb-3">
-                            <label class="form-label" for="sms_account_sid">Account SID</label>
-                            <input type="text" class="form-control" id="sms_account_sid" name="config[account_sid]" value="${config.account_sid || ''}" ${!userPermissions.canWrite ? 'disabled' : ''}>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="sms_auth_token">Auth Token</label>
-                            <input type="password" class="form-control" id="sms_auth_token" name="config[auth_token]" value="${config.auth_token || ''}" ${!userPermissions.canWrite ? 'disabled' : ''}>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="sms_from_number">Numero Mittente</label>
-                            <input type="text" class="form-control" id="sms_from_number" name="config[from_number]" value="${config.from_number || ''}" ${!userPermissions.canWrite ? 'disabled' : ''}>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="sms_verify_service_sid">Verify Service SID</label>
-                            <input type="text" class="form-control" id="sms_verify_service_sid" name="config[verify_service_sid]" value="${config.verify_service_sid || ''}" ${!userPermissions.canWrite ? 'disabled' : ''}>
-                            <small class="text-muted">Per verifiche SMS a due fattori (2FA)</small>
-                        </div>
-                    `);
+                    if (integration.name === 'Twilio') {
+                        configContainer.append(`
+                            <div class="mb-3">
+                                <label class="form-label" for="sms_account_sid">Account SID</label>
+                                <input type="text" class="form-control" id="sms_account_sid" name="config[account_sid]" value="${config.account_sid || ''}" ${!userPermissions.canWrite ? 'disabled' : ''}>
+                                <small class="text-muted">Il tuo Twilio Account SID (inizia con 'AC')</small>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="sms_auth_token">Auth Token</label>
+                                <input type="password" class="form-control" id="sms_auth_token" name="config[auth_token]" value="${config.auth_token || ''}" ${!userPermissions.canWrite ? 'disabled' : ''}>
+                                <small class="text-muted">Il tuo Twilio Auth Token (dalla dashboard Twilio)</small>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="sms_from_number">Numero Mittente</label>
+                                <input type="text" class="form-control" id="sms_from_number" name="config[from_number]" value="${config.from_number || ''}" ${!userPermissions.canWrite ? 'disabled' : ''}>
+                                <small class="text-muted">Il numero Twilio da utilizzare per l'invio (formato +393XXXXXXXX)</small>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="sms_verify_service_sid">Verify Service SID</label>
+                                <input type="text" class="form-control" id="sms_verify_service_sid" name="config[verify_service_sid]" value="${config.verify_service_sid || ''}" ${!userPermissions.canWrite ? 'disabled' : ''}>
+                                <small class="text-muted">Il SID del servizio Verify per autenticazione a due fattori (2FA)</small>
+                            </div>
+                            <div class="alert alert-primary mt-3 mb-0">
+                                <i class="icon-base ti tabler-info-circle me-1"></i> 
+                                Se modifichi queste impostazioni, verranno automaticamente sincronizzate con le impostazioni di sistema.
+                            </div>
+                        `);
+                    } else {
+                        configContainer.append(`
+                            <div class="mb-3">
+                                <label class="form-label" for="sms_account_sid">Account SID</label>
+                                <input type="text" class="form-control" id="sms_account_sid" name="config[account_sid]" value="${config.account_sid || ''}" ${!userPermissions.canWrite ? 'disabled' : ''}>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="sms_auth_token">Auth Token</label>
+                                <input type="password" class="form-control" id="sms_auth_token" name="config[auth_token]" value="${config.auth_token || ''}" ${!userPermissions.canWrite ? 'disabled' : ''}>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="sms_from_number">Numero Mittente</label>
+                                <input type="text" class="form-control" id="sms_from_number" name="config[from_number]" value="${config.from_number || ''}" ${!userPermissions.canWrite ? 'disabled' : ''}>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="sms_verify_service_sid">Verify Service SID</label>
+                                <input type="text" class="form-control" id="sms_verify_service_sid" name="config[verify_service_sid]" value="${config.verify_service_sid || ''}" ${!userPermissions.canWrite ? 'disabled' : ''}>
+                                <small class="text-muted">Per verifiche SMS a due fattori (2FA)</small>
+                            </div>
+                        `);
+                    }
                     break;
                 
                 default:
@@ -1878,6 +2094,31 @@ $otherIntegrations = array_filter($integrations, function($item) {
             }
         }
         
+        // Funzione per generare i pulsanti di test
+        function generateTestButtons(integration) {
+            const buttonContainer = $('#test_buttons_container');
+            buttonContainer.empty();
+            
+            // Pulsanti generici per tutti i tipi
+            buttonContainer.append(`
+                <button type="button" class="btn btn-sm btn-outline-primary" id="testApiButton">
+                    Test API
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-primary ms-1" id="testWebhookButton">
+                    Test Webhook
+                </button>
+            `);
+            
+            // Aggiungi pulsanti specifici per il tipo di integrazione
+            if (integration.type === 'sms'&&integration.name === 'Twilio') {
+                buttonContainer.append(`
+                    <button type="button" class="btn btn-sm btn-outline-success ms-1" id="testTwilioButton">
+                        Test SMS
+                    </button>
+                `);
+            }
+        }
+        
         // Salva configurazione
         $('#saveIntegrationBtn').on('click', function() {
             if (!userPermissions.canWrite) {
@@ -1887,6 +2128,7 @@ $otherIntegrations = array_filter($integrations, function($item) {
             
             const integrationId = $('#integration_id').val();
             const status = $('#integration_status').is(':checked');
+            const integrationType = $('#integration_type_value').val();
             
             // Raccogli la configurazione
             let config = {};
@@ -2146,7 +2388,7 @@ $otherIntegrations = array_filter($integrations, function($item) {
         });
         
         // Test API
-        $('#testApiButton').on('click', function() {
+        $('#test_buttons_container').on('click', '#testApiButton', function() {
             // Ottieni i dati di configurazione per il test
             let config = {};
             let url = '';
@@ -2154,6 +2396,7 @@ $otherIntegrations = array_filter($integrations, function($item) {
             let method = 'GET';
             let data = null;
             const integrationId = $('#integration_id').val();
+            const integrationType = $('#integration_type_value').val();
             
             // Verifica se stiamo utilizzando il campo JSON generico
             if ($('#config_json').length) {
@@ -2173,15 +2416,54 @@ $otherIntegrations = array_filter($integrations, function($item) {
                     headers['Authorization'] = 'Basic ' + btoa(`${config.api_key}:${config.api_secret}`);
                 }
             } else {
-                // Raccogli i valori dai campi del form
-                url = $('#api_url').val() || $('#payment_api_key').val() || '';
-                const apiKey = $('#api_key').val() || $('#payment_api_key').val() || $('#social_app_id').val() || $('#notification_api_key').val() || '';
-                const apiSecret = $('#api_secret').val() || $('#payment_api_secret').val() || $('#social_app_secret').val() || $('#notification_api_secret').val() || '';
-                
-                if (apiKey&&apiSecret) {
-                    headers['Authorization'] = 'Basic ' + btoa(`${apiKey}:${apiSecret}`);
-                } else if (apiKey) {
-                    headers['Authorization'] = `Bearer ${apiKey}`;
+                // Raccogli i valori dai campi del form in base al tipo di integrazione
+                if (integrationType === 'api') {
+                    url = $('#api_url').val() || '';
+                    const apiKey = $('#api_key').val() || '';
+                    const apiSecret = $('#api_secret').val() || '';
+                    
+                    if (apiKey&&apiSecret) {
+                        headers['Authorization'] = 'Basic ' + btoa(`${apiKey}:${apiSecret}`);
+                    } else if (apiKey) {
+                        headers['Authorization'] = `Bearer ${apiKey}`;
+                    }
+                } else if (integrationType === 'payment') {
+                    url = $('#payment_webhook').val() || '';
+                    const apiKey = $('#payment_api_key').val() || '';
+                    const apiSecret = $('#payment_api_secret').val() || '';
+                    
+                    if (apiKey&&apiSecret) {
+                        headers['Authorization'] = 'Basic ' + btoa(`${apiKey}:${apiSecret}`);
+                    } else if (apiKey) {
+                        headers['Authorization'] = `Bearer ${apiKey}`;
+                    }
+                } else if (integrationType === 'social') {
+                    url = $('#social_redirect_url').val() || '';
+                    const appId = $('#social_app_id').val() || '';
+                    const appSecret = $('#social_app_secret').val() || '';
+                    
+                    if (appId&&appSecret) {
+                        headers['Authorization'] = 'Basic ' + btoa(`${appId}:${appSecret}`);
+                    }
+                } else if (integrationType === 'notification') {
+                    const apiKey = $('#notification_api_key').val() || '';
+                    const serverKey = $('#notification_server_key').val() || '';
+                    
+                    // Per Firebase, usa l'URL di test
+                    url = 'https://fcm.googleapis.com/fcm/send';
+                    
+                    if (serverKey) {
+                        headers['Authorization'] = `key=${serverKey}`;
+                    }
+                } else if (integrationType === 'sms'&&$('#integration_name').val() === 'Twilio') {
+                    const accountSid = $('#sms_account_sid').val() || '';
+                    const authToken = $('#sms_auth_token').val() || '';
+                    
+                    url = `https://api.twilio.com/2010-04-01/Accounts/${accountSid}.json`;
+                    
+                    if (accountSid&&authToken) {
+                        headers['Authorization'] = 'Basic ' + btoa(`${accountSid}:${authToken}`);
+                    }
                 }
             }
             
@@ -2226,11 +2508,102 @@ $otherIntegrations = array_filter($integrations, function($item) {
             });
         });
         
-        // Test Webhook
-        $('#testWebhookButton').on('click', function() {
+        // Test Twilio
+        $('#test_buttons_container').on('click', '#testTwilioButton', function() {
+            const integrationId = $('#integration_id').val();
+            const accountSid = $('#sms_account_sid').val();
+            const authToken = $('#sms_auth_token').val();
+            const fromNumber = $('#sms_from_number').val();
+            
+            // Verifica che i campi obbligatori siano compilati
+            if (!accountSid || !authToken || !fromNumber) {
+                $('#test_result').removeClass('d-none alert-success alert-info').addClass('alert-danger')
+                    .html('<i class="icon-base ti tabler-alert-triangle me-1"></i> Compila tutti i campi Account SID, Auth Token e Numero Mittente prima di testare.');
+                return;
+            }
+            
+            // Imposta i valori nel form di test Twilio
+            $('#twilio_integration_id').val(integrationId);
+            $('#twilio_account_sid').val(accountSid);
+            $('#twilio_auth_token').val(authToken);
+            $('#twilio_from_number').val(fromNumber);
+            
+            // Mostra il modal per il test SMS
+            $('#testTwilioModal').modal('show');
+        });
+        
+        // Invio SMS di test Twilio
+        $('#sendTwilioTestBtn').on('click', function() {
+            const form = $('#testTwilioForm');
+            const toNumber = $('#twilio_to_number').val();
+            const message = $('#twilio_message').val();
+            
+            // Verifica che i campi obbligatori siano compilati
+            if (!toNumber || !message) {
+                $('#twilio_test_result').removeClass('d-none alert-success alert-info').addClass('alert-danger')
+                    .html('<i class="icon-base ti tabler-alert-triangle me-1"></i> Compila sia il numero destinatario che il messaggio.');
+                return;
+            }
+            
+            // Mostra indicatore di caricamento
+            $('#twilio_test_result').removeClass('d-none alert-success alert-danger').addClass('alert-info')
+                .html('<i class="icon-base ti tabler-loader me-1"></i> Invio SMS in corso...');
+            
+            // Raccogli i dati dal form
+            const integrationId = $('#twilio_integration_id').val();
+            const accountSid = $('#twilio_account_sid').val();
+            const authToken = $('#twilio_auth_token').val();
+            const fromNumber = $('#twilio_from_number').val();
+            
+            // Esegui il test
+            $.ajax({
+                url: window.location.href,
+                type: 'POST',
+                data: {
+                    action: 'test_twilio_api',
+                    integration_id: integrationId,
+                    account_sid: accountSid,
+                    auth_token: authToken,
+                    from_number: fromNumber,
+                    to_number: toNumber,
+                    message: message
+                },
+                dataType: 'json',
+                success: function(response) {
+                    if (response.success) {
+                        $('#twilio_test_result').removeClass('alert-info alert-danger').addClass('alert-success')
+                            .html(`<i class="icon-base ti tabler-check me-1"></i> SMS inviato con successo!<br>
+                                  <small>HTTP Status: ${response.http_code}</small>
+                                  <pre class="mt-2 mb-0" style="max-height: 150px; overflow-y: auto;">${response.response}</pre>`);
+                        
+                        // Aggiorna anche il risultato nel modal principale
+                        $('#test_result').removeClass('d-none alert-danger alert-info').addClass('alert-success')
+                            .html('<i class="icon-base ti tabler-check me-1"></i> SMS di test inviato con successo!');
+                        
+                        // Chiudi il modal dopo 3 secondi
+                        setTimeout(() => {
+                            $('#testTwilioModal').modal('hide');
+                        }, 3000);
+                    } else {
+                        $('#twilio_test_result').removeClass('alert-info alert-success').addClass('alert-danger')
+                            .html(`<i class="icon-base ti tabler-alert-triangle me-1"></i> Errore invio SMS: ${response.message}<br>
+                                  <small>HTTP Status: ${response.http_code}</small>
+                                  <pre class="mt-2 mb-0" style="max-height: 150px; overflow-y: auto;">${response.response}</pre>`);
+                    }
+                },
+                error: function() {
+                    $('#twilio_test_result').removeClass('alert-info alert-success').addClass('alert-danger')
+                        .html('<i class="icon-base ti tabler-alert-triangle me-1"></i> Errore di comunicazione con il server');
+                }
+            });
+        });
+        
+        // Test webhook
+        $('#test_buttons_container').on('click', '#testWebhookButton', function() {
             // Ottieni i dati di configurazione per il test
             let webhookUrl = '';
             const integrationId = $('#integration_id').val();
+            const integrationType = $('#integration_type_value').val();
             
             // Verifica se stiamo utilizzando il campo JSON generico
             if ($('#config_json').length) {
@@ -2243,7 +2616,14 @@ $otherIntegrations = array_filter($integrations, function($item) {
                 }
             } else {
                 // Cerca in vari campi possibili per l'URL del webhook
-                webhookUrl = $('#payment_webhook').val() || '';
+                if (integrationType === 'payment') {
+                    webhookUrl = $('#payment_webhook').val() || '';
+                } else if (integrationType === 'sms'&&$('#integration_name').val() === 'Twilio') {
+                    const accountSid = $('#sms_account_sid').val();
+                    if (accountSid) {
+                        webhookUrl = `https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`;
+                    }
+                }
             }
             
             // Se non troviamo un URL, chiedi all'utente
@@ -2326,6 +2706,12 @@ $otherIntegrations = array_filter($integrations, function($item) {
         // Reset risultati test quando si chiude il modal di configurazione
         $('#integrationModal').on('hidden.bs.modal', function () {
             $('#test_result').addClass('d-none').removeClass('alert-success alert-danger alert-info').html('');
+        });
+        
+        // Reset form test Twilio quando si chiude il modal
+        $('#testTwilioModal').on('hidden.bs.modal', function () {
+            $('#testTwilioForm')[0].reset();
+            $('#twilio_test_result').addClass('d-none').removeClass('alert-success alert-danger alert-info').html('');
         });
         
         // Verifica permessi all'avvio
