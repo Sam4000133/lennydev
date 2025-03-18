@@ -50,6 +50,12 @@ $lockoutTime = (int)getSetting($conn, 'lockout_time', '30'); // in minuti
 // Ottieni impostazione two factor auth
 $twoFactorAuthEnabled = getSetting($conn, 'two_factor_auth', '1');
 
+// Recupera le impostazioni di social login dal database
+$facebookEnabled = getSetting($conn, 'facebook_enabled', '0');
+$googleEnabled = getSetting($conn, 'google_enabled', '0');
+$twitterEnabled = getSetting($conn, 'twitter_enabled', '0');
+$githubEnabled = getSetting($conn, 'github_enabled', '0');
+
 // Verifica se esiste la tabella login_logs
 $has_login_logs_table = false;
 $result = $conn->query("SHOW TABLES LIKE 'login_logs'");
@@ -81,6 +87,18 @@ if ($result&&$result->num_rows > 0) {
 // Variabile per i messaggi di errore/successo
 $error_message = '';
 $success_message = '';
+
+// Verifica se c'è un messaggio di errore dall'autenticazione sociale
+if (isset($_SESSION['auth_error'])) {
+    $error_message = $_SESSION['auth_error'];
+    unset($_SESSION['auth_error']);
+}
+
+// Verifica se c'è un messaggio di successo dall'autenticazione sociale
+if (isset($_SESSION['auth_success'])) {
+    $success_message = $_SESSION['auth_success'];
+    unset($_SESSION['auth_success']);
+}
 
 // Gestisci il form di login quando viene inviato
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -847,6 +865,30 @@ $conn->close();
       .text-primary, .app-brand-text {
         color: var(--primary-color) !important;
       }
+      .social-auth-btn {
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        font-weight: 500;
+      }
+      .or-divider {
+        display: flex;
+        align-items: center;
+        margin: 1rem 0;
+      }
+      .or-divider::before, .or-divider::after {
+        content: "";
+        flex-grow: 1;
+        height: 1px;
+        background-color: #d9dee3;
+      }
+      .or-divider span {
+        padding: 0 1rem;
+        color: #697a8d;
+        font-size: 0.8125rem;
+      }
     </style>
   </head>
 
@@ -937,35 +979,81 @@ $conn->close();
                     Login
                   </span>
                 </button>
-                
-                <!-- Debug button only on localhost -->
-                <?php if (in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1'])): ?>
-                <div class="text-center mb-3">
-                  <small><a href="#" id="toggle-debug" class="text-muted">Debug Info</a></small>
-                </div>
-                
-                <div id="debug-info" class="debug-info">
-                  <h6>Debug Info (solo sviluppo)</h6>
-                  <p><strong>Standard credentials:</strong><br>
-                  Username: admin<br>
-                  Password: password123</p>
-                  <p><strong>Hash for password123:</strong><br>
-                  $2y$10$xtskTnXUJAy/iEiDkvj2c.D.1CMKvTsWkqUmNZeZQTBw4hRF7ZBme</p>
-                  <p><strong>Password Expiry:</strong> <?php echo intval($passwordExpiry); ?> giorni<br>
-                  <strong>Account Blocking:</strong> <?php echo $accountLocking == '1' ? 'Enabled' : 'Disabled'; ?><br>
-                  <strong>Max Login Attempts:</strong> <?php echo $maxLoginAttempts; ?><br>
-                  <strong>Lockout Time:</strong> <?php echo $lockoutTime; ?> minuti<br>
-                  <strong>2FA Enabled:</strong> <?php echo $twoFactorAuthEnabled == '1' ? 'Yes' : 'No'; ?><br>
-                  <strong>Tables check:</strong><br>
-                  login_logs: <?php echo $has_login_logs_table ? 'exists' : 'missing'; ?><br>
-                  user_2fa: <?php echo $has_user_2fa_table ? 'exists' : 'missing'; ?><br>
-                  </p>
-                </div>
-                <?php endif; ?>
               </form>
               
-              <!-- Link per eventuale registrazione -->
+              <?php if ($googleEnabled == '1' || $facebookEnabled == '1' || $twitterEnabled == '1' || $githubEnabled == '1'): ?>
+              <div class="or-divider">
+                <span>oppure</span>
+              </div>
               
+              <div class="social-auth-options mb-3">
+                <?php if ($googleEnabled == '1'): ?>
+                <a href="auth/google.php" class="btn btn-outline-primary w-100 social-auth-btn mb-2">
+                  <i class="ti tabler-brand-google fs-5"></i>
+                  <span>Accedi con Google</span>
+                </a>
+                <?php endif; ?>
+                
+                <?php if ($facebookEnabled == '1'): ?>
+                <a href="auth/facebook.php" class="btn btn-outline-primary w-100 social-auth-btn mb-2">
+                  <i class="ti tabler-brand-facebook fs-5"></i>
+                  <span>Accedi con Facebook</span>
+                </a>
+                <?php endif; ?>
+                
+                <?php if ($twitterEnabled == '1'): ?>
+                <a href="auth/twitter.php" class="btn btn-outline-primary w-100 social-auth-btn mb-2">
+                  <i class="ti tabler-brand-twitter fs-5"></i>
+                  <span>Accedi con Twitter</span>
+                </a>
+                <?php endif; ?>
+                
+                <?php if ($githubEnabled == '1'): ?>
+                <a href="auth/github.php" class="btn btn-outline-primary w-100 social-auth-btn">
+                  <i class="ti tabler-brand-github fs-5"></i>
+                  <span>Accedi con GitHub</span>
+                </a>
+                <?php endif; ?>
+              </div>
+              <?php endif; ?>
+              
+              <!-- Link per registrazione -->
+              <p class="text-center mt-3">
+                <span>Non hai un account?</span>
+                <a href="register.php">
+                  <span>Crea un account</span>
+                </a>
+              </p>
+              
+              <!-- Debug button only on localhost -->
+              <?php if (in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1'])): ?>
+              <div class="text-center mb-3">
+                <small><a href="#" id="toggle-debug" class="text-muted">Debug Info</a></small>
+              </div>
+              
+              <div id="debug-info" class="debug-info">
+                <h6>Debug Info (solo sviluppo)</h6>
+                <p><strong>Standard credentials:</strong><br>
+                Username: admin<br>
+                Password: password123</p>
+                <p><strong>Hash for password123:</strong><br>
+                $2y$10$xtskTnXUJAy/iEiDkvj2c.D.1CMKvTsWkqUmNZeZQTBw4hRF7ZBme</p>
+                <p><strong>Password Expiry:</strong> <?php echo intval($passwordExpiry); ?> giorni<br>
+                <strong>Account Blocking:</strong> <?php echo $accountLocking == '1' ? 'Enabled' : 'Disabled'; ?><br>
+                <strong>Max Login Attempts:</strong> <?php echo $maxLoginAttempts; ?><br>
+                <strong>Lockout Time:</strong> <?php echo $lockoutTime; ?> minuti<br>
+                <strong>2FA Enabled:</strong> <?php echo $twoFactorAuthEnabled == '1' ? 'Yes' : 'No'; ?><br>
+                <strong>Social Login:</strong><br>
+                Google: <?php echo $googleEnabled == '1' ? 'Enabled' : 'Disabled'; ?><br>
+                Facebook: <?php echo $facebookEnabled == '1' ? 'Enabled' : 'Disabled'; ?><br>
+                Twitter: <?php echo $twitterEnabled == '1' ? 'Enabled' : 'Disabled'; ?><br>
+                GitHub: <?php echo $githubEnabled == '1' ? 'Enabled' : 'Disabled'; ?><br>
+                <strong>Tables check:</strong><br>
+                login_logs: <?php echo $has_login_logs_table ? 'exists' : 'missing'; ?><br>
+                user_2fa: <?php echo $has_user_2fa_table ? 'exists' : 'missing'; ?><br>
+                </p>
+              </div>
+              <?php endif; ?>
             </div>
           </div>
           <!-- /Login -->
