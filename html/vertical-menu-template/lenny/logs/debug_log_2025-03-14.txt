@@ -1,7 +1,0 @@
-[2025-03-14 09:59:08] [INFO] Email di verifica inviata a samuele.quaranta@gmail.com
-[2025-03-14 10:00:45] [INFO] Email di verifica inviata a samuele@hydra-dev.xyz
-[2025-03-14 10:01:04] [INFO] SIMULAZIONE Twilio SMS: Invio a +393533797138: Il tuo codice di verifica è: 429870. Valido per 15 minuti.
-[2025-03-14 10:01:07] [INFO] Email di verifica inviata a samuele@hydra-dev.xyz
-[2025-03-14 10:01:07] [INFO] Codice di verifica email reinviato a: samuele@hydra-dev.xyz
-[2025-03-14 10:01:21] [INFO] SIMULAZIONE Twilio SMS: Invio a +393533797138: Il tuo codice di verifica è: 096518. Valido per 15 minuti.
-[2025-03-14 10:01:21] [INFO] Codice di verifica SMS reinviato a: +393533797138

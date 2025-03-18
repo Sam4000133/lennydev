@@ -1,0 +1,64 @@
+[2025-03-18 08:49:34] Script inizializzato
+Array
+(
+    [REQUEST_URI] => /lenny-dev/html/vertical-menu-template/lenny/auth/facebook.php
+    [GET] => Array
+        (
+        )
+
+    [SESSION] => Array
+        (
+        )
+
+    [Certificate Path] => C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth/../../../../cacert.pem
+    [Certificate Exists] => Yes
+)
+
+--------------------
+[2025-03-18 08:49:34] Connessione al database inclusa
+--------------------
+[2025-03-18 08:49:34] Verifica colonna registration_method
+Array
+(
+    [exists] => Yes
+)
+
+--------------------
+[2025-03-18 08:49:34] Verifica colonna phone
+Array
+(
+    [exists] => Yes
+)
+
+--------------------
+[2025-03-18 08:49:34] Valori enum per status
+Array
+(
+    [values] => Array
+        (
+            [0] => active
+            [1] => inactive
+            [2] => suspended
+        )
+
+)
+
+--------------------
+[2025-03-18 08:49:34] Impostazioni recuperate
+Array
+(
+    [Google enabled] => 1
+    [Client ID] => 1340569119...
+    [Redirect URL] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-18 08:49:34] Nessun codice trovato, inizia autenticazione
+--------------------
+[2025-03-18 08:49:34] Reindirizzamento a URL di autenticazione
+Array
+(
+    [URL] => https://accounts.google.com/o/oauth2/v2/auth?client_id=134056911992-9mqtkn0sn0ofnbk4c626s1492eac36j8.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%2Flenny-dev%2Fhtml%2Fvertical-menu-template%2Flenny%2Fauth%2Fgoogle.php&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&prompt=select_account&access_type=online
+)
+
+--------------------

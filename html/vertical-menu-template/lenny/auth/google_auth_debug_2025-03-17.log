@@ -1,0 +1,2221 @@
+[2025-03-17 19:05:06] Script inizializzato
+Array
+(
+    [REQUEST_URI] => /lenny-dev/html/vertical-menu-template/lenny/auth/google.php?test_auth=1
+    [GET] => Array
+        (
+            [test_auth] => 1
+        )
+
+    [SESSION] => Array
+        (
+            [user_id] => 1
+            [username] => admin
+            [email] => admin@example.com
+            [full_name] => Administrator
+            [role_id] => 1
+            [permissions] => Array
+                (
+                    [Panoramica] => Array
+                        (
+                            [category] => Panoramica
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Gestione Ordini] => Array
+                        (
+                            [category] => Gestione Ordini
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Ordini in corso] => Array
+                        (
+                            [category] => Ordini in corso
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Cronologia ordini] => Array
+                        (
+                            [category] => Cronologia ordini
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Resi e rimborsi] => Array
+                        (
+                            [category] => Resi e rimborsi
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Gestione Ristorante] => Array
+                        (
+                            [category] => Gestione Ristorante
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Informazioni base] => Array
+                        (
+                            [category] => Informazioni base
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Indirizzo e consegna] => Array
+                        (
+                            [category] => Indirizzo e consegna
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Orari di apertura] => Array
+                        (
+                            [category] => Orari di apertura
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Menu] => Array
+                        (
+                            [category] => Menu
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Dati operativi] => Array
+                        (
+                            [category] => Dati operativi
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Pagamenti] => Array
+                        (
+                            [category] => Pagamenti
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Commissioni] => Array
+                        (
+                            [category] => Commissioni
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Notifiche] => Array
+                        (
+                            [category] => Notifiche
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Integrazione IA] => Array
+                        (
+                            [category] => Integrazione IA
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Documenti] => Array
+                        (
+                            [category] => Documenti
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Promozioni] => Array
+                        (
+                            [category] => Promozioni
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Gestione Driver] => Array
+                        (
+                            [category] => Gestione Driver
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Registrazione driver] => Array
+                        (
+                            [category] => Registrazione driver
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Assegnazione ordini] => Array
+                        (
+                            [category] => Assegnazione ordini
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Tracking GPS] => Array
+                        (
+                            [category] => Tracking GPS
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Pagamenti driver] => Array
+                        (
+                            [category] => Pagamenti driver
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Analytics] => Array
+                        (
+                            [category] => Analytics
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Report vendite] => Array
+                        (
+                            [category] => Report vendite
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Performance] => Array
+                        (
+                            [category] => Performance
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Statistiche prodotti] => Array
+                        (
+                            [category] => Statistiche prodotti
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [CRM] => Array
+                        (
+                            [category] => CRM
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Clienti] => Array
+                        (
+                            [category] => Clienti
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Recensioni] => Array
+                        (
+                            [category] => Recensioni
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Reclami] => Array
+                        (
+                            [category] => Reclami
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Marketplace] => Array
+                        (
+                            [category] => Marketplace
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Elenco ristoranti] => Array
+                        (
+                            [category] => Elenco ristoranti
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Filtri e ricerca] => Array
+                        (
+                            [category] => Filtri e ricerca
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Categorie] => Array
+                        (
+                            [category] => Categorie
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Comunicazioni] => Array
+                        (
+                            [category] => Comunicazioni
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Email automatiche] => Array
+                        (
+                            [category] => Email automatiche
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [SMS] => Array
+                        (
+                            [category] => SMS
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Chat supporto] => Array
+                        (
+                            [category] => Chat supporto
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Abbonamenti] => Array
+                        (
+                            [category] => Abbonamenti
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Piani membership] => Array
+                        (
+                            [category] => Piani membership
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Fatturazione] => Array
+                        (
+                            [category] => Fatturazione
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Sistema] => Array
+                        (
+                            [category] => Sistema
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Impostazioni] => Array
+                        (
+                            [category] => Impostazioni
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Ruoli&permessi] => Array
+                        (
+                            [category] => Ruoli & permessi
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Integrazioni] => Array
+                        (
+                            [category] => Integrazioni
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Sicurezza] => Array
+                        (
+                            [category] => Sicurezza
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Privacy] => Array
+                        (
+                            [category] => Privacy
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                    [Backup] => Array
+                        (
+                            [category] => Backup
+                            [can_read] => 1
+                            [can_write] => 1
+                            [can_create] => 1
+                        )
+
+                )
+
+        )
+
+)
+
+--------------------
+[2025-03-17 19:05:06] Connessione al database inclusa
+--------------------
+[2025-03-17 19:05:06] Impostazioni recuperate
+Array
+(
+    [Google enabled] => 1
+    [Client ID] => 1340569119...
+    [Redirect URL] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:06:48] Script inizializzato
+Array
+(
+    [REQUEST_URI] => /lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+    [GET] => Array
+        (
+        )
+
+    [SESSION] => Array
+        (
+        )
+
+)
+
+--------------------
+[2025-03-17 19:06:48] Connessione al database inclusa
+--------------------
+[2025-03-17 19:06:48] Impostazioni recuperate
+Array
+(
+    [Google enabled] => 1
+    [Client ID] => 1340569119...
+    [Redirect URL] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:06:48] Nessun codice trovato, inizia autenticazione
+--------------------
+[2025-03-17 19:06:48] Reindirizzamento a URL di autenticazione
+Array
+(
+    [URL] => https://accounts.google.com/o/oauth2/v2/auth?client_id=134056911992-9mqtkn0sn0ofnbk4c626s1492eac36j8.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%2Flenny-dev%2Fhtml%2Fvertical-menu-template%2Flenny%2Fauth%2Fgoogle.php&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&prompt=select_account&access_type=online
+)
+
+--------------------
+[2025-03-17 19:07:04] Script inizializzato
+Array
+(
+    [REQUEST_URI] => /lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+    [GET] => Array
+        (
+        )
+
+    [SESSION] => Array
+        (
+        )
+
+)
+
+--------------------
+[2025-03-17 19:07:04] Connessione al database inclusa
+--------------------
+[2025-03-17 19:07:04] Impostazioni recuperate
+Array
+(
+    [Google enabled] => 1
+    [Client ID] => 1340569119...
+    [Redirect URL] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:07:04] Nessun codice trovato, inizia autenticazione
+--------------------
+[2025-03-17 19:07:04] Reindirizzamento a URL di autenticazione
+Array
+(
+    [URL] => https://accounts.google.com/o/oauth2/v2/auth?client_id=134056911992-9mqtkn0sn0ofnbk4c626s1492eac36j8.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%2Flenny-dev%2Fhtml%2Fvertical-menu-template%2Flenny%2Fauth%2Fgoogle.php&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&prompt=select_account&access_type=online
+)
+
+--------------------
+[2025-03-17 19:07:15] Script inizializzato
+Array
+(
+    [REQUEST_URI] => /lenny-dev/html/vertical-menu-template/lenny/auth/google.php?code=4%2F0AQSTgQEoiwk7G-nyL1ZuHrQcQ997UvfOJKPwCs5wLe_dqWpdTUdjUzH-d62LL7DGropvpg&scope=email+profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&authuser=0&prompt=consent
+    [GET] => Array
+        (
+            [code] => 4/0AQSTgQEoiwk7G-nyL1ZuHrQcQ997UvfOJKPwCs5wLe_dqWpdTUdjUzH-d62LL7DGropvpg
+            [scope] => email profile openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email
+            [authuser] => 0
+            [prompt] => consent
+        )
+
+    [SESSION] => Array
+        (
+        )
+
+)
+
+--------------------
+[2025-03-17 19:07:15] Connessione al database inclusa
+--------------------
+[2025-03-17 19:07:15] Impostazioni recuperate
+Array
+(
+    [Google enabled] => 1
+    [Client ID] => 1340569119...
+    [Redirect URL] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:07:15] Ricevuto codice di autorizzazione
+Array
+(
+    [code] => 4/0AQSTgQE...
+)
+
+--------------------
+[2025-03-17 19:07:15] Parametri per scambio token
+Array
+(
+    [redirect_uri] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:07:15] Risposta token exchange
+Array
+(
+    [HTTP Code] => 0
+    [Response] => 
+)
+
+--------------------
+[2025-03-17 19:07:15] cURL error durante lo scambio token
+Array
+(
+    [Error] => error setting certificate file: D:\Projects\Laragon-installer\7.0-W64\etc\ssl\cacert.pem
+)
+
+--------------------
+[2025-03-17 19:08:21] Script inizializzato
+Array
+(
+    [REQUEST_URI] => /lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+    [GET] => Array
+        (
+        )
+
+    [SESSION] => Array
+        (
+        )
+
+)
+
+--------------------
+[2025-03-17 19:08:21] Connessione al database inclusa
+--------------------
+[2025-03-17 19:08:21] Impostazioni recuperate
+Array
+(
+    [Google enabled] => 1
+    [Client ID] => 1340569119...
+    [Redirect URL] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:08:21] Nessun codice trovato, inizia autenticazione
+--------------------
+[2025-03-17 19:08:21] Reindirizzamento a URL di autenticazione
+Array
+(
+    [URL] => https://accounts.google.com/o/oauth2/v2/auth?client_id=134056911992-9mqtkn0sn0ofnbk4c626s1492eac36j8.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%2Flenny-dev%2Fhtml%2Fvertical-menu-template%2Flenny%2Fauth%2Fgoogle.php&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&prompt=select_account&access_type=online
+)
+
+--------------------
+[2025-03-17 19:08:31] Script inizializzato
+Array
+(
+    [REQUEST_URI] => /lenny-dev/html/vertical-menu-template/lenny/auth/google.php?code=4%2F0AQSTgQFs9PhVxgJkh-AolxfeESKL32W8THmOrdxMDvNHXyqtu1U0dDnOtN_y4qs7J13uLQ&scope=email+profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&authuser=0&prompt=consent
+    [GET] => Array
+        (
+            [code] => 4/0AQSTgQFs9PhVxgJkh-AolxfeESKL32W8THmOrdxMDvNHXyqtu1U0dDnOtN_y4qs7J13uLQ
+            [scope] => email profile openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email
+            [authuser] => 0
+            [prompt] => consent
+        )
+
+    [SESSION] => Array
+        (
+        )
+
+)
+
+--------------------
+[2025-03-17 19:08:31] Connessione al database inclusa
+--------------------
+[2025-03-17 19:08:31] Impostazioni recuperate
+Array
+(
+    [Google enabled] => 1
+    [Client ID] => 1340569119...
+    [Redirect URL] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:08:31] Ricevuto codice di autorizzazione
+Array
+(
+    [code] => 4/0AQSTgQF...
+)
+
+--------------------
+[2025-03-17 19:08:31] Parametri per scambio token
+Array
+(
+    [redirect_uri] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:08:31] Risposta token exchange
+Array
+(
+    [HTTP Code] => 0
+    [Response] => 
+)
+
+--------------------
+[2025-03-17 19:08:31] cURL error durante lo scambio token
+Array
+(
+    [Error] => error setting certificate file: D:\Projects\Laragon-installer\7.0-W64\etc\ssl\cacert.pem
+)
+
+--------------------
+[2025-03-17 19:15:17] Script inizializzato
+Array
+(
+    [REQUEST_URI] => /lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+    [GET] => Array
+        (
+        )
+
+    [SESSION] => Array
+        (
+        )
+
+    [Certificate Path] => C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth/../../../../cacert.pem
+    [Certificate Exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:15:17] Connessione al database inclusa
+--------------------
+[2025-03-17 19:15:17] Impostazioni recuperate
+Array
+(
+    [Google enabled] => 1
+    [Client ID] => 1340569119...
+    [Redirect URL] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:15:17] Nessun codice trovato, inizia autenticazione
+--------------------
+[2025-03-17 19:15:17] Reindirizzamento a URL di autenticazione
+Array
+(
+    [URL] => https://accounts.google.com/o/oauth2/v2/auth?client_id=134056911992-9mqtkn0sn0ofnbk4c626s1492eac36j8.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%2Flenny-dev%2Fhtml%2Fvertical-menu-template%2Flenny%2Fauth%2Fgoogle.php&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&prompt=select_account&access_type=online
+)
+
+--------------------
+[2025-03-17 19:15:25] Script inizializzato
+Array
+(
+    [REQUEST_URI] => /lenny-dev/html/vertical-menu-template/lenny/auth/google.php?code=4%2F0AQSTgQFChnNIP7UEF8T-jd4eUuiEFGvcRZ6NY1LlwfHhjv063cEEB_IG0aUvhq7lYf8ZBA&scope=email+profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&authuser=0&prompt=consent
+    [GET] => Array
+        (
+            [code] => 4/0AQSTgQFChnNIP7UEF8T-jd4eUuiEFGvcRZ6NY1LlwfHhjv063cEEB_IG0aUvhq7lYf8ZBA
+            [scope] => email profile openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email
+            [authuser] => 0
+            [prompt] => consent
+        )
+
+    [SESSION] => Array
+        (
+        )
+
+    [Certificate Path] => C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth/../../../../cacert.pem
+    [Certificate Exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:15:25] Connessione al database inclusa
+--------------------
+[2025-03-17 19:15:25] Impostazioni recuperate
+Array
+(
+    [Google enabled] => 1
+    [Client ID] => 1340569119...
+    [Redirect URL] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:15:25] Ricevuto codice di autorizzazione
+Array
+(
+    [code] => 4/0AQSTgQF...
+)
+
+--------------------
+[2025-03-17 19:15:25] Parametri per scambio token
+Array
+(
+    [redirect_uri] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:15:25] Usando certificato CA dal percorso: C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth/../../../../cacert.pem
+--------------------
+[2025-03-17 19:15:26] Risposta token exchange
+Array
+(
+    [HTTP Code] => 200
+    [Response] => {
+  "access_token": "ya29.a0AeXRPp6SuTEaewLgoUSRrtTCAyWwRjqXU3p1ejVDQCbxCZc04biHKRoIP53Zd55hSaDiU0zOF6EwwW0N1-ABpLqKat-cKOSembryc2HtASb5pykqKLO_rwIxktq7qkDTSVEFTNkNFtEMJwnO5qt4cS0bb2HUgkdmCKlAf1UBaCgYKASYSARISFQHGX2Mi5o80nKQp0gQyHE52zrw-Uw0175",
+  "expires_in": 3599,
+  "scope": "openid https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile",
+  "token_type": "Bearer",
+  "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjkxNGZiOWIwODcxODBiYzAzMDMyODQ1MDBjNWY1NDBjNmQ0ZjVlMmYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiIxMzQwNTY5MTE5OTItOW1xdGtuMHNuMG9mbmJrNGM2MjZzMTQ5MmVhYzM2ajguYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiIxMzQwNTY5MTE5OTItOW1xdGtuMHNuMG9mbmJrNGM2MjZzMTQ5MmVhYzM2ajguYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMDY3NDcyNTM1NzA2ODAwOTgzMTEiLCJlbWFpbCI6InNhbXVlbGUucXVhcmFudGFAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiJ2N2Z4Q1l1WnlZcXV0U1l0Z25vRld3IiwibmFtZSI6IlNhbXVlbGUgUXVhcmFudGEiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jSlVFRHNpdlF0cW9hWjlTNkpGeC1SczhIV1hGVzV2azR0a3dNb21kNVFkLUJVY0NtWkxPZz1zOTYtYyIsImdpdmVuX25hbWUiOiJTYW11ZWxlIiwiZmFtaWx5X25hbWUiOiJRdWFyYW50YSIsImlhdCI6MTc0MjIzODkyNSwiZXhwIjoxNzQyMjQyNTI1fQ.OwKHkDB1kcF6PeGKhVf5BiOldonFGKEG_wg13aLgakt7klBQTC7AzRBm1xdF3Ca2c6U7OcUAY7YEwuM1NLcX0l5J-yt8nj5xeRhtDUvHIZ6RgK1mzTwU4ZhOsNHy64233J0hoDG3QdbLabuaK7PwtjNlqXU5X665-hlTCm8cKaZMY93MLYoJDyb3DEU3l67cmR2952zOmonyvDMlkFq_6vUsy5eJB7ilAsGfvD8qTSTKqM-IgUAoY__Z0sqjcBCgX04J04RbloGhG7Nol13LQzzbUa12QLMkPUbEP7DgwEu5QDPDWaO21iBe2UfhLCeuiThg3lrav5YA55KeGlit3A"
+}
+)
+
+--------------------
+[2025-03-17 19:15:26] Risposta info utente
+Array
+(
+    [HTTP Code] => 200
+    [Response] => {
+  "id": "106747253570680098311",
+  "email": "samuele.quaranta@gmail.com",
+  "verified_email": true,
+  "name": "Samuele Quaranta",
+  "given_name": "Samuele",
+  "family_name": "Quaranta",
+  "picture": "https://lh3.googleusercontent.com/a/ACg8ocJUEDsivQtqoaZ9S6JFx-Rs8HWXFW5vk4tkwMomd5Qd-BUcCmZLOg=s96-c"
+}
+
+)
+
+--------------------
+[2025-03-17 19:15:26] Informazioni utente recuperate
+Array
+(
+    [Email] => samuele.quaranta@gmail.com
+    [Name] => Samuele Quaranta
+)
+
+--------------------
+[2025-03-17 19:15:26] Nuovo utente, creazione account
+--------------------
+[2025-03-17 19:24:38] Script inizializzato
+Array
+(
+    [REQUEST_URI] => /lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+    [GET] => Array
+        (
+        )
+
+    [SESSION] => Array
+        (
+        )
+
+    [Certificate Path] => C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth/../../../../cacert.pem
+    [Certificate Exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:24:38] Connessione al database inclusa
+--------------------
+[2025-03-17 19:24:38] Verifica colonna registration_method
+Array
+(
+    [exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:24:38] Impostazioni recuperate
+Array
+(
+    [Google enabled] => 1
+    [Client ID] => 1340569119...
+    [Redirect URL] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:24:38] Nessun codice trovato, inizia autenticazione
+--------------------
+[2025-03-17 19:24:38] Reindirizzamento a URL di autenticazione
+Array
+(
+    [URL] => https://accounts.google.com/o/oauth2/v2/auth?client_id=134056911992-9mqtkn0sn0ofnbk4c626s1492eac36j8.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%2Flenny-dev%2Fhtml%2Fvertical-menu-template%2Flenny%2Fauth%2Fgoogle.php&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&prompt=select_account&access_type=online
+)
+
+--------------------
+[2025-03-17 19:24:42] Script inizializzato
+Array
+(
+    [REQUEST_URI] => /lenny-dev/html/vertical-menu-template/lenny/auth/google.php?code=4%2F0AQSTgQFRDcLFAoDAKbHYrbBKs2SlvAmFglWVZ9Yb3x9egaBmXbc7GxRA7PIzjBUyWLIN6w&scope=email+profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&authuser=0&prompt=none
+    [GET] => Array
+        (
+            [code] => 4/0AQSTgQFRDcLFAoDAKbHYrbBKs2SlvAmFglWVZ9Yb3x9egaBmXbc7GxRA7PIzjBUyWLIN6w
+            [scope] => email profile openid https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile
+            [authuser] => 0
+            [prompt] => none
+        )
+
+    [SESSION] => Array
+        (
+        )
+
+    [Certificate Path] => C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth/../../../../cacert.pem
+    [Certificate Exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:24:42] Connessione al database inclusa
+--------------------
+[2025-03-17 19:24:42] Verifica colonna registration_method
+Array
+(
+    [exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:24:42] Impostazioni recuperate
+Array
+(
+    [Google enabled] => 1
+    [Client ID] => 1340569119...
+    [Redirect URL] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:24:42] Ricevuto codice di autorizzazione
+Array
+(
+    [code] => 4/0AQSTgQF...
+)
+
+--------------------
+[2025-03-17 19:24:42] Parametri per scambio token
+Array
+(
+    [redirect_uri] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:24:42] Usando certificato CA dal percorso: C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth/../../../../cacert.pem
+--------------------
+[2025-03-17 19:24:43] Risposta token exchange
+Array
+(
+    [HTTP Code] => 200
+    [Response] => {
+  "access_token": "ya29.a0AeXRPp6rkunMsM-mJVtvDyEUWbjOsLEg-cZofNv4CpxMU81h-bTY9JNKbNiCHaSHTY0a21VW23z3XXtlNznitGOF3So0XDkuEtUuy0iGej3nA8jBsDJq0CIuWJXGO5iwFBSyxo194whKanXZxh8sdhBqvxOQiz4CqszfFLI6aCgYKAZUSARISFQHGX2Mi5GQw__lcWBZNYdXSCxJbng0175",
+  "expires_in": 3599,
+  "scope": "openid https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile",
+  "token_type": "Bearer",
+  "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjkxNGZiOWIwODcxODBiYzAzMDMyODQ1MDBjNWY1NDBjNmQ0ZjVlMmYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiIxMzQwNTY5MTE5OTItOW1xdGtuMHNuMG9mbmJrNGM2MjZzMTQ5MmVhYzM2ajguYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiIxMzQwNTY5MTE5OTItOW1xdGtuMHNuMG9mbmJrNGM2MjZzMTQ5MmVhYzM2ajguYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMDY3NDcyNTM1NzA2ODAwOTgzMTEiLCJlbWFpbCI6InNhbXVlbGUucXVhcmFudGFAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiJHUnRFTUFvRFpxOG9PWlUtQy1KMm1BIiwibmFtZSI6IlNhbXVlbGUgUXVhcmFudGEiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jSlVFRHNpdlF0cW9hWjlTNkpGeC1SczhIV1hGVzV2azR0a3dNb21kNVFkLUJVY0NtWkxPZz1zOTYtYyIsImdpdmVuX25hbWUiOiJTYW11ZWxlIiwiZmFtaWx5X25hbWUiOiJRdWFyYW50YSIsImlhdCI6MTc0MjIzOTQ4MiwiZXhwIjoxNzQyMjQzMDgyfQ.O7DXEyUpcT1YZzRS0gBv3Ew3ywhkDw6X2a-G4AxMTQQoOHeL0OsdcuZQ1u8PAbJNZ6qRqz1ryTe9wbkNUsGMumwpjaRBjDdj1-HVC_H_V6qwfNhWHjDVG53hLgXC9SY6GIQibdvHl06LdmZYkNybwe8wRNQFfA6zHDoIyF6pHk6070MwPxgX1e1YGetkRHLZKkLMblcampHCjDDG0MBbfPIusNKtMIXWuLRdgTofE6Xf-Iv123C92S7PNGYVqaTC6ar0g4UnClePIsmmPe17fZWvt6TO7KarwaQnBm3LnEzo7lrs5volOis6KnkElbzJgVrtBrFpGAtxwgTXZiYCww"
+}
+)
+
+--------------------
+[2025-03-17 19:24:44] Risposta info utente
+Array
+(
+    [HTTP Code] => 200
+    [Response] => {
+  "id": "106747253570680098311",
+  "email": "samuele.quaranta@gmail.com",
+  "verified_email": true,
+  "name": "Samuele Quaranta",
+  "given_name": "Samuele",
+  "family_name": "Quaranta",
+  "picture": "https://lh3.googleusercontent.com/a/ACg8ocJUEDsivQtqoaZ9S6JFx-Rs8HWXFW5vk4tkwMomd5Qd-BUcCmZLOg=s96-c"
+}
+
+)
+
+--------------------
+[2025-03-17 19:24:44] Informazioni utente recuperate
+Array
+(
+    [Email] => samuele.quaranta@gmail.com
+    [Name] => Samuele Quaranta
+)
+
+--------------------
+[2025-03-17 19:24:44] Nuovo utente, creazione account
+--------------------
+[2025-03-17 19:28:14] Script inizializzato
+Array
+(
+    [REQUEST_URI] => /lenny-dev/html/vertical-menu-template/lenny/auth/google.php?error=access_denied
+    [GET] => Array
+        (
+            [error] => access_denied
+        )
+
+    [SESSION] => Array
+        (
+        )
+
+    [Certificate Path] => C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth/../../../../cacert.pem
+    [Certificate Exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:28:14] Connessione al database inclusa
+--------------------
+[2025-03-17 19:28:14] Verifica colonna registration_method
+Array
+(
+    [exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:28:14] Impostazioni recuperate
+Array
+(
+    [Google enabled] => 1
+    [Client ID] => 1340569119...
+    [Redirect URL] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:28:14] Nessun codice trovato, inizia autenticazione
+--------------------
+[2025-03-17 19:28:14] Reindirizzamento a URL di autenticazione
+Array
+(
+    [URL] => https://accounts.google.com/o/oauth2/v2/auth?client_id=134056911992-9mqtkn0sn0ofnbk4c626s1492eac36j8.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%2Flenny-dev%2Fhtml%2Fvertical-menu-template%2Flenny%2Fauth%2Fgoogle.php&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&prompt=select_account&access_type=online
+)
+
+--------------------
+[2025-03-17 19:28:33] Script inizializzato
+Array
+(
+    [REQUEST_URI] => /lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+    [GET] => Array
+        (
+        )
+
+    [SESSION] => Array
+        (
+        )
+
+    [Certificate Path] => C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth/../../../../cacert.pem
+    [Certificate Exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:28:33] Connessione al database inclusa
+--------------------
+[2025-03-17 19:28:33] Verifica colonna registration_method
+Array
+(
+    [exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:28:33] Impostazioni recuperate
+Array
+(
+    [Google enabled] => 1
+    [Client ID] => 1340569119...
+    [Redirect URL] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:28:33] Nessun codice trovato, inizia autenticazione
+--------------------
+[2025-03-17 19:28:33] Reindirizzamento a URL di autenticazione
+Array
+(
+    [URL] => https://accounts.google.com/o/oauth2/v2/auth?client_id=134056911992-9mqtkn0sn0ofnbk4c626s1492eac36j8.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%2Flenny-dev%2Fhtml%2Fvertical-menu-template%2Flenny%2Fauth%2Fgoogle.php&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&prompt=select_account&access_type=online
+)
+
+--------------------
+[2025-03-17 19:28:46] Script inizializzato
+Array
+(
+    [REQUEST_URI] => /lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+    [GET] => Array
+        (
+        )
+
+    [SESSION] => Array
+        (
+        )
+
+    [Certificate Path] => C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth/../../../../cacert.pem
+    [Certificate Exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:28:46] Connessione al database inclusa
+--------------------
+[2025-03-17 19:28:46] Verifica colonna registration_method
+Array
+(
+    [exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:28:46] Impostazioni recuperate
+Array
+(
+    [Google enabled] => 1
+    [Client ID] => 1340569119...
+    [Redirect URL] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:28:46] Nessun codice trovato, inizia autenticazione
+--------------------
+[2025-03-17 19:28:46] Reindirizzamento a URL di autenticazione
+Array
+(
+    [URL] => https://accounts.google.com/o/oauth2/v2/auth?client_id=134056911992-9mqtkn0sn0ofnbk4c626s1492eac36j8.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%2Flenny-dev%2Fhtml%2Fvertical-menu-template%2Flenny%2Fauth%2Fgoogle.php&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&prompt=select_account&access_type=online
+)
+
+--------------------
+[2025-03-17 19:28:49] Script inizializzato
+Array
+(
+    [REQUEST_URI] => /lenny-dev/html/vertical-menu-template/lenny/auth/google.php?code=4%2F0AQSTgQF-7XcwUSndHtd1DttdlCnfQHE4PSlJ0PJ5j_1MkSrTU7AvT8cMvuSDg6AvrJ132A&scope=email+profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&authuser=0&prompt=none
+    [GET] => Array
+        (
+            [code] => 4/0AQSTgQF-7XcwUSndHtd1DttdlCnfQHE4PSlJ0PJ5j_1MkSrTU7AvT8cMvuSDg6AvrJ132A
+            [scope] => email profile openid https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile
+            [authuser] => 0
+            [prompt] => none
+        )
+
+    [SESSION] => Array
+        (
+        )
+
+    [Certificate Path] => C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth/../../../../cacert.pem
+    [Certificate Exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:28:49] Connessione al database inclusa
+--------------------
+[2025-03-17 19:28:49] Verifica colonna registration_method
+Array
+(
+    [exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:28:49] Impostazioni recuperate
+Array
+(
+    [Google enabled] => 1
+    [Client ID] => 1340569119...
+    [Redirect URL] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:28:49] Ricevuto codice di autorizzazione
+Array
+(
+    [code] => 4/0AQSTgQF...
+)
+
+--------------------
+[2025-03-17 19:28:49] Parametri per scambio token
+Array
+(
+    [redirect_uri] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:28:49] Usando certificato CA dal percorso: C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth/../../../../cacert.pem
+--------------------
+[2025-03-17 19:28:49] Risposta token exchange
+Array
+(
+    [HTTP Code] => 200
+    [Response] => {
+  "access_token": "ya29.a0AeXRPp7_77yUA6wfp2m8TVnRZ4q8TB-L4AGZZky3xZYN7OVGgPkZCezLO5FmLxd1xi5borktCmO7rJoa7cACnONU24l4GZeBQuhQVfLkYFmghjhUS7xhMv1yMx72mOGtoecIMdUFyZI4_sInsv7pGYpeFjwSPWZYv_dcCGFbaCgYKAecSARISFQHGX2Mih0esL_zuRTXgY_FIxWxfHg0175",
+  "expires_in": 3598,
+  "scope": "https://www.googleapis.com/auth/userinfo.profile openid https://www.googleapis.com/auth/userinfo.email",
+  "token_type": "Bearer",
+  "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjkxNGZiOWIwODcxODBiYzAzMDMyODQ1MDBjNWY1NDBjNmQ0ZjVlMmYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiIxMzQwNTY5MTE5OTItOW1xdGtuMHNuMG9mbmJrNGM2MjZzMTQ5MmVhYzM2ajguYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiIxMzQwNTY5MTE5OTItOW1xdGtuMHNuMG9mbmJrNGM2MjZzMTQ5MmVhYzM2ajguYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMDY3NDcyNTM1NzA2ODAwOTgzMTEiLCJlbWFpbCI6InNhbXVlbGUucXVhcmFudGFAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiJ6QzJkV0JMVVVDRW1LQVZKRlQtclZnIiwibmFtZSI6IlNhbXVlbGUgUXVhcmFudGEiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jSlVFRHNpdlF0cW9hWjlTNkpGeC1SczhIV1hGVzV2azR0a3dNb21kNVFkLUJVY0NtWkxPZz1zOTYtYyIsImdpdmVuX25hbWUiOiJTYW11ZWxlIiwiZmFtaWx5X25hbWUiOiJRdWFyYW50YSIsImlhdCI6MTc0MjIzOTcyOSwiZXhwIjoxNzQyMjQzMzI5fQ.taxeXrNmqh8VhjebR1iQ8v9MgidTy2kzfc3-meJwc9vrYswC5C87jZyJK-bFOHT9NG2Na103j8Qltoki3rSEJd-CwO9dtIaczXeBlqtZfIJVcIocrGmYhAfBqpmXhfeiuvKC_g98lRMzIiHupG5uQcHuSx7mLYK9pbRxksBSOSWqKvVPM__XbC8z2CDPDrqu3zeXuOPtCwIEdA2O_pkswYQWtJDldhdJYs43cnhhCvumnKmZFeXEAswm3rghEPIiLIvVSDBx0GXc4hcw83VMisyGR1XUn3qdYPF4s2o73hjJohSzjJ-ovQgSQ0ZPH8LAdLjMt7Z6xlteGRFVtqKU3A"
+}
+)
+
+--------------------
+[2025-03-17 19:28:50] Risposta info utente
+Array
+(
+    [HTTP Code] => 200
+    [Response] => {
+  "id": "106747253570680098311",
+  "email": "samuele.quaranta@gmail.com",
+  "verified_email": true,
+  "name": "Samuele Quaranta",
+  "given_name": "Samuele",
+  "family_name": "Quaranta",
+  "picture": "https://lh3.googleusercontent.com/a/ACg8ocJUEDsivQtqoaZ9S6JFx-Rs8HWXFW5vk4tkwMomd5Qd-BUcCmZLOg=s96-c"
+}
+
+)
+
+--------------------
+[2025-03-17 19:28:50] Informazioni utente recuperate
+Array
+(
+    [Email] => samuele.quaranta@gmail.com
+    [Name] => Samuele Quaranta
+)
+
+--------------------
+[2025-03-17 19:28:50] Nuovo utente, creazione account
+--------------------
+[2025-03-17 19:31:24] Script inizializzato
+Array
+(
+    [REQUEST_URI] => /lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+    [GET] => Array
+        (
+        )
+
+    [SESSION] => Array
+        (
+        )
+
+    [Certificate Path] => C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth/../../../../cacert.pem
+    [Certificate Exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:31:24] Connessione al database inclusa
+--------------------
+[2025-03-17 19:31:24] Verifica colonna registration_method
+Array
+(
+    [exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:31:24] Valori enum per status
+Array
+(
+    [values] => Array
+        (
+            [0] => active
+            [1] => inactive
+            [2] => suspended
+        )
+
+)
+
+--------------------
+[2025-03-17 19:31:24] Impostazioni recuperate
+Array
+(
+    [Google enabled] => 1
+    [Client ID] => 1340569119...
+    [Redirect URL] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:31:24] Nessun codice trovato, inizia autenticazione
+--------------------
+[2025-03-17 19:31:24] Reindirizzamento a URL di autenticazione
+Array
+(
+    [URL] => https://accounts.google.com/o/oauth2/v2/auth?client_id=134056911992-9mqtkn0sn0ofnbk4c626s1492eac36j8.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%2Flenny-dev%2Fhtml%2Fvertical-menu-template%2Flenny%2Fauth%2Fgoogle.php&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&prompt=select_account&access_type=online
+)
+
+--------------------
+[2025-03-17 19:31:29] Script inizializzato
+Array
+(
+    [REQUEST_URI] => /lenny-dev/html/vertical-menu-template/lenny/auth/google.php?code=4%2F0AQSTgQHfWvng4rvsohgWONVLVm2qVV2XbsyMGehg5AI-LRpPIajzvT-26FZBsnNAP1jprg&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&authuser=0&prompt=none
+    [GET] => Array
+        (
+            [code] => 4/0AQSTgQHfWvng4rvsohgWONVLVm2qVV2XbsyMGehg5AI-LRpPIajzvT-26FZBsnNAP1jprg
+            [scope] => email profile https://www.googleapis.com/auth/userinfo.profile openid https://www.googleapis.com/auth/userinfo.email
+            [authuser] => 0
+            [prompt] => none
+        )
+
+    [SESSION] => Array
+        (
+        )
+
+    [Certificate Path] => C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth/../../../../cacert.pem
+    [Certificate Exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:31:29] Connessione al database inclusa
+--------------------
+[2025-03-17 19:31:29] Verifica colonna registration_method
+Array
+(
+    [exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:31:29] Valori enum per status
+Array
+(
+    [values] => Array
+        (
+            [0] => active
+            [1] => inactive
+            [2] => suspended
+        )
+
+)
+
+--------------------
+[2025-03-17 19:31:29] Impostazioni recuperate
+Array
+(
+    [Google enabled] => 1
+    [Client ID] => 1340569119...
+    [Redirect URL] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:31:29] Ricevuto codice di autorizzazione
+Array
+(
+    [code] => 4/0AQSTgQH...
+)
+
+--------------------
+[2025-03-17 19:31:29] Parametri per scambio token
+Array
+(
+    [redirect_uri] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:31:29] Usando certificato CA dal percorso: C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth/../../../../cacert.pem
+--------------------
+[2025-03-17 19:31:30] Risposta token exchange
+Array
+(
+    [HTTP Code] => 200
+    [Response] => {
+  "access_token": "ya29.a0AeXRPp7_Uc9OvN-iZ0hBMmP2q6Il-CFSSnAZL8oaBbANBEKWQ0RyTJVZ2P1TbmVg55VsOVuuwtH5kpisLES8u_bLSIO3cUyaHvJ3sqfnXuQdX74PbCafsxazmCXdp07EyUkxAmoO7QXHrO8cYYxNkFGktwmmnnUOO-jkO402aCgYKAfQSARISFQHGX2MiYMTIxM8KlqWyjQ42biaIhQ0175",
+  "expires_in": 3599,
+  "scope": "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid",
+  "token_type": "Bearer",
+  "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjkxNGZiOWIwODcxODBiYzAzMDMyODQ1MDBjNWY1NDBjNmQ0ZjVlMmYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiIxMzQwNTY5MTE5OTItOW1xdGtuMHNuMG9mbmJrNGM2MjZzMTQ5MmVhYzM2ajguYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiIxMzQwNTY5MTE5OTItOW1xdGtuMHNuMG9mbmJrNGM2MjZzMTQ5MmVhYzM2ajguYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMDY3NDcyNTM1NzA2ODAwOTgzMTEiLCJlbWFpbCI6InNhbXVlbGUucXVhcmFudGFAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiJ0dmEwRkNnY1dKVWlibVJGYUxXWmxRIiwibmFtZSI6IlNhbXVlbGUgUXVhcmFudGEiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jSlVFRHNpdlF0cW9hWjlTNkpGeC1SczhIV1hGVzV2azR0a3dNb21kNVFkLUJVY0NtWkxPZz1zOTYtYyIsImdpdmVuX25hbWUiOiJTYW11ZWxlIiwiZmFtaWx5X25hbWUiOiJRdWFyYW50YSIsImlhdCI6MTc0MjIzOTg4OSwiZXhwIjoxNzQyMjQzNDg5fQ.IKxkktqPFRTIqH3nNfpw6jDBKHIFVkY86Lh1KTWQW8tcgspT_EFpK-X5GopNsUMS5M58PU_7snYsu8C2y1xp0-sX4WUUCEBdWZu3EuL5ippgqFUG52kX4o-Vx51UvFOxB3-WG-Ns5-i16FM9atxP0oLddphTRmpkSmLnRHMpYfVG8OqaL7Tl9XgbiEKTGGMOJA5jx4JEw7AtvCz24eBEew36mGHX5DGEZxXNO3SJVSoiVWhwPPS6pPdBQMaTTV3-y1pMcuaii5rkZQ90Dw5N9DASYf6jsvYiJPhinGFsGsY7COacRLmfyNqcz0YssQaptloDcWu-BnBnB3xeLh2IJw"
+}
+)
+
+--------------------
+[2025-03-17 19:31:31] Risposta info utente
+Array
+(
+    [HTTP Code] => 200
+    [Response] => {
+  "id": "106747253570680098311",
+  "email": "samuele.quaranta@gmail.com",
+  "verified_email": true,
+  "name": "Samuele Quaranta",
+  "given_name": "Samuele",
+  "family_name": "Quaranta",
+  "picture": "https://lh3.googleusercontent.com/a/ACg8ocJUEDsivQtqoaZ9S6JFx-Rs8HWXFW5vk4tkwMomd5Qd-BUcCmZLOg=s96-c"
+}
+
+)
+
+--------------------
+[2025-03-17 19:31:31] Informazioni utente recuperate
+Array
+(
+    [Email] => samuele.quaranta@gmail.com
+    [Name] => Samuele Quaranta
+)
+
+--------------------
+[2025-03-17 19:31:31] Nuovo utente, creazione account
+--------------------
+[2025-03-17 19:36:44] Script inizializzato
+Array
+(
+    [REQUEST_URI] => /lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+    [GET] => Array
+        (
+        )
+
+    [SESSION] => Array
+        (
+        )
+
+    [Certificate Path] => C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth/../../../../cacert.pem
+    [Certificate Exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:36:44] Connessione al database inclusa
+--------------------
+[2025-03-17 19:36:44] Verifica colonna registration_method
+Array
+(
+    [exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:36:44] Valori enum per status
+Array
+(
+    [values] => Array
+        (
+            [0] => active
+            [1] => inactive
+            [2] => suspended
+        )
+
+)
+
+--------------------
+[2025-03-17 19:36:44] Impostazioni recuperate
+Array
+(
+    [Google enabled] => 1
+    [Client ID] => 1340569119...
+    [Redirect URL] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:36:44] Nessun codice trovato, inizia autenticazione
+--------------------
+[2025-03-17 19:36:44] Reindirizzamento a URL di autenticazione
+Array
+(
+    [URL] => https://accounts.google.com/o/oauth2/v2/auth?client_id=134056911992-9mqtkn0sn0ofnbk4c626s1492eac36j8.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%2Flenny-dev%2Fhtml%2Fvertical-menu-template%2Flenny%2Fauth%2Fgoogle.php&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&prompt=select_account&access_type=online
+)
+
+--------------------
+[2025-03-17 19:36:49] Script inizializzato
+Array
+(
+    [REQUEST_URI] => /lenny-dev/html/vertical-menu-template/lenny/auth/google.php?code=4%2F0AQSTgQErzuKY_xvOP8d_XaibM8jetDPiqrqRivlMnnYqTA4KS3yD4AJCl67P0qJrgZ2JIg&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=none
+    [GET] => Array
+        (
+            [code] => 4/0AQSTgQErzuKY_xvOP8d_XaibM8jetDPiqrqRivlMnnYqTA4KS3yD4AJCl67P0qJrgZ2JIg
+            [scope] => email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid
+            [authuser] => 0
+            [prompt] => none
+        )
+
+    [SESSION] => Array
+        (
+        )
+
+    [Certificate Path] => C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth/../../../../cacert.pem
+    [Certificate Exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:36:49] Connessione al database inclusa
+--------------------
+[2025-03-17 19:36:49] Verifica colonna registration_method
+Array
+(
+    [exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:36:49] Valori enum per status
+Array
+(
+    [values] => Array
+        (
+            [0] => active
+            [1] => inactive
+            [2] => suspended
+        )
+
+)
+
+--------------------
+[2025-03-17 19:36:49] Impostazioni recuperate
+Array
+(
+    [Google enabled] => 1
+    [Client ID] => 1340569119...
+    [Redirect URL] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:36:49] Ricevuto codice di autorizzazione
+Array
+(
+    [code] => 4/0AQSTgQE...
+)
+
+--------------------
+[2025-03-17 19:36:49] Parametri per scambio token
+Array
+(
+    [redirect_uri] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:36:49] Usando certificato CA dal percorso: C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth/../../../../cacert.pem
+--------------------
+[2025-03-17 19:36:50] Risposta token exchange
+Array
+(
+    [HTTP Code] => 200
+    [Response] => {
+  "access_token": "ya29.a0AeXRPp7UZxFocwxwapek2gOuRAyY1FQMwRzACZ95lLGWJ-MKwYndH3-FyIWK6lD7ho7oQYGoXnHaUnebB7Uz9R4hUh7Yb9xo4o1Fn8r5JmF4-RP47b-wyN5XDeWAz91AyuGpEjL6RvWtAMr8ZIXXulQG_sos7S2Q43-wBL9caCgYKARwSARISFQHGX2MigRBNTsdKU9Mr-XDop5nB6A0175",
+  "expires_in": 3598,
+  "scope": "https://www.googleapis.com/auth/userinfo.profile openid https://www.googleapis.com/auth/userinfo.email",
+  "token_type": "Bearer",
+  "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjkxNGZiOWIwODcxODBiYzAzMDMyODQ1MDBjNWY1NDBjNmQ0ZjVlMmYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiIxMzQwNTY5MTE5OTItOW1xdGtuMHNuMG9mbmJrNGM2MjZzMTQ5MmVhYzM2ajguYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiIxMzQwNTY5MTE5OTItOW1xdGtuMHNuMG9mbmJrNGM2MjZzMTQ5MmVhYzM2ajguYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMDY3NDcyNTM1NzA2ODAwOTgzMTEiLCJlbWFpbCI6InNhbXVlbGUucXVhcmFudGFAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiItOWxGcUloLW5JVEQxR3d5d0ExMTJnIiwibmFtZSI6IlNhbXVlbGUgUXVhcmFudGEiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jSlVFRHNpdlF0cW9hWjlTNkpGeC1SczhIV1hGVzV2azR0a3dNb21kNVFkLUJVY0NtWkxPZz1zOTYtYyIsImdpdmVuX25hbWUiOiJTYW11ZWxlIiwiZmFtaWx5X25hbWUiOiJRdWFyYW50YSIsImlhdCI6MTc0MjI0MDIwOSwiZXhwIjoxNzQyMjQzODA5fQ.H7Tc3Uwo87Qz5kIiiFNn1nKg-cEZ4XKev_V6EawM8527jCVzuPACkwJZE4NnIMiucftaBqsdwS3WmH69WGpCIu6X06kPwIe6VtzRRHqQYPIG-7UGTwvkMLtfkgL7T1gH-_HDnYOgKbGAInbQvH0rYNX9YXwqylDgHLzCUzJnhMyDk0rIc4Y7aMXGAxYUbf6p2G3sd11sdIiVB_bPVkVDfRKuOcXKTi97vAJ6EJJX3LjXJii_KkYrTascaUMm6KSMHQv82WNdMxeRbddjbRd6fk-UdSXUUekkq2q2kj4CRusnlPpwM-Th_hCTKkvL_nympKhuK3_MLw0lCaiIVDkiCQ"
+}
+)
+
+--------------------
+[2025-03-17 19:36:50] Risposta info utente
+Array
+(
+    [HTTP Code] => 200
+    [Response] => {
+  "id": "106747253570680098311",
+  "email": "samuele.quaranta@gmail.com",
+  "verified_email": true,
+  "name": "Samuele Quaranta",
+  "given_name": "Samuele",
+  "family_name": "Quaranta",
+  "picture": "https://lh3.googleusercontent.com/a/ACg8ocJUEDsivQtqoaZ9S6JFx-Rs8HWXFW5vk4tkwMomd5Qd-BUcCmZLOg=s96-c"
+}
+
+)
+
+--------------------
+[2025-03-17 19:36:50] Informazioni utente recuperate
+Array
+(
+    [Email] => samuele.quaranta@gmail.com
+    [Name] => Samuele Quaranta
+)
+
+--------------------
+[2025-03-17 19:36:50] Nuovo utente, creazione account
+--------------------
+[2025-03-17 19:36:50] Query SQL per inserimento:
+Array
+(
+    [SQL] => INSERT INTO users (username, email, password, full_name, avatar, role_id, status, created_at, updated_at, registration_method) 
+                                VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), NOW(), ?)
+    [Username] => samuele.quaranta
+    [Email] => samuele.quaranta@gmail.com
+    [Role_id] => 2
+    [Status] => active
+)
+
+--------------------
+[2025-03-17 19:36:50] Nuovo utente creato
+Array
+(
+    [User ID] => 28
+    [Username] => samuele.quaranta
+    [Auth Method] => Google
+)
+
+--------------------
+[2025-03-17 19:36:50] Eccezione durante la creazione dell'utente
+Array
+(
+    [Exception] => Unknown column 'p.can_read' in 'field list'
+    [Code] => 1054
+    [Trace] => #0 C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth\google.php(487): mysqli->prepare('SELECT p.catego...')
+#1 {main}
+)
+
+--------------------
+[2025-03-17 19:48:42] Script inizializzato
+Array
+(
+    [REQUEST_URI] => /lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+    [GET] => Array
+        (
+        )
+
+    [SESSION] => Array
+        (
+        )
+
+    [Certificate Path] => C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth/../../../../cacert.pem
+    [Certificate Exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:48:42] Connessione al database inclusa
+--------------------
+[2025-03-17 19:48:42] Verifica colonna registration_method
+Array
+(
+    [exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:48:42] Verifica colonna phone
+Array
+(
+    [exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:48:42] Valori enum per status
+Array
+(
+    [values] => Array
+        (
+            [0] => active
+            [1] => inactive
+            [2] => suspended
+        )
+
+)
+
+--------------------
+[2025-03-17 19:48:42] Impostazioni recuperate
+Array
+(
+    [Google enabled] => 1
+    [Client ID] => 1340569119...
+    [Redirect URL] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:48:42] Nessun codice trovato, inizia autenticazione
+--------------------
+[2025-03-17 19:48:42] Reindirizzamento a URL di autenticazione
+Array
+(
+    [URL] => https://accounts.google.com/o/oauth2/v2/auth?client_id=134056911992-9mqtkn0sn0ofnbk4c626s1492eac36j8.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%2Flenny-dev%2Fhtml%2Fvertical-menu-template%2Flenny%2Fauth%2Fgoogle.php&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&prompt=select_account&access_type=online
+)
+
+--------------------
+[2025-03-17 19:48:46] Script inizializzato
+Array
+(
+    [REQUEST_URI] => /lenny-dev/html/vertical-menu-template/lenny/auth/google.php?code=4%2F0AQSTgQFAn7yXzkeFz7ZK7WmxbXoSjU64HenjbQyYG260_6LyWi6cO035MQIFYDLF2_iaPg&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=none
+    [GET] => Array
+        (
+            [code] => 4/0AQSTgQFAn7yXzkeFz7ZK7WmxbXoSjU64HenjbQyYG260_6LyWi6cO035MQIFYDLF2_iaPg
+            [scope] => email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid
+            [authuser] => 0
+            [prompt] => none
+        )
+
+    [SESSION] => Array
+        (
+        )
+
+    [Certificate Path] => C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth/../../../../cacert.pem
+    [Certificate Exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:48:46] Connessione al database inclusa
+--------------------
+[2025-03-17 19:48:46] Verifica colonna registration_method
+Array
+(
+    [exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:48:46] Verifica colonna phone
+Array
+(
+    [exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:48:46] Valori enum per status
+Array
+(
+    [values] => Array
+        (
+            [0] => active
+            [1] => inactive
+            [2] => suspended
+        )
+
+)
+
+--------------------
+[2025-03-17 19:48:46] Impostazioni recuperate
+Array
+(
+    [Google enabled] => 1
+    [Client ID] => 1340569119...
+    [Redirect URL] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:48:46] Ricevuto codice di autorizzazione
+Array
+(
+    [code] => 4/0AQSTgQF...
+)
+
+--------------------
+[2025-03-17 19:48:46] Parametri per scambio token
+Array
+(
+    [redirect_uri] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:48:46] Usando certificato CA dal percorso: C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth/../../../../cacert.pem
+--------------------
+[2025-03-17 19:48:47] Risposta token exchange
+Array
+(
+    [HTTP Code] => 200
+    [Response] => {
+  "access_token": "ya29.a0AeXRPp5w9IOnltJU6_fupKLalZLEtCDqe0VvOMyBC8Muj8LzkXBHVTnzJ5ijaXkk-_jdgPpJLmFVSlOnFA2s15yBx0ceidu_icLirXyF9ErJSUl1Zg6nVZxO-CvSF_gLSkn1qLwcppFNSWzIzd6KpXD0MkKzWefiOSO59gdNaCgYKAckSARISFQHGX2MitZJLpOGYRbrx6UE0J04phw0175",
+  "expires_in": 3598,
+  "scope": "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid",
+  "token_type": "Bearer",
+  "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjkxNGZiOWIwODcxODBiYzAzMDMyODQ1MDBjNWY1NDBjNmQ0ZjVlMmYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiIxMzQwNTY5MTE5OTItOW1xdGtuMHNuMG9mbmJrNGM2MjZzMTQ5MmVhYzM2ajguYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiIxMzQwNTY5MTE5OTItOW1xdGtuMHNuMG9mbmJrNGM2MjZzMTQ5MmVhYzM2ajguYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMDY3NDcyNTM1NzA2ODAwOTgzMTEiLCJlbWFpbCI6InNhbXVlbGUucXVhcmFudGFAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiJjN0pFdlU3RUNrZENyalcxRjdMZ1dnIiwibmFtZSI6IlNhbXVlbGUgUXVhcmFudGEiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jSlVFRHNpdlF0cW9hWjlTNkpGeC1SczhIV1hGVzV2azR0a3dNb21kNVFkLUJVY0NtWkxPZz1zOTYtYyIsImdpdmVuX25hbWUiOiJTYW11ZWxlIiwiZmFtaWx5X25hbWUiOiJRdWFyYW50YSIsImlhdCI6MTc0MjI0MDkyNiwiZXhwIjoxNzQyMjQ0NTI2fQ.C6eTCPKC6ZNk4L0B5y206nkBVWvih1JKRMKA4fgeeorX9Y3i-hi8JMIMIdnAlgoKafYZZ_uOuww_Nn2PU4Ggf6MjHpVMoiESbPOhWscEEb-JzilFZJIFRFeW5xIAqhEE3ksaoz4nPGyQ8Q9Ugo7tx-5K7AwBjtMudypZmxaxtMflGEMPQhEAFxZQ239iCpedeKlFwecIeGexCS0lPvl9J_nkcn7-UiaqIgdLBOguOB2n7xCTvXZ2_TQi0sSRCQrg6IxXxIktU8byMmffvU_M20d1i4I04TvG-AqhTlxgBbYXRl-hbiQIs5WRT3lvUO0gHJ--kZX2kerHNtEIqgk65A"
+}
+)
+
+--------------------
+[2025-03-17 19:48:47] Risposta info utente
+Array
+(
+    [HTTP Code] => 200
+    [Response] => {
+  "id": "106747253570680098311",
+  "email": "samuele.quaranta@gmail.com",
+  "verified_email": true,
+  "name": "Samuele Quaranta",
+  "given_name": "Samuele",
+  "family_name": "Quaranta",
+  "picture": "https://lh3.googleusercontent.com/a/ACg8ocJUEDsivQtqoaZ9S6JFx-Rs8HWXFW5vk4tkwMomd5Qd-BUcCmZLOg=s96-c"
+}
+
+)
+
+--------------------
+[2025-03-17 19:48:47] Informazioni utente recuperate
+Array
+(
+    [Email] => samuele.quaranta@gmail.com
+    [Name] => Samuele Quaranta
+)
+
+--------------------
+[2025-03-17 19:48:47] Nuovo utente, verifica telefono
+--------------------
+[2025-03-17 19:48:56] Script inizializzato
+Array
+(
+    [REQUEST_URI] => /lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+    [GET] => Array
+        (
+        )
+
+    [SESSION] => Array
+        (
+            [google_user_data] => Array
+                (
+                    [id] => 106747253570680098311
+                    [email] => samuele.quaranta@gmail.com
+                    [verified_email] => 1
+                    [name] => Samuele Quaranta
+                    [given_name] => Samuele
+                    [family_name] => Quaranta
+                    [picture] => https://lh3.googleusercontent.com/a/ACg8ocJUEDsivQtqoaZ9S6JFx-Rs8HWXFW5vk4tkwMomd5Qd-BUcCmZLOg=s96-c
+                )
+
+        )
+
+    [Certificate Path] => C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth/../../../../cacert.pem
+    [Certificate Exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:48:56] Connessione al database inclusa
+--------------------
+[2025-03-17 19:48:56] Verifica colonna registration_method
+Array
+(
+    [exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:48:56] Verifica colonna phone
+Array
+(
+    [exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:48:56] Valori enum per status
+Array
+(
+    [values] => Array
+        (
+            [0] => active
+            [1] => inactive
+            [2] => suspended
+        )
+
+)
+
+--------------------
+[2025-03-17 19:48:56] Impostazioni recuperate
+Array
+(
+    [Google enabled] => 1
+    [Client ID] => 1340569119...
+    [Redirect URL] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:49:11] Script inizializzato
+Array
+(
+    [REQUEST_URI] => /lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+    [GET] => Array
+        (
+        )
+
+    [SESSION] => Array
+        (
+            [google_user_data] => Array
+                (
+                    [id] => 106747253570680098311
+                    [email] => samuele.quaranta@gmail.com
+                    [verified_email] => 1
+                    [name] => Samuele Quaranta
+                    [given_name] => Samuele
+                    [family_name] => Quaranta
+                    [picture] => https://lh3.googleusercontent.com/a/ACg8ocJUEDsivQtqoaZ9S6JFx-Rs8HWXFW5vk4tkwMomd5Qd-BUcCmZLOg=s96-c
+                )
+
+            [phone_verification] => Array
+                (
+                    [phone] => +393533797138
+                    [sid] => VE3105152067637949ad98ab017add417a
+                )
+
+        )
+
+    [Certificate Path] => C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth/../../../../cacert.pem
+    [Certificate Exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:49:11] Connessione al database inclusa
+--------------------
+[2025-03-17 19:49:11] Verifica colonna registration_method
+Array
+(
+    [exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:49:11] Verifica colonna phone
+Array
+(
+    [exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:49:11] Valori enum per status
+Array
+(
+    [values] => Array
+        (
+            [0] => active
+            [1] => inactive
+            [2] => suspended
+        )
+
+)
+
+--------------------
+[2025-03-17 19:49:11] Impostazioni recuperate
+Array
+(
+    [Google enabled] => 1
+    [Client ID] => 1340569119...
+    [Redirect URL] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:49:11] Creazione utente Google
+Array
+(
+    [Email] => samuele.quaranta@gmail.com
+    [Name] => Samuele Quaranta
+    [Phone] => +393533797138
+)
+
+--------------------
+[2025-03-17 19:49:12] Query SQL per inserimento:
+Array
+(
+    [SQL] => INSERT INTO users (username, email, password, full_name, avatar, role_id, status, phone, created_at, updated_at, registration_method) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW(), ?)
+    [Username] => samuele.quaranta
+    [Email] => samuele.quaranta@gmail.com
+    [Phone] => +393533797138
+    [Role_id] => 3
+    [Status] => active
+)
+
+--------------------
+[2025-03-17 19:49:12] Nuovo utente creato
+Array
+(
+    [User ID] => 29
+    [Username] => samuele.quaranta
+    [Auth Method] => Google
+)
+
+--------------------
+[2025-03-17 19:49:12] Eccezione durante la creazione dell'utente
+Array
+(
+    [Exception] => Unknown column 'p.can_read' in 'field list'
+    [Code] => 1054
+    [Trace] => #0 C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth\google.php(482): mysqli->prepare('SELECT p.catego...')
+#1 C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth\google.php(313): createGoogleUser(Object(mysqli), Array, '+393533797138')
+#2 {main}
+)
+
+--------------------
+[2025-03-17 19:54:50] Script inizializzato
+Array
+(
+    [REQUEST_URI] => /lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+    [GET] => Array
+        (
+        )
+
+    [SESSION] => Array
+        (
+        )
+
+    [Certificate Path] => C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth/../../../../cacert.pem
+    [Certificate Exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:54:50] Connessione al database inclusa
+--------------------
+[2025-03-17 19:54:50] Verifica colonna registration_method
+Array
+(
+    [exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:54:50] Verifica colonna phone
+Array
+(
+    [exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:54:50] Valori enum per status
+Array
+(
+    [values] => Array
+        (
+            [0] => active
+            [1] => inactive
+            [2] => suspended
+        )
+
+)
+
+--------------------
+[2025-03-17 19:54:50] Impostazioni recuperate
+Array
+(
+    [Google enabled] => 1
+    [Client ID] => 1340569119...
+    [Redirect URL] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:54:50] Nessun codice trovato, inizia autenticazione
+--------------------
+[2025-03-17 19:54:50] Reindirizzamento a URL di autenticazione
+Array
+(
+    [URL] => https://accounts.google.com/o/oauth2/v2/auth?client_id=134056911992-9mqtkn0sn0ofnbk4c626s1492eac36j8.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%2Flenny-dev%2Fhtml%2Fvertical-menu-template%2Flenny%2Fauth%2Fgoogle.php&response_type=code&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&prompt=select_account&access_type=online
+)
+
+--------------------
+[2025-03-17 19:54:54] Script inizializzato
+Array
+(
+    [REQUEST_URI] => /lenny-dev/html/vertical-menu-template/lenny/auth/google.php?code=4%2F0AQSTgQF6XexLvJ1Ybxe6EfiUAV-lIv0rqnpZMGdhGCOfztsmhd72AuePiuBX7l3Mf26g-g&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=none
+    [GET] => Array
+        (
+            [code] => 4/0AQSTgQF6XexLvJ1Ybxe6EfiUAV-lIv0rqnpZMGdhGCOfztsmhd72AuePiuBX7l3Mf26g-g
+            [scope] => email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid
+            [authuser] => 0
+            [prompt] => none
+        )
+
+    [SESSION] => Array
+        (
+        )
+
+    [Certificate Path] => C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth/../../../../cacert.pem
+    [Certificate Exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:54:54] Connessione al database inclusa
+--------------------
+[2025-03-17 19:54:54] Verifica colonna registration_method
+Array
+(
+    [exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:54:54] Verifica colonna phone
+Array
+(
+    [exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:54:54] Valori enum per status
+Array
+(
+    [values] => Array
+        (
+            [0] => active
+            [1] => inactive
+            [2] => suspended
+        )
+
+)
+
+--------------------
+[2025-03-17 19:54:54] Impostazioni recuperate
+Array
+(
+    [Google enabled] => 1
+    [Client ID] => 1340569119...
+    [Redirect URL] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:54:54] Ricevuto codice di autorizzazione
+Array
+(
+    [code] => 4/0AQSTgQF...
+)
+
+--------------------
+[2025-03-17 19:54:54] Parametri per scambio token
+Array
+(
+    [redirect_uri] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:54:54] Usando certificato CA dal percorso: C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth/../../../../cacert.pem
+--------------------
+[2025-03-17 19:54:55] Risposta token exchange
+Array
+(
+    [HTTP Code] => 200
+    [Response] => {
+  "access_token": "ya29.a0AeXRPp5kJqUTeFS18m3cFhgXyG-mNdizgu8qBAWtqbdgeLA5r3kAzzR-a6xXpbFW2Yf8JnJwiCBdtVBDAfYKg25v-jr5wuU-r0rsMtN2EJkEHFSmiZ8jtRWxGzXqIsFkAMM1nc2YkFj32pCEvR4Tfe31yYCbV3oMVnvmwsseaCgYKAVoSARISFQHGX2Mig1MnaFAFz6j_Dig1N5eKFA0175",
+  "expires_in": 3599,
+  "scope": "https://www.googleapis.com/auth/userinfo.profile openid https://www.googleapis.com/auth/userinfo.email",
+  "token_type": "Bearer",
+  "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjkxNGZiOWIwODcxODBiYzAzMDMyODQ1MDBjNWY1NDBjNmQ0ZjVlMmYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiIxMzQwNTY5MTE5OTItOW1xdGtuMHNuMG9mbmJrNGM2MjZzMTQ5MmVhYzM2ajguYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiIxMzQwNTY5MTE5OTItOW1xdGtuMHNuMG9mbmJrNGM2MjZzMTQ5MmVhYzM2ajguYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMDY3NDcyNTM1NzA2ODAwOTgzMTEiLCJlbWFpbCI6InNhbXVlbGUucXVhcmFudGFAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiI2X1BDM1cxOVZOU3l3aWpPZjJfMDhRIiwibmFtZSI6IlNhbXVlbGUgUXVhcmFudGEiLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jSlVFRHNpdlF0cW9hWjlTNkpGeC1SczhIV1hGVzV2azR0a3dNb21kNVFkLUJVY0NtWkxPZz1zOTYtYyIsImdpdmVuX25hbWUiOiJTYW11ZWxlIiwiZmFtaWx5X25hbWUiOiJRdWFyYW50YSIsImlhdCI6MTc0MjI0MTI5NCwiZXhwIjoxNzQyMjQ0ODk0fQ.MDdOlX44lHYWUk2m3D0S5MpHVTXWQiPllbmYBhYtVQXsK-Tx0DJekhChxO5GZo9Jct2Ox0MmVItHPx7HBJeyzXmXwUNft5VRcGNfbNKxYZLC3TYeNR03mdbwoLLT-2-unCVmX2Ux8RKWIC9eGzeHk01xtZfrC7ZlPYB8Pjkgr1jrLSujUErWJqSIGBUajKB7XO3IZKASjiNdUSzcyCB4V9YHuOGFsfuWDreoPMurvyshHhSwIVTub5vxgHKYaoMLuRGTsZSuAZQUZKCDYYrAlnDJve7qjtK6-4hAK3hLM9duZXEhYf8x5ibjVZF4-eX8zRiXzEfiCnF46D3j28RFRA"
+}
+)
+
+--------------------
+[2025-03-17 19:54:56] Risposta info utente
+Array
+(
+    [HTTP Code] => 200
+    [Response] => {
+  "id": "106747253570680098311",
+  "email": "samuele.quaranta@gmail.com",
+  "verified_email": true,
+  "name": "Samuele Quaranta",
+  "given_name": "Samuele",
+  "family_name": "Quaranta",
+  "picture": "https://lh3.googleusercontent.com/a/ACg8ocJUEDsivQtqoaZ9S6JFx-Rs8HWXFW5vk4tkwMomd5Qd-BUcCmZLOg=s96-c"
+}
+
+)
+
+--------------------
+[2025-03-17 19:54:56] Informazioni utente recuperate
+Array
+(
+    [Email] => samuele.quaranta@gmail.com
+    [Name] => Samuele Quaranta
+)
+
+--------------------
+[2025-03-17 19:54:56] Nuovo utente, verifica telefono
+--------------------
+[2025-03-17 19:55:02] Script inizializzato
+Array
+(
+    [REQUEST_URI] => /lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+    [GET] => Array
+        (
+        )
+
+    [SESSION] => Array
+        (
+            [google_user_data] => Array
+                (
+                    [id] => 106747253570680098311
+                    [email] => samuele.quaranta@gmail.com
+                    [verified_email] => 1
+                    [name] => Samuele Quaranta
+                    [given_name] => Samuele
+                    [family_name] => Quaranta
+                    [picture] => https://lh3.googleusercontent.com/a/ACg8ocJUEDsivQtqoaZ9S6JFx-Rs8HWXFW5vk4tkwMomd5Qd-BUcCmZLOg=s96-c
+                )
+
+        )
+
+    [Certificate Path] => C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth/../../../../cacert.pem
+    [Certificate Exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:55:02] Connessione al database inclusa
+--------------------
+[2025-03-17 19:55:02] Verifica colonna registration_method
+Array
+(
+    [exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:55:02] Verifica colonna phone
+Array
+(
+    [exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:55:02] Valori enum per status
+Array
+(
+    [values] => Array
+        (
+            [0] => active
+            [1] => inactive
+            [2] => suspended
+        )
+
+)
+
+--------------------
+[2025-03-17 19:55:02] Impostazioni recuperate
+Array
+(
+    [Google enabled] => 1
+    [Client ID] => 1340569119...
+    [Redirect URL] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:55:12] Script inizializzato
+Array
+(
+    [REQUEST_URI] => /lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+    [GET] => Array
+        (
+        )
+
+    [SESSION] => Array
+        (
+            [google_user_data] => Array
+                (
+                    [id] => 106747253570680098311
+                    [email] => samuele.quaranta@gmail.com
+                    [verified_email] => 1
+                    [name] => Samuele Quaranta
+                    [given_name] => Samuele
+                    [family_name] => Quaranta
+                    [picture] => https://lh3.googleusercontent.com/a/ACg8ocJUEDsivQtqoaZ9S6JFx-Rs8HWXFW5vk4tkwMomd5Qd-BUcCmZLOg=s96-c
+                )
+
+            [phone_verification] => Array
+                (
+                    [phone] => +3935 337 971 38
+                    [sid] => VE506d5f4876a00daf7c3c77c450200379
+                )
+
+        )
+
+    [Certificate Path] => C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth/../../../../cacert.pem
+    [Certificate Exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:55:12] Connessione al database inclusa
+--------------------
+[2025-03-17 19:55:12] Verifica colonna registration_method
+Array
+(
+    [exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:55:12] Verifica colonna phone
+Array
+(
+    [exists] => Yes
+)
+
+--------------------
+[2025-03-17 19:55:12] Valori enum per status
+Array
+(
+    [values] => Array
+        (
+            [0] => active
+            [1] => inactive
+            [2] => suspended
+        )
+
+)
+
+--------------------
+[2025-03-17 19:55:12] Impostazioni recuperate
+Array
+(
+    [Google enabled] => 1
+    [Client ID] => 1340569119...
+    [Redirect URL] => http://localhost/lenny-dev/html/vertical-menu-template/lenny/auth/google.php
+)
+
+--------------------
+[2025-03-17 19:55:13] Creazione utente Google
+Array
+(
+    [Email] => samuele.quaranta@gmail.com
+    [Name] => Samuele Quaranta
+    [Phone] => +3935 337 971 38
+)
+
+--------------------
+[2025-03-17 19:55:13] Query SQL per inserimento:
+Array
+(
+    [SQL] => INSERT INTO users (username, email, password, full_name, avatar, role_id, status, phone, created_at, updated_at, registration_method) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW(), ?)
+    [Username] => samuele.quaranta
+    [Email] => samuele.quaranta@gmail.com
+    [Phone] => +3935 337 971 38
+    [Role_id] => 3
+    [Status] => active
+)
+
+--------------------
+[2025-03-17 19:55:13] Nuovo utente creato
+Array
+(
+    [User ID] => 30
+    [Username] => samuele.quaranta
+    [Auth Method] => Google
+)
+
+--------------------
+[2025-03-17 19:55:13] Eccezione durante la creazione dell'utente
+Array
+(
+    [Exception] => Unknown column 'p.can_read' in 'field list'
+    [Code] => 1054
+    [Trace] => #0 C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth\google.php(482): mysqli->prepare('SELECT p.catego...')
+#1 C:\laragon\www\lenny-dev\html\vertical-menu-template\lenny\auth\google.php(313): createGoogleUser(Object(mysqli), Array, '+3935 337 971 3...')
+#2 {main}
+)
+
+--------------------

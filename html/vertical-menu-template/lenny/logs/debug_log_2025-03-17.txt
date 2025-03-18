@@ -1,0 +1,20 @@
+[2025-03-17 16:14:49] [INFO] Iniziato processo di autenticazione Google OAuth
+[2025-03-17 16:29:48] [INFO] Iniziato processo di autenticazione Google OAuth
+[2025-03-17 16:31:17] [INFO] Iniziato processo di autenticazione Google OAuth
+[2025-03-17 16:32:07] [INFO] Iniziato processo di autenticazione Google OAuth
+[2025-03-17 17:20:24] [INFO] Email di verifica inviata a andrea@lenny-dev.xyz
+[2025-03-17 17:20:39] [INFO] Tentativo di invio SMS a +393668954576 utilizzando Twilio Verify
+[2025-03-17 17:20:39] [DEBUG] Inizializzazione Twilio Verify - Account SID: AC8c8..., Auth Token: impostato, ServiceSID: VA564..., Phone: +393668954576
+[2025-03-17 17:20:39] [DEBUG] URL Endpoint Twilio Verify: https://verify.twilio.com/v2/Services/VA5642c54916c101024fa6d231ade1457f/Verifications
+[2025-03-17 17:20:39] [DEBUG] Parametri richiesta Verify: {"To":"+393668954576","Channel":"sms"}
+[2025-03-17 17:20:39] [DEBUG] Utilizzo certificato SSL: C:\laragon\www\lenny-dev\cacert.pem
+[2025-03-17 17:20:39] [DEBUG] Curl Info: {"url":"https:\/\/verify.twilio.com\/v2\/Services\/VA5642c54916c101024fa6d231ade1457f\/Verifications","content_type":"application\/json","http_code":201,"header_size":976,"request_size":0,"filetime":-1,"ssl_verify_result":0,"redirect_count":0,"total_time":0.856594,"namelookup_time":0.075778,"connect_time":0.115017,"pretransfer_time":0.441591,"size_upload":30,"size_download":634,"speed_download":740,"speed_upload":35,"download_content_length":634,"upload_content_length":30,"starttransfer_time":0.856221,"redirect_time":0,"redirect_url":"","primary_ip":"108.138.191.14","certinfo":[],"primary_port":443,"local_ip":"192.168.188.21","local_port":51882,"http_version":2,"protocol":2,"ssl_verifyresult":0,"scheme":"HTTPS","appconnect_time_us":440620,"connect_time_us":115017,"namelookup_time_us":75778,"pretransfer_time_us":441591,"redirect_time_us":0,"starttransfer_time_us":856221,"total_time_us":856594,"effective_method":"POST","capath":"","cainfo":""}
+[2025-03-17 17:20:39] [DEBUG] HTTP Code: 201, Risposta Twilio Verify: {"status":"pending","payee":null,"date_updated":"2025-03-17T17:20:39Z","send_code_attempts":[{"attempt_sid":"VLfac33c0a2bf9436495cce9724b8dfaa0","channel":"rcs","time":"2025-03-17T17:20:39.213Z"}],"account_sid":"AC8c81dc98bb48537f720741a2012a9988","to":"+393668954576","amount":null,"valid":false,"lookup":{"carrier":null},"url":"https:\/\/verify.twilio.com\/v2\/Services\/VA5642c54916c101024fa6d231ade1457f\/Verifications\/VE8d254bf61d637e2b6c7c538291991d2e","sid":"VE8d254bf61d637e2b6c7c538291991d2e","date_created":"2025-03-17T17:20:39Z","service_sid":"VA5642c54916c101024fa6d231ade1457f","channel":"sms"}
+[2025-03-17 17:20:39] [INFO] SMS Verify inviato con successo a +393668954576 (SID: VE8d254bf61d637e2b6c7c538291991d2e)
+[2025-03-17 17:21:03] [DEBUG] Verifica codice Twilio Verify - Phone: +393668954576, Code: 574485
+[2025-03-17 17:21:03] [DEBUG] HTTP Code: 200, Risposta Twilio Verify Check: {"status":"approved","payee":null,"date_updated":"2025-03-17T17:21:03Z","account_sid":"AC8c81dc98bb48537f720741a2012a9988","to":"+393668954576","amount":null,"valid":true,"sid":"VE8d254bf61d637e2b6c7c538291991d2e","date_created":"2025-03-17T17:20:39Z","service_sid":"VA5642c54916c101024fa6d231ade1457f","channel":"sms"}
+[2025-03-17 17:21:03] [INFO] Codice verificato con successo per +393668954576
+[2025-03-17 17:21:03] [INFO] Nuovo utente registrato: andreac (andrea@lenny-dev.xyz)
+[2025-03-17 19:01:22] [INFO] Iniziato processo di autenticazione Google OAuth
+[2025-03-17 19:02:06] [INFO] Iniziato processo di autenticazione Google OAuth
+[2025-03-17 19:02:25] [INFO] Iniziato processo di autenticazione Google OAuth

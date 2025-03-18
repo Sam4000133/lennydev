@@ -2,13 +2,6 @@
 // Include il controllo dell'autenticazione
 require_once 'check_auth.php';
 
-// Verifica l'accesso specifico a questa pagina
-if (!userHasAccess('Sistema')) {
-    // Reindirizza alla pagina di accesso negato
-    header("Location: access-denied.php");
-    exit;
-}
-
 // Abilita visualizzazione errori per debug
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);

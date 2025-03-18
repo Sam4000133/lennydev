@@ -375,6 +375,110 @@ function deleteIntegration($id) {
     return $stmt->execute();
 }
 
+// Funzione per sincronizzare le impostazioni di Google con l'integrazione
+function syncGoogleSettings() {
+    global $conn;
+    
+    // Ottieni le impostazioni social dal database
+    $socialSettings = getSettings('social');
+    
+    // Trova l'integrazione Google
+    $query = "SELECT * FROM integrations WHERE name = 'Google' AND type = 'social' LIMIT 1";
+    $result = $conn->query($query);
+    
+    if ($result&&$result->num_rows > 0) {
+        $googleIntegration = $result->fetch_assoc();
+        $googleConfig = json_decode($googleIntegration['config'], true);
+        
+        // Aggiorna la configurazione con i valori delle impostazioni di sistema
+        $configChanged = false;
+        
+        if (isset($socialSettings['google_client_id'])&&(empty($googleConfig['app_id']) || $googleConfig['app_id'] != $socialSettings['google_client_id']['setting_value'])) {
+            $googleConfig['app_id'] = $socialSettings['google_client_id']['setting_value'];
+            $configChanged = true;
+        }
+        
+        if (isset($socialSettings['google_client_secret'])&&(empty($googleConfig['app_secret']) || $googleConfig['app_secret'] != $socialSettings['google_client_secret']['setting_value'])) {
+            $googleConfig['app_secret'] = $socialSettings['google_client_secret']['setting_value'];
+            $configChanged = true;
+        }
+        
+        if (isset($socialSettings['google_redirect_url'])&&(empty($googleConfig['redirect_url']) || $googleConfig['redirect_url'] != $socialSettings['google_redirect_url']['setting_value'])) {
+            $googleConfig['redirect_url'] = $socialSettings['google_redirect_url']['setting_value'];
+            $configChanged = true;
+        }
+        
+        // Aggiorna lo stato basato sull'impostazione google_enabled
+        $newStatus = (isset($socialSettings['google_enabled'])&&$socialSettings['google_enabled']['setting_value'] == '1') ? 'active' : 'inactive';
+        $statusChanged = $googleIntegration['status'] != $newStatus;
+        
+        // Salva le modifiche se necessario
+        if ($configChanged) {
+            updateIntegrationConfig($googleIntegration['id'], $googleConfig);
+        }
+        
+        if ($statusChanged) {
+            updateIntegrationStatus($googleIntegration['id'], $newStatus);
+        }
+        
+        if ($configChanged || $statusChanged) {
+            logSystemAction('info', 'Impostazioni Google sincronizzate con l\'integrazione');
+        }
+    }
+}
+
+// Funzione per sincronizzare le impostazioni di Facebook con l'integrazione
+function syncFacebookSettings() {
+    global $conn;
+    
+    // Ottieni le impostazioni social dal database
+    $socialSettings = getSettings('social');
+    
+    // Trova l'integrazione Facebook
+    $query = "SELECT * FROM integrations WHERE name = 'Facebook' AND type = 'social' LIMIT 1";
+    $result = $conn->query($query);
+    
+    if ($result&&$result->num_rows > 0) {
+        $facebookIntegration = $result->fetch_assoc();
+        $facebookConfig = json_decode($facebookIntegration['config'], true);
+        
+        // Aggiorna la configurazione con i valori delle impostazioni di sistema
+        $configChanged = false;
+        
+        if (isset($socialSettings['facebook_app_id'])&&(empty($facebookConfig['app_id']) || $facebookConfig['app_id'] != $socialSettings['facebook_app_id']['setting_value'])) {
+            $facebookConfig['app_id'] = $socialSettings['facebook_app_id']['setting_value'];
+            $configChanged = true;
+        }
+        
+        if (isset($socialSettings['facebook_app_secret'])&&(empty($facebookConfig['app_secret']) || $facebookConfig['app_secret'] != $socialSettings['facebook_app_secret']['setting_value'])) {
+            $facebookConfig['app_secret'] = $socialSettings['facebook_app_secret']['setting_value'];
+            $configChanged = true;
+        }
+        
+        if (isset($socialSettings['facebook_redirect_url'])&&(empty($facebookConfig['redirect_url']) || $facebookConfig['redirect_url'] != $socialSettings['facebook_redirect_url']['setting_value'])) {
+            $facebookConfig['redirect_url'] = $socialSettings['facebook_redirect_url']['setting_value'];
+            $configChanged = true;
+        }
+        
+        // Aggiorna lo stato basato sull'impostazione facebook_enabled
+        $newStatus = (isset($socialSettings['facebook_enabled'])&&$socialSettings['facebook_enabled']['setting_value'] == '1') ? 'active' : 'inactive';
+        $statusChanged = $facebookIntegration['status'] != $newStatus;
+        
+        // Salva le modifiche se necessario
+        if ($configChanged) {
+            updateIntegrationConfig($facebookIntegration['id'], $facebookConfig);
+        }
+        
+        if ($statusChanged) {
+            updateIntegrationStatus($facebookIntegration['id'], $newStatus);
+        }
+        
+        if ($configChanged || $statusChanged) {
+            logSystemAction('info', 'Impostazioni Facebook sincronizzate con l\'integrazione');
+        }
+    }
+}
+
 // Funzione per sincronizzare le impostazioni di Twilio con l'integrazione
 function syncTwilioSettings() {
     global $conn;
@@ -430,6 +534,132 @@ function syncTwilioSettings() {
             logSystemAction('info', 'Impostazioni Twilio sincronizzate con l\'integrazione');
         }
     }
+}
+
+// Funzione per sincronizzare le impostazioni di Stripe con l'integrazione
+function syncStripeSettings() {
+    global $conn;
+    
+    // Ottieni le impostazioni di pagamento dal database
+    $paymentSettings = getSettings('payment');
+    
+    // Trova l'integrazione Stripe
+    $query = "SELECT * FROM integrations WHERE name = 'Stripe' AND type = 'payment' LIMIT 1";
+    $result = $conn->query($query);
+    
+    if ($result&&$result->num_rows > 0) {
+        $stripeIntegration = $result->fetch_assoc();
+        $stripeConfig = json_decode($stripeIntegration['config'], true);
+        
+        // Aggiorna la configurazione con i valori delle impostazioni di sistema
+        $configChanged = false;
+        
+        if (isset($paymentSettings['stripe_publishable_key'])&&(empty($stripeConfig['api_key']) || $stripeConfig['api_key'] != $paymentSettings['stripe_publishable_key']['setting_value'])) {
+            $stripeConfig['api_key'] = $paymentSettings['stripe_publishable_key']['setting_value'];
+            $configChanged = true;
+        }
+        
+        if (isset($paymentSettings['stripe_secret_key'])&&(empty($stripeConfig['api_secret']) || $stripeConfig['api_secret'] != $paymentSettings['stripe_secret_key']['setting_value'])) {
+            $stripeConfig['api_secret'] = $paymentSettings['stripe_secret_key']['setting_value'];
+            $configChanged = true;
+        }
+        
+        if (isset($paymentSettings['stripe_currency'])&&(empty($stripeConfig['currency']) || $stripeConfig['currency'] != $paymentSettings['stripe_currency']['setting_value'])) {
+            $stripeConfig['currency'] = $paymentSettings['stripe_currency']['setting_value'];
+            $configChanged = true;
+        }
+        
+        if (isset($paymentSettings['stripe_test_mode'])) {
+            $mode = $paymentSettings['stripe_test_mode']['setting_value'] == '1' ? 'test' : 'live';
+            if (empty($stripeConfig['mode']) || $stripeConfig['mode'] != $mode) {
+                $stripeConfig['mode'] = $mode;
+                $configChanged = true;
+            }
+        }
+        
+        // Aggiorna lo stato basato sull'impostazione stripe_enabled
+        $newStatus = (isset($paymentSettings['stripe_enabled'])&&$paymentSettings['stripe_enabled']['setting_value'] == '1') ? 'active' : 'inactive';
+        $statusChanged = $stripeIntegration['status'] != $newStatus;
+        
+        // Salva le modifiche se necessario
+        if ($configChanged) {
+            updateIntegrationConfig($stripeIntegration['id'], $stripeConfig);
+        }
+        
+        if ($statusChanged) {
+            updateIntegrationStatus($stripeIntegration['id'], $newStatus);
+        }
+        
+        if ($configChanged || $statusChanged) {
+            logSystemAction('info', 'Impostazioni Stripe sincronizzate con l\'integrazione');
+        }
+    }
+}
+
+// Funzione per sincronizzare le impostazioni di PayPal con l'integrazione
+function syncPayPalSettings() {
+    global $conn;
+    
+    // Ottieni le impostazioni di pagamento dal database
+    $paymentSettings = getSettings('payment');
+    
+    // Trova l'integrazione PayPal
+    $query = "SELECT * FROM integrations WHERE name = 'PayPal' AND type = 'payment' LIMIT 1";
+    $result = $conn->query($query);
+    
+    if ($result&&$result->num_rows > 0) {
+        $paypalIntegration = $result->fetch_assoc();
+        $paypalConfig = json_decode($paypalIntegration['config'], true);
+        
+        // Aggiorna la configurazione con i valori delle impostazioni di sistema
+        $configChanged = false;
+        
+        if (isset($paymentSettings['paypal_client_id'])&&(empty($paypalConfig['client_id']) || $paypalConfig['client_id'] != $paymentSettings['paypal_client_id']['setting_value'])) {
+            $paypalConfig['client_id'] = $paymentSettings['paypal_client_id']['setting_value'];
+            $configChanged = true;
+        }
+        
+        if (isset($paymentSettings['paypal_client_secret'])&&(empty($paypalConfig['client_secret']) || $paypalConfig['client_secret'] != $paymentSettings['paypal_client_secret']['setting_value'])) {
+            $paypalConfig['client_secret'] = $paymentSettings['paypal_client_secret']['setting_value'];
+            $configChanged = true;
+        }
+        
+        if (isset($paymentSettings['paypal_currency'])&&(empty($paypalConfig['currency']) || $paypalConfig['currency'] != $paymentSettings['paypal_currency']['setting_value'])) {
+            $paypalConfig['currency'] = $paymentSettings['paypal_currency']['setting_value'];
+            $configChanged = true;
+        }
+        
+        if (isset($paymentSettings['paypal_mode'])&&(empty($paypalConfig['mode']) || $paypalConfig['mode'] != $paymentSettings['paypal_mode']['setting_value'])) {
+            $paypalConfig['mode'] = $paymentSettings['paypal_mode']['setting_value'];
+            $configChanged = true;
+        }
+        
+        // Aggiorna lo stato basato sull'impostazione paypal_enabled
+        $newStatus = (isset($paymentSettings['paypal_enabled'])&&$paymentSettings['paypal_enabled']['setting_value'] == '1') ? 'active' : 'inactive';
+        $statusChanged = $paypalIntegration['status'] != $newStatus;
+        
+        // Salva le modifiche se necessario
+        if ($configChanged) {
+            updateIntegrationConfig($paypalIntegration['id'], $paypalConfig);
+        }
+        
+        if ($statusChanged) {
+            updateIntegrationStatus($paypalIntegration['id'], $newStatus);
+        }
+        
+        if ($configChanged || $statusChanged) {
+            logSystemAction('info', 'Impostazioni PayPal sincronizzate con l\'integrazione');
+        }
+    }
+}
+
+// Funzione per sincronizzare tutte le impostazioni di integrazione
+function syncAllIntegrationSettings() {
+    syncGoogleSettings();
+    syncFacebookSettings();
+    syncTwilioSettings();
+    syncStripeSettings();
+    syncPayPalSettings();
 }
 
 // Funzione per verificare una connessione API
@@ -531,8 +761,8 @@ function updateIntegrationLastTested($id) {
     return $stmt->execute();
 }
 
-// Sincronizza le impostazioni Twilio
-syncTwilioSettings();
+// Sincronizza le impostazioni di tutte le integrazioni
+syncAllIntegrationSettings();
 
 // Gestione delle richieste AJAX
 if ($_SERVER['REQUEST_METHOD'] === 'POST'&&isset($_POST['action'])) {
@@ -559,9 +789,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'&&isset($_POST['action'])) {
             }
         }
         
-        // Se stiamo aggiornando le impostazioni SMS, sincronizza Twilio
-        if ($section === 'sms'&&$success) {
-            syncTwilioSettings();
+        // Se stiamo aggiornando impostazioni di varie sezioni, sincronizziamo le integrazioni appropriate
+        if ($success) {
+            if ($section === 'sms') {
+                syncTwilioSettings();
+            } elseif ($section === 'social') {
+                syncGoogleSettings();
+                syncFacebookSettings();
+            } elseif ($section === 'payment') {
+                syncStripeSettings();
+                syncPayPalSettings();
+            }
         }
         
         // Registra l'operazione nei log
@@ -587,14 +825,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'&&isset($_POST['action'])) {
         
         // Aggiorna lo stato
         if (updateIntegrationStatus($integrationId, $status)) {
-            // Se è Twilio, aggiorna anche l'impostazione di sistema
+            // Aggiorna anche l'impostazione di sistema corrispondente in base al tipo di integrazione
+            $systemSettingUpdated = false;
+            
             if ($integration['name'] === 'Twilio'&&$integration['type'] === 'sms') {
-                updateSetting('twilio_enabled', $status === 'active' ? '1' : '0');
+                $systemSettingUpdated = updateSetting('twilio_enabled', $status === 'active' ? '1' : '0');
+            } elseif ($integration['name'] === 'Google'&&$integration['type'] === 'social') {
+                $systemSettingUpdated = updateSetting('google_enabled', $status === 'active' ? '1' : '0');
+            } elseif ($integration['name'] === 'Facebook'&&$integration['type'] === 'social') {
+                $systemSettingUpdated = updateSetting('facebook_enabled', $status === 'active' ? '1' : '0');
+            } elseif ($integration['name'] === 'Stripe'&&$integration['type'] === 'payment') {
+                $systemSettingUpdated = updateSetting('stripe_enabled', $status === 'active' ? '1' : '0');
+            } elseif ($integration['name'] === 'PayPal'&&$integration['type'] === 'payment') {
+                $systemSettingUpdated = updateSetting('paypal_enabled', $status === 'active' ? '1' : '0');
             }
             
             // Log dell'azione
             $statusText = $status === 'active' ? 'attivata' : 'disattivata';
-            logSystemAction('info', "Integrazione {$integration['name']} $statusText");
+            logSystemAction('info', "Integrazione {$integration['name']} $statusText" . 
+                            ($systemSettingUpdated ? " (impostazione di sistema aggiornata)" : ""));
             
             echo json_encode(['success' => true, 'message' => "Integrazione {$integration['name']} $statusText con successo"]);
         } else {
@@ -617,6 +866,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'&&isset($_POST['action'])) {
         
         // Aggiorna la configurazione
         if (updateIntegrationConfig($integrationId, $config)) {
+            // Aggiorna anche le impostazioni di sistema corrispondenti in base al tipo di integrazione
+            $systemSettingsUpdated = false;
+            
             // Se è Twilio, aggiorna anche le impostazioni di sistema
             if ($integration['name'] === 'Twilio'&&$integration['type'] === 'sms') {
                 if (isset($config['account_sid'])) {
@@ -631,10 +883,70 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'&&isset($_POST['action'])) {
                 if (isset($config['verify_service_sid'])) {
                     updateSetting('twilio_verify_service_sid', $config['verify_service_sid']);
                 }
+                $systemSettingsUpdated = true;
+            }
+            // Se è Google, aggiorna anche le impostazioni di sistema
+            elseif ($integration['name'] === 'Google'&&$integration['type'] === 'social') {
+                if (isset($config['app_id'])) {
+                    updateSetting('google_client_id', $config['app_id']);
+                }
+                if (isset($config['app_secret'])) {
+                    updateSetting('google_client_secret', $config['app_secret']);
+                }
+                if (isset($config['redirect_url'])) {
+                    updateSetting('google_redirect_url', $config['redirect_url']);
+                }
+                $systemSettingsUpdated = true;
+            }
+            // Se è Facebook, aggiorna anche le impostazioni di sistema
+            elseif ($integration['name'] === 'Facebook'&&$integration['type'] === 'social') {
+                if (isset($config['app_id'])) {
+                    updateSetting('facebook_app_id', $config['app_id']);
+                }
+                if (isset($config['app_secret'])) {
+                    updateSetting('facebook_app_secret', $config['app_secret']);
+                }
+                if (isset($config['redirect_url'])) {
+                    updateSetting('facebook_redirect_url', $config['redirect_url']);
+                }
+                $systemSettingsUpdated = true;
+            }
+            // Se è Stripe, aggiorna anche le impostazioni di sistema
+            elseif ($integration['name'] === 'Stripe'&&$integration['type'] === 'payment') {
+                if (isset($config['api_key'])) {
+                    updateSetting('stripe_publishable_key', $config['api_key']);
+                }
+                if (isset($config['api_secret'])) {
+                    updateSetting('stripe_secret_key', $config['api_secret']);
+                }
+                if (isset($config['currency'])) {
+                    updateSetting('stripe_currency', $config['currency']);
+                }
+                if (isset($config['mode'])) {
+                    updateSetting('stripe_test_mode', $config['mode'] === 'test' ? '1' : '0');
+                }
+                $systemSettingsUpdated = true;
+            }
+            // Se è PayPal, aggiorna anche le impostazioni di sistema
+            elseif ($integration['name'] === 'PayPal'&&$integration['type'] === 'payment') {
+                if (isset($config['client_id'])) {
+                    updateSetting('paypal_client_id', $config['client_id']);
+                }
+                if (isset($config['client_secret'])) {
+                    updateSetting('paypal_client_secret', $config['client_secret']);
+                }
+                if (isset($config['currency'])) {
+                    updateSetting('paypal_currency', $config['currency']);
+                }
+                if (isset($config['mode'])) {
+                    updateSetting('paypal_mode', $config['mode']);
+                }
+                $systemSettingsUpdated = true;
             }
             
             // Log dell'azione
-            logSystemAction('info', "Configurazione dell'integrazione {$integration['name']} aggiornata");
+            logSystemAction('info', "Configurazione dell'integrazione {$integration['name']} aggiornata" . 
+                           ($systemSettingsUpdated ? " (impostazioni di sistema sincronizzate)" : ""));
             
             echo json_encode(['success' => true, 'message' => "Configurazione dell'integrazione {$integration['name']} salvata con successo"]);
         } else {
@@ -665,6 +977,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'&&isset($_POST['action'])) {
         // Aggiungi l'integrazione
         $newId = addIntegration($name, $type, $description, $config, $status);
         if ($newId) {
+            // Se è un'integrazione conosciuta, sincronizza con le impostazioni di sistema
+            if ($name === 'Google'&&$type === 'social') {
+                // Aggiorna le impostazioni di sistema con i valori della nuova integrazione
+                if (isset($config['app_id'])) {
+                    updateSetting('google_client_id', $config['app_id']);
+                }
+                if (isset($config['app_secret'])) {
+                    updateSetting('google_client_secret', $config['app_secret']);
+                }
+                if (isset($config['redirect_url'])) {
+                    updateSetting('google_redirect_url', $config['redirect_url']);
+                }
+                updateSetting('google_enabled', $status === 'active' ? '1' : '0');
+            } elseif ($name === 'Facebook'&&$type === 'social') {
+                if (isset($config['app_id'])) {
+                    updateSetting('facebook_app_id', $config['app_id']);
+                }
+                if (isset($config['app_secret'])) {
+                    updateSetting('facebook_app_secret', $config['app_secret']);
+                }
+                if (isset($config['redirect_url'])) {
+                    updateSetting('facebook_redirect_url', $config['redirect_url']);
+                }
+                updateSetting('facebook_enabled', $status === 'active' ? '1' : '0');
+            } elseif ($name === 'Twilio'&&$type === 'sms') {
+                if (isset($config['account_sid'])) {
+                    updateSetting('twilio_account_sid', $config['account_sid']);
+                }
+                if (isset($config['auth_token'])) {
+                    updateSetting('twilio_auth_token', $config['auth_token']);
+                }
+                if (isset($config['from_number'])) {
+                    updateSetting('twilio_phone_number', $config['from_number']);
+                }
+                if (isset($config['verify_service_sid'])) {
+                    updateSetting('twilio_verify_service_sid', $config['verify_service_sid']);
+                }
+                updateSetting('twilio_enabled', $status === 'active' ? '1' : '0');
+            }
+            
             // Log dell'azione
             logSystemAction('info', "Nuova integrazione '$name' di tipo '$type' aggiunta");
             
@@ -1972,24 +2324,80 @@ $otherIntegrations = array_filter($integrations, function($item) {
                     break;
                     
                 case 'social':
-                    configContainer.append(`
-                        <div class="mb-3">
-                            <label class="form-label" for="social_app_id">App ID / Client ID</label>
-                            <input type="text" class="form-control" id="social_app_id" name="config[app_id]" value="${config.app_id || ''}" ${!userPermissions.canWrite ? 'disabled' : ''}>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="social_app_secret">App Secret / Client Secret</label>
-                            <input type="password" class="form-control" id="social_app_secret" name="config[app_secret]" value="${config.app_secret || ''}" ${!userPermissions.canWrite ? 'disabled' : ''}>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="social_redirect_url">URL di Reindirizzamento</label>
-                            <input type="text" class="form-control" id="social_redirect_url" name="config[redirect_url]" value="${config.redirect_url || ''}" ${!userPermissions.canWrite ? 'disabled' : ''}>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="social_scopes">Scopes (separati da virgola)</label>
-                            <input type="text" class="form-control" id="social_scopes" name="config[scopes]" value="${config.scopes || ''}" ${!userPermissions.canWrite ? 'disabled' : ''}>
-                        </div>
-                    `);
+                    if (integration.name === 'Google') {
+                        configContainer.append(`
+                            <div class="mb-3">
+                                <label class="form-label" for="social_app_id">Client ID</label>
+                                <input type="text" class="form-control" id="social_app_id" name="config[app_id]" value="${config.app_id || ''}" ${!userPermissions.canWrite ? 'disabled' : ''}>
+                                <small class="text-muted">Il Client ID di Google (da Google Developer Console)</small>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="social_app_secret">Client Secret</label>
+                                <input type="password" class="form-control" id="social_app_secret" name="config[app_secret]" value="${config.app_secret || ''}" ${!userPermissions.canWrite ? 'disabled' : ''}>
+                                <small class="text-muted">Il Client Secret di Google (da Google Developer Console)</small>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="social_redirect_url">URL di Reindirizzamento</label>
+                                <input type="text" class="form-control" id="social_redirect_url" name="config[redirect_url]" value="${config.redirect_url || ''}" ${!userPermissions.canWrite ? 'disabled' : ''}>
+                                <small class="text-muted">URL di callback per Google OAuth (deve corrispondere all'URL configurato nella Console)</small>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="social_scopes">Scopes (separati da virgola)</label>
+                                <input type="text" class="form-control" id="social_scopes" name="config[scopes]" value="${config.scopes || 'email,profile'}" ${!userPermissions.canWrite ? 'disabled' : ''}>
+                                <small class="text-muted">I permessi richiesti per l'autenticazione Google</small>
+                            </div>
+                            <div class="alert alert-primary mt-3 mb-0">
+                                <i class="icon-base ti tabler-info-circle me-1"></i> 
+                                Se modifichi queste impostazioni, verranno automaticamente sincronizzate con le impostazioni di sistema.
+                            </div>
+                        `);
+                    } else if (integration.name === 'Facebook') {
+                        configContainer.append(`
+                            <div class="mb-3">
+                                <label class="form-label" for="social_app_id">App ID</label>
+                                <input type="text" class="form-control" id="social_app_id" name="config[app_id]" value="${config.app_id || ''}" ${!userPermissions.canWrite ? 'disabled' : ''}>
+                                <small class="text-muted">L'App ID di Facebook (da Facebook Developer Portal)</small>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="social_app_secret">App Secret</label>
+                                <input type="password" class="form-control" id="social_app_secret" name="config[app_secret]" value="${config.app_secret || ''}" ${!userPermissions.canWrite ? 'disabled' : ''}>
+                                <small class="text-muted">L'App Secret di Facebook (da Facebook Developer Portal)</small>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="social_redirect_url">URL di Reindirizzamento</label>
+                                <input type="text" class="form-control" id="social_redirect_url" name="config[redirect_url]" value="${config.redirect_url || ''}" ${!userPermissions.canWrite ? 'disabled' : ''}>
+                                <small class="text-muted">URL di callback per Facebook OAuth</small>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="social_scopes">Scopes (separati da virgola)</label>
+                                <input type="text" class="form-control" id="social_scopes" name="config[scopes]" value="${config.scopes || 'email,public_profile'}" ${!userPermissions.canWrite ? 'disabled' : ''}>
+                                <small class="text-muted">I permessi richiesti per l'autenticazione Facebook</small>
+                            </div>
+                            <div class="alert alert-primary mt-3 mb-0">
+                                <i class="icon-base ti tabler-info-circle me-1"></i> 
+                                Se modifichi queste impostazioni, verranno automaticamente sincronizzate con le impostazioni di sistema.
+                            </div>
+                        `);
+                    } else {
+                        configContainer.append(`
+                            <div class="mb-3">
+                                <label class="form-label" for="social_app_id">App ID / Client ID</label>
+                                <input type="text" class="form-control" id="social_app_id" name="config[app_id]" value="${config.app_id || ''}" ${!userPermissions.canWrite ? 'disabled' : ''}>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="social_app_secret">App Secret / Client Secret</label>
+                                <input type="password" class="form-control" id="social_app_secret" name="config[app_secret]" value="${config.app_secret || ''}" ${!userPermissions.canWrite ? 'disabled' : ''}>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="social_redirect_url">URL di Reindirizzamento</label>
+                                <input type="text" class="form-control" id="social_redirect_url" name="config[redirect_url]" value="${config.redirect_url || ''}" ${!userPermissions.canWrite ? 'disabled' : ''}>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="social_scopes">Scopes (separati da virgola)</label>
+                                <input type="text" class="form-control" id="social_scopes" name="config[scopes]" value="${config.scopes || ''}" ${!userPermissions.canWrite ? 'disabled' : ''}>
+                            </div>
+                        `);
+                    }
                     break;
                     
                 case 'notification':
